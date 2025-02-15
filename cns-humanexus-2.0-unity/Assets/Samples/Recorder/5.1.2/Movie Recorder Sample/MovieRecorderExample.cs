@@ -60,8 +60,8 @@ namespace UnityEngine.Recorder.Examples
 
             m_Settings.ImageInputSettings = new GameViewInputSettings
             {
-                OutputWidth = 1920,
-                OutputHeight = 1080
+                OutputWidth = 3840,
+                OutputHeight = 2160
             };
 
             // Simple file name (no wildcards) so that FileInfo constructor works in OutputFile getter.
