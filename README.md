@@ -11,3 +11,6 @@ Inspiration: [https://dataland.art/](https://dataland.art/)
 Two scenes to implement:
 - Prototype walkthrough in organs (Blender)
 - Animates in and out movement in Unity for FTUs only, check out [https://drive.google.com/drive/folders/1WqyIHdzTNbU5fFtVaZoC8qKoPTpPiOW7](https://drive.google.com/drive/folders/1WqyIHdzTNbU5fFtVaZoC8qKoPTpPiOW7). Implement a sphere with images on each vertex, n images, radius R. Place 1000 dots around 10 organs. 
+
+
+Large assets are stored at [https://drive.google.com/drive/folders/1TZrdrGaxgvwW534pO-vHFgoZpcmDuVTB](https://drive.google.com/drive/folders/1TZrdrGaxgvwW534pO-vHFgoZpcmDuVTB).
