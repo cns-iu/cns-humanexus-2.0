@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 public class VerticesExperiment : MonoBehaviour
 {
@@ -9,13 +12,18 @@ public class VerticesExperiment : MonoBehaviour
     public GameObject ball;
     public float resizeFactor;
     public bool randomFlag;
+    public bool halfFlag;
     public GameObject materialRepo;
+    public GameObject mainCamera;
+    public int vertexCounter;
 
     Vector3[] vertices;     // all vertices from icosphere are collected to here (many doubles, icosphere1 has 60)
     static private List<Vector3> verticesDone = new List<Vector3>();    //list collects all unique vertices (icosphere1 has 12)
     static private List<GameObject> clones = new List<GameObject>();    //list of cloned objects
     private List<GameObject> repoMaterials = new List<GameObject>(); // list of GO holding materials
     private Mesh mesh;
+
+
 
 
     void Start()
@@ -47,13 +55,16 @@ public class VerticesExperiment : MonoBehaviour
         GetComponent<Renderer>().enabled = false;       // hide icosphere
         ball.GetComponent<Renderer>().enabled = false;  // hide ball
 
+        //GameObject mainCamera = GameObject.Find("Main Camera");
+
         Debug.Log("Item processed: " + itemsProcessed);
     }
 
     // builds all vertices in 
+    // allow specific numbers of vertices....
     private int randomBuild(int materialCount)
     {
-        int vertexCounter = 1;
+       vertexCounter = 1;
         GameObject clone;
         foreach (Vector3 vertex in vertices)
         {
@@ -69,6 +80,14 @@ public class VerticesExperiment : MonoBehaviour
 
                 Debug.Log("(" + vertexCounter + ")" + vertex);
                 vertexCounter++;
+
+               /*  if (halfFlag)
+                {
+                    if ( vertexCounter*2 >= verticesDone.Count)
+                    {
+                        break;
+                    }
+                } */
             }
         }
         return vertexCounter;
@@ -96,6 +115,7 @@ public class VerticesExperiment : MonoBehaviour
                 //vertexCounter++;
                 if (materialIndex == materialCount - 1) return materialIndex;
                 materialIndex++;
+
             }
         }
         return materialIndex;
@@ -106,14 +126,26 @@ public class VerticesExperiment : MonoBehaviour
     void Update()
     {
         // manual resizing of cloud
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             ResizeCloud(1.2f);
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             ResizeCloud(0.8f);
+        }
+
+        // manual camera movement along Z
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            mainCamera.transform.Translate(0, 0, Time.deltaTime * 5);
+            //mainCamera.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position);
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            mainCamera.transform.Translate(0, 0, -Time.deltaTime * 5);
         }
 
         // hide/show icosphere object
