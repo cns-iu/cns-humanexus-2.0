@@ -1,28 +1,30 @@
-Use Icosphere objects created in Blender.
-(An icosphere is a polyhedral sphere made of triangles. It's a geodesic polyhedron, which means it's a convex shape with straight edges and flat faces that approximate a sphere.)
+Humanexus 2.0 Unity Project 
+2025-4-27
 
-Using Icosphere with 4 subdivisions result in 642 vertices. (Icosphere 5 results in 2562 vertices)
+Development progress and notes (very cryptic)
 
-Export .FBX from Blender and import into Unity project. (in Blender export dialog, check "selected" objects", deselect "Apply Unit")
+Database info is pulled from comma-delimited CSV files. These CSV files have this format:
+graphic,ftu,organ
+PMC10018169_fcell-11-1142929-g002_panel_1.jpg,cortical collecting duct,kidney
+PMC10018169_fcell-11-1142929-g002_panel_2.jpg,cortical collecting duct,kidney……
 
-In Unity open import settings on imported object.
+For the CSVReader script to work the header line of the CSV file is required.
+All CSV files live in the Project->Assets->Resources folder.
 
-Uncheck “Convert Units”.
 
-Check “Read/Write”.
+Main Menu->Tools->Setup Tools
 
-Apply
+Initialize Database from CSV File
+-Popup menu with all available CSV files from /Assets/Resources/
+-> the selected CSV file is processed by the LoadExcel script, which creates a matching Unity list on the Databases Game Object. This this provides much faster access to the required texture files.
 
-Put Icosphere object into scene.
+Populate Materials & Objects
+-Populate
+-> 
 
-Check that Scale = 1, Position & Rotation = 0.
+-Cleanup
 
-Attach "VerticesExperiment" script.
+Testing
+-Test 0
+-> copies all graphics files (jpgs) in the database list from an external source folder to the TempTextures folder. So far tested with a list of 150 items from the “pancreas” organ group. This test accessed the “micro_ftu22_crop_200k” source folder, which contains 233k+ individual jpg files. This operation took 12 minutes.
 
-Populate Icosphere and Ball fields (Ball = sphere of scale 0.1)
-
-Run in Unity. The script will instantiate the object given in the Ball field at each vertex of the Icosphere. This may take a few seconds.
-
-Use up/down arrow keys to enlarge/shrink the diameter of the cloud
-
-Use space key to hide/show Icosphere.
