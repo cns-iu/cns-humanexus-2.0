@@ -6,6 +6,9 @@ using System.IO;
 using Unity.VisualScripting;
 using System.Linq;
 
+// CustomEditorWindow for Humanexus 2.0
+// Rev. 2025-4-27
+
 public class CustomEditorWindow : EditorWindow
 {
     static public GameObject icosphere;
@@ -15,7 +18,13 @@ public class CustomEditorWindow : EditorWindow
 
     static private Vector3[] vertices;
     static private List<Vector3> verticesDone = new List<Vector3>();    //list collects all unique vertices (icosphere1 has 12)
+    //static private List<GameObject> clones = new List<GameObject>();    //list of cloned objects
     static private Mesh mesh;
+
+    // to test pop-up for CSV selection
+    public string[] csvfilesArray; // = new string[] { "Cube", "Sphere", "Plane" };
+    public int index = 0;
+
 
     [MenuItem("Tools/Setup Tools")]
     public static void ShowWindow()
@@ -29,12 +38,26 @@ public class CustomEditorWindow : EditorWindow
         ball = GameObject.Find("Cube");                 // object to clone from
         vertexCloud = GameObject.Find("VertexCloud");   // parent object to hold all clones (vertex cloud)
 
-        GUILayout.Label("Initialize Database", EditorStyles.boldLabel);
-        if (GUILayout.Button("Load Items from CSV"))
+        // setup for popup menu
+        // find all available CSV files in Resources folder
+        int i = 0;
+        DirectoryInfo csvDi = new DirectoryInfo("Assets/Resources");
+        FileInfo[] fis = csvDi.GetFiles("*.csv");
+        foreach (FileInfo fi in fis) i++;       // count files in folder
+        csvfilesArray = new string[i];      // make array of size
+        // populate string array for popup
+        int j = 0;
+        foreach (FileInfo fi in fis)
         {
-            GameObject.Find("Databases").GetComponent<LoadExcel>().LoadItemData();
-            //--->build list of icospheres
+            csvfilesArray[j] = Path.GetFileNameWithoutExtension(fi.Name);
+            j++;
         }
+
+        GUILayout.Label("Initialize Database from CSV file", EditorStyles.boldLabel);
+        // show popup menu
+        index = EditorGUILayout.Popup(index, csvfilesArray);    // popup returns index
+        string selectedCSV = csvfilesArray[index];
+        GameObject.Find("Databases").GetComponent<LoadExcel>().LoadItemData(selectedCSV);
 
         GUILayout.Label("Populate Materials & Objects", EditorStyles.boldLabel);
         if (GUILayout.Button("Populate"))
@@ -48,34 +71,32 @@ public class CustomEditorWindow : EditorWindow
         }
 
         GUILayout.Label("Testing", EditorStyles.boldLabel);
-        if (GUILayout.Button("Test 1"))
+        if (GUILayout.Button("Test 0 - copy external jpg files to project"))
         {
-            Test1();
+            Test0();
         }
     }
 
-    // adds icosphere with vertices >= database.count 
-    private static void Test1()
+
+    // copy each jpg in database.graphic from source (test set 1000) to assets/TempTextures
+    private static void Test0()
     {
-        InitSphere();       // picks correct icosphere
-        MakeVertexList();   // make vertex list, eliminate duplicates
+        // sourceDi should point to "22ftu_micro_organ_metadata new.csv"
+        DirectoryInfo sourceDi = new DirectoryInfo("/Volumes/Little-Cloudy/CNS/CNS new/Humanexus 2/Downloads/micro_ftu22_crop_200k");
+        //DirectoryInfo sourceDi = new DirectoryInfo("/Volumes/Little-Cloudy/CNS/CNS new/Humanexus 2/Downloads/With third column/test_set_jpgs_1000");
+        DirectoryInfo destDi = new DirectoryInfo("Assets/TempTextures");
 
-        GameObject clone;
-        int vertexCounter = 0;
-
-        foreach (Item item in thisDatabase)
+        foreach (Item i in thisDatabase)
         {
-            // clone "ball"
-            clone = Instantiate(ball, verticesDone[vertexCounter], Quaternion.identity);   // make clone
-            clone.transform.parent = vertexCloud.transform;             // into parent
-            clone.transform.LookAt(icosphere.transform);              // impose tidal lock so clone always faces center
-
-            // clone needs material!
-            // 
-            vertexCounter++;
+            FileInfo[] fileInfos = sourceDi.GetFiles(i.graphic);
+            foreach (FileInfo fileInfo in fileInfos)
+            {
+                fileInfo.CopyTo(Path.Combine(destDi.ToString(), fileInfo.Name), true);
+            }
+            AssetDatabase.Refresh();
         }
-
     }
+
 
 
     private static void Populate()
@@ -84,7 +105,11 @@ public class CustomEditorWindow : EditorWindow
         GameObject goMatt = GameObject.Find("Matt");                // template object for material holder GO
 
         Debug.Log("Importing assets...");
+
+        InitSphere();       // picks correct icosphere
+        MakeVertexList();   // make vertex list, eliminate duplicates
         GameObject clone;
+        int vertexCounter = 0;
 
         DirectoryInfo dirInfo = new DirectoryInfo("Assets/TempTextures");
         //thisDatabase = GameObject.Find("Databases").GetComponent<LoadExcel>().itemDatabase;
@@ -112,10 +137,14 @@ public class CustomEditorWindow : EditorWindow
                 AssetDatabase.CreateAsset(newMaterial, newAssetName);
                 AssetDatabase.SaveAssets();
 
-                clone = UnityEngine.Object.Instantiate(goMatt);
-                clone.GetComponent<MeshRenderer>().material = newMaterial;
-                clone.name = tex2d.name;
-                clone.transform.parent = materialRepo.transform;
+                clone = Instantiate(ball, verticesDone[vertexCounter], Quaternion.identity);   // make clone
+                clone.transform.parent = vertexCloud.transform;             // into parent (vertexCloud)
+                clone.transform.LookAt(icosphere.transform);                // impose tidal lock so clone always faces center
+                clone.GetComponent<MeshRenderer>().material = newMaterial;  // assign new material to clone
+                clone.name = tex2d.name;                                    // rename clone with name of texture/material
+                //clones.Add(clone);  
+
+                vertexCounter++;
             }
         }
 
@@ -123,11 +152,15 @@ public class CustomEditorWindow : EditorWindow
     }
     private static void Cleanup()
     {
-        GameObject materialRepo = GameObject.Find("MaterialRepo");  // parent where new materials are created
-
         // delete all children of materialrepo
+        GameObject materialRepo = GameObject.Find("MaterialRepo");  // parent where new materials are created
         for (int i = materialRepo.transform.childCount; i > 0; --i)
             Object.DestroyImmediate(materialRepo.transform.GetChild(0).gameObject);
+
+        // delete all children of vertexcloud
+        GameObject vertexCloud = GameObject.Find("VertexCloud");    // parent where clones go
+        for (int i = vertexCloud.transform.childCount; i > 0; --i)
+            Object.DestroyImmediate(vertexCloud.transform.GetChild(0).gameObject);
 
         //------only delete stuff in the folder - not the folder itself
         /* List<string> failedPaths = new List<string>();
@@ -135,8 +168,8 @@ public class CustomEditorWindow : EditorWindow
         
         AssetDatabase.DeleteAssets(assetPaths,failedPaths);
         Debug.Log(failedPaths); */
-
     }
+
 
     // find the icosphere that has more vertices than needed
     // disable mesh renderer on all spheres
@@ -150,7 +183,7 @@ public class CustomEditorWindow : EditorWindow
             child.GetComponent<MeshRenderer>().enabled = false;
         }
 
-        // find sphere with more vertices than needed (this is not fool proof)
+        // find sphere with more vertices than needed (this is not fool proof - icospheres have to be in ascending order)
         foreach (Transform child in spheres.transform)
         {
             int vCount = child.gameObject.GetComponent<SphereInfo>().vertexCount;
@@ -164,6 +197,7 @@ public class CustomEditorWindow : EditorWindow
 
         Debug.Log("sphere = " + icosphere);
     }
+
 
     private static void MakeVertexList()
     {

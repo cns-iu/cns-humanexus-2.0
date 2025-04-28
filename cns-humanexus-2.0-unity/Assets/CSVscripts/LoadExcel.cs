@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class LoadExcel : MonoBehaviour
@@ -7,13 +8,13 @@ public class LoadExcel : MonoBehaviour
     public Item blankItem;
     public List<Item> itemDatabase = new List<Item>();
 
-    public void LoadItemData()
+    public void LoadItemData(string filename)
     {
         //Clear database
         itemDatabase.Clear();
 
         //READ CSV files
-        List<Dictionary<string, object>> data = CSVReader.Read("test_subset_15");
+        List<Dictionary<string, object>> data = CSVReader.Read(filename);
         for (var i = 0; i < data.Count; i++)
         {
             string graphic = data[i]["graphic"].ToString();
