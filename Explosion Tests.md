@@ -1,11 +1,13 @@
 Humanexus 2.0 Unity Project 
+
 2025-4-27
 
 Development progress and notes (very cryptic)
 
 Database info is pulled from comma-delimited CSV files. These CSV files have this format:
-graphic,ftu,organ
-PMC10018169_fcell-11-1142929-g002_panel_1.jpg,cortical collecting duct,kidney
+
+graphic,ftu,organ<br>
+PMC10018169_fcell-11-1142929-g002_panel_1.jpg,cortical collecting duct,kidney<br>
 PMC10018169_fcell-11-1142929-g002_panel_2.jpg,cortical collecting duct,kidney……
 
 For the CSVReader script to work the header line of the CSV file is required.
