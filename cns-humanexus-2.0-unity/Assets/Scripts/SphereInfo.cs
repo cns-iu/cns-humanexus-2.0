@@ -3,16 +3,14 @@ using System.Collections.Generic;
 
 public class SphereInfo : MonoBehaviour
 {
-
     public int vertexCount;
-    public GameObject mainCamera;
     public float resizeFactor;
-    
-
+    public List<GameObject> clones = new List<GameObject>();    // clones list created from Editor script
+    private GameObject mainCamera;
 
     void Start()
     {
-
+        mainCamera = GameObject.Find("Main Camera");
     }
 
     void Update()
@@ -63,13 +61,13 @@ public class SphereInfo : MonoBehaviour
     void ResizeCloud(float factor)
     {
         // for resize to work:
-        //  clones <list> on vertexCloud
+        //  clones <list>
         //  add clones created in EditorScript to this list
-        //  SPhereInfo (this) can access for resizing
-        /*foreach (GameObject gameObject in clones)
+        //  can access for resizing
+        foreach (GameObject gameObject in clones)
         {
             gameObject.transform.position = gameObject.transform.position * factor;
-        }*/
+        }
 
     }
 }

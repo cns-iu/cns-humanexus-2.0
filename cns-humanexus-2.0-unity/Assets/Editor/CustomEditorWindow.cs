@@ -5,15 +5,16 @@ using UnityEditor;
 using System.IO;
 using Unity.VisualScripting;
 using System.Linq;
+using PlasticGui.WorkspaceWindow.BrowseRepository;
 
 // CustomEditorWindow for Humanexus 2.0
-// Rev. 2025-4-27
+// Rev. 2025-5-4
 
 public class CustomEditorWindow : EditorWindow
 {
-    static public GameObject icosphere;
+    static public GameObject icosphere;     // this is the sphere selected in InitSphere
     static public GameObject ball;
-    static private GameObject vertexCloud;
+    //static private GameObject vertexCloud;
     static private List<Item> thisDatabase = new List<Item>();
 
     static private Vector3[] vertices;
@@ -21,43 +22,35 @@ public class CustomEditorWindow : EditorWindow
     //static private List<GameObject> clones = new List<GameObject>();    //list of cloned objects
     static private Mesh mesh;
 
-    // to test pop-up for CSV selection
     public string[] csvfilesArray; // = new string[] { "Cube", "Sphere", "Plane" };
-    public int index = 0;
+    public int index;
+    static string selectedCSV;
+
+    // data from SciptableObject
+    public string masterDirectory;
+    public string lastImportSet;
+    public DataSaver myData;     // scriptable object containing data
 
 
     [MenuItem("Tools/Setup Tools")]
+
     public static void ShowWindow()
     {
         GetWindow<CustomEditorWindow>("Setup Tools");
+
     }
     void OnGUI()
     {
-        // init these...
+        // init these... thisDatabase & itemDatabase should be init'ed to selectedCSV
         thisDatabase = GameObject.Find("Databases").GetComponent<LoadExcel>().itemDatabase; // list with subset = objects to create
         ball = GameObject.Find("Cube");                 // object to clone from
-        vertexCloud = GameObject.Find("VertexCloud");   // parent object to hold all clones (vertex cloud)
 
-        // setup for popup menu
-        // find all available CSV files in Resources folder
-        int i = 0;
-        DirectoryInfo csvDi = new DirectoryInfo("Assets/Resources");
-        FileInfo[] fis = csvDi.GetFiles("*.csv");
-        foreach (FileInfo fi in fis) i++;       // count files in folder
-        csvfilesArray = new string[i];      // make array of size
-        // populate string array for popup
-        int j = 0;
-        foreach (FileInfo fi in fis)
-        {
-            csvfilesArray[j] = Path.GetFileNameWithoutExtension(fi.Name);
-            j++;
-        }
+        Debug.Log("from Editor Script: " + myData);
+        //lastImportSet = myData.lastImport;
+        //masterDirectory = myData.sourceDirectory;
 
-        GUILayout.Label("Initialize Database from CSV file", EditorStyles.boldLabel);
-        // show popup menu
-        index = EditorGUILayout.Popup(index, csvfilesArray);    // popup returns index
-        string selectedCSV = csvfilesArray[index];
-        GameObject.Find("Databases").GetComponent<LoadExcel>().LoadItemData(selectedCSV);
+        Debug.Log(masterDirectory);
+        Debug.Log(lastImportSet);
 
         GUILayout.Label("Populate Materials & Objects", EditorStyles.boldLabel);
         if (GUILayout.Button("Populate"))
@@ -70,21 +63,61 @@ public class CustomEditorWindow : EditorWindow
             Cleanup();
         }
 
-        GUILayout.Label("Testing", EditorStyles.boldLabel);
-        if (GUILayout.Button("Test 0 - copy external jpg files to project"))
+        // rewrite, better label & descr. & configuration?
+        GUILayout.Label("Copy graphics assets from master folder. This is a slow process!", EditorStyles.boldLabel);
+        //GUILayout.Label("Last Import Set: " + GameObject.Find("Databases").GetComponent<DataContainer>().DataSaver);
+        GUILayout.Label("Last Import Set: " + lastImportSet);
+        //GameObject.Find("Databases").GetComponent<LoadExcel>().LoadItemData(selectedCSV);
+
+
+        // setup for popup menu, more complicated than it shoud be!!!!
+        // find all available CSV files in Resources folder
+        int i = 0;
+        DirectoryInfo csvDi = new DirectoryInfo("Assets/Resources");
+        FileInfo[] fis = csvDi.GetFiles("*.csv");
+        foreach (FileInfo fi in fis) i++;       // count files in folder
+        csvfilesArray = new string[i];      // make array of size
+
+        // populate string array for popup
+        int j = 0;
+        foreach (FileInfo fi in fis)
         {
-            Test0();
+            csvfilesArray[j] = Path.GetFileNameWithoutExtension(fi.Name);
+            if (fi.Name == lastImportSet)
+            {
+                index = j;  // set index for popup default from ScriptableObject
+            }
+            j++;
+        }
+
+        GUILayout.Label("Initialize Database from CSV file - must make selection!", EditorStyles.boldLabel);
+
+        // show popup menu
+        index = EditorGUILayout.Popup(index, csvfilesArray);    // popup returns index
+        selectedCSV = csvfilesArray[index];
+        GameObject.Find("Databases").GetComponent<LoadExcel>().LoadItemData(selectedCSV);
+
+
+        if (GUILayout.Button("Import images from Master folder"))
+        {
+            ImportImages();
         }
     }
 
+    /*  public void Initialize(DataSaver dataSaver)
+     {
+         sourceDirectory = dataSaver.sourceDirectory;
+         lastImport = dataSaver.lastImport;
+     }
+  */
 
-    // copy each jpg in database.graphic from source (test set 1000) to assets/TempTextures
-    private static void Test0()
+    // copy each jpg in database.graphic from source to assets/TempTextures
+    private static void ImportImages()
     {
-        // sourceDi should point to "22ftu_micro_organ_metadata new.csv"
         DirectoryInfo sourceDi = new DirectoryInfo("/Volumes/Little-Cloudy/CNS/CNS new/Humanexus 2/Downloads/micro_ftu22_crop_200k");
-        //DirectoryInfo sourceDi = new DirectoryInfo("/Volumes/Little-Cloudy/CNS/CNS new/Humanexus 2/Downloads/With third column/test_set_jpgs_1000");
         DirectoryInfo destDi = new DirectoryInfo("Assets/TempTextures");
+
+        Debug.Log("Importing images from: Humanexus 2/Downloads/micro_ftu22_crop_200k");
 
         foreach (Item i in thisDatabase)
         {
@@ -92,9 +125,13 @@ public class CustomEditorWindow : EditorWindow
             foreach (FileInfo fileInfo in fileInfos)
             {
                 fileInfo.CopyTo(Path.Combine(destDi.ToString(), fileInfo.Name), true);
+                Debug.Log("Copying: " + fileInfo.Name);
             }
             AssetDatabase.Refresh();
         }
+        GameObject.Find("Databases").GetComponent<LoadExcel>().lastImportSet = selectedCSV; // need this?
+        //lastImportSet = 
+        Debug.Log("Import done.");
     }
 
 
@@ -104,10 +141,13 @@ public class CustomEditorWindow : EditorWindow
         GameObject materialRepo = GameObject.Find("MaterialRepo");  // parent where new materials are created
         GameObject goMatt = GameObject.Find("Matt");                // template object for material holder GO
 
-        Debug.Log("Importing assets...");
+        Debug.Log("Creating clones at vertices...");
+
 
         InitSphere();       // picks correct icosphere
         MakeVertexList();   // make vertex list, eliminate duplicates
+        icosphere.GetComponent<SphereInfo>().clones.Clear();
+
         GameObject clone;
         int vertexCounter = 0;
 
@@ -138,36 +178,52 @@ public class CustomEditorWindow : EditorWindow
                 AssetDatabase.SaveAssets();
 
                 clone = Instantiate(ball, verticesDone[vertexCounter], Quaternion.identity);   // make clone
-                clone.transform.parent = vertexCloud.transform;             // into parent (vertexCloud)
+                clone.transform.parent = icosphere.transform;             // into parent (vertexCloud)
                 clone.transform.LookAt(icosphere.transform);                // impose tidal lock so clone always faces center
                 clone.GetComponent<MeshRenderer>().material = newMaterial;  // assign new material to clone
                 clone.name = tex2d.name;                                    // rename clone with name of texture/material
-                //clones.Add(clone);  
+                icosphere.GetComponent<SphereInfo>().clones.Add(clone);
 
                 vertexCounter++;
             }
         }
 
-        Debug.Log("Done importing assets...");
+        Debug.Log("Done creating clones...");
     }
+
     private static void Cleanup()
     {
+        Debug.Log("Cleaning up...");
         // delete all children of materialrepo
         GameObject materialRepo = GameObject.Find("MaterialRepo");  // parent where new materials are created
         for (int i = materialRepo.transform.childCount; i > 0; --i)
             Object.DestroyImmediate(materialRepo.transform.GetChild(0).gameObject);
 
         // delete all children of vertexcloud
-        GameObject vertexCloud = GameObject.Find("VertexCloud");    // parent where clones go
-        for (int i = vertexCloud.transform.childCount; i > 0; --i)
-            Object.DestroyImmediate(vertexCloud.transform.GetChild(0).gameObject);
+        GameObject spheres = GameObject.Find("Spheres");    // parent where clones go
+        foreach (Transform child in spheres.transform)
+        {
+            for (int i = child.childCount; i > 0; --i)
+                Object.DestroyImmediate(child.transform.GetChild(0).gameObject);
+        }
 
-        //------only delete stuff in the folder - not the folder itself
-        /* List<string> failedPaths = new List<string>();
-        string[] assetPaths = {"Assets/TempMaterials/"};
-        
-        AssetDatabase.DeleteAssets(assetPaths,failedPaths);
-        Debug.Log(failedPaths); */
+        // delete TempMaterials folder and all contents, then creates new empty folder
+        List<string> failedPathsMat = new List<string>();
+        string[] assetPathsMat = { "Assets/TempMaterials/" };
+
+        AssetDatabase.DeleteAssets(assetPathsMat, failedPathsMat);
+        AssetDatabase.Refresh();
+        AssetDatabase.CreateFolder("Assets", "TempMaterials");
+
+        // delete TempTextures folder and all contents, then creates new empty folder
+        List<string> failedPathsTex = new List<string>();
+        string[] assetPathsTex = { "Assets/TempTextures/" };
+
+        AssetDatabase.DeleteAssets(assetPathsTex, failedPathsTex);
+        AssetDatabase.Refresh();
+        AssetDatabase.CreateFolder("Assets", "TempTextures");
+
+        Debug.Log("Cleanup done.");
     }
 
 
