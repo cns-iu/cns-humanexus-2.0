@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+// this runs on call only
 public class LoadExcel : MonoBehaviour
 {
     public Item blankItem;

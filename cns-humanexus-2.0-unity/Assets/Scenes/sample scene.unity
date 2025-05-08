@@ -372,157 +372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vertexCount: 162
   resizeFactor: 0
-  clones:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  clones: []
 --- !u!4 &83727544 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c75b67a26804645cf9ef79562122348d, type: 3}
@@ -1446,7 +1296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1009310556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1461,7 +1311,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   masterDirectory: 
   lastImportSet: 
-  myData: {fileID: 11400000, guid: 590d5432f2eea468a85d28d83dc37707, type: 2}
 --- !u!4 &1009310557
 Transform:
   m_ObjectHideFlags: 0
@@ -2756,55 +2605,7 @@ MonoBehaviour:
     ftu: 
     organ: 
   lastImportSet: 
-  itemDatabase:
-  - graphic: PMC10003153_ijms-24-04783-g001_panel_1.jpg
-    ftu: thick ascending limb of loop of Henle
-    organ: kidney
-  - graphic: PMC10003153_ijms-24-04783-g001_panel_2.jpg
-    ftu: thick ascending limb of loop of Henle
-    organ: kidney
-  - graphic: PMC10003153_ijms-24-04783-g001_panel_3.jpg
-    ftu: thick ascending limb of loop of Henle
-    organ: kidney
-  - graphic: PMC10003153_ijms-24-04783-g002_panel_1.jpg
-    ftu: thick ascending limb of loop of Henle
-    organ: kidney
-  - graphic: PMC10003153_ijms-24-04783-g002_panel_2.jpg
-    ftu: thick ascending limb of loop of Henle
-    organ: kidney
-  - graphic: PMC10003153_ijms-24-04783-g002_panel_3.jpg
-    ftu: thick ascending limb of loop of Henle
-    organ: kidney
-  - graphic: PMC10003153_ijms-24-04783-g003_panel_1.jpg
-    ftu: thick ascending limb of loop of Henle
-    organ: kidney
-  - graphic: PMC10003153_ijms-24-04783-g003_panel_2.jpg
-    ftu: thick ascending limb of loop of Henle
-    organ: kidney
-  - graphic: PMC10003153_ijms-24-04783-g003_panel_3.jpg
-    ftu: thick ascending limb of loop of Henle
-    organ: kidney
-  - graphic: PMC10003153_ijms-24-04783-g006_panel_1.jpg
-    ftu: thick ascending limb of loop of Henle
-    organ: kidney
-  - graphic: PMC10003153_ijms-24-04783-g006_panel_2.jpg
-    ftu: thick ascending limb of loop of Henle
-    organ: kidney
-  - graphic: PMC10003153_ijms-24-04783-g006_panel_3.jpg
-    ftu: thick ascending limb of loop of Henle
-    organ: kidney
-  - graphic: PMC10003153_ijms-24-04783-g007_panel_1.jpg
-    ftu: thick ascending limb of loop of Henle
-    organ: kidney
-  - graphic: PMC10003153_ijms-24-04783-g007_panel_2.jpg
-    ftu: thick ascending limb of loop of Henle
-    organ: kidney
-  - graphic: PMC10003153_ijms-24-04783-g007_panel_3.jpg
-    ftu: thick ascending limb of loop of Henle
-    organ: kidney
-  - graphic: PMC10003153_ijms-24-04783-g007_panel_4.jpg
-    ftu: thick ascending limb of loop of Henle
-    organ: kidney
+  itemDatabase: []
 --- !u!4 &1908595915
 Transform:
   m_ObjectHideFlags: 0
@@ -2832,9 +2633,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e157a8c8a34479084ac38c12950566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterDirectory: 
-  lastImportSet: 
-  myData: {fileID: 0}
+  masterDirectory: /Volumes/Little-Cloudy/CNS/CNS new/Humanexus 2/Downloads/micro_ftu22_crop_200k
+  lastImportSet: test_150_kidney
 --- !u!1 &1941188781
 GameObject:
   m_ObjectHideFlags: 0
