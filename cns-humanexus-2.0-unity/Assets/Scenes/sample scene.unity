@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 93276196}
   - component: {fileID: 93276195}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -425,7 +425,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 93276194}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1636,7 +1636,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vertexCount: 12
   resizeFactor: 0
-  clones: []
+  clones:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1255773440 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4348733e46be74b0a8ef0decd8ca99b6, type: 3}
@@ -2604,8 +2609,22 @@ MonoBehaviour:
     graphic: 
     ftu: 
     organ: 
-  lastImportSet: 
-  itemDatabase: []
+  itemDatabase:
+  - graphic: PMC10003153_ijms-24-04783-g001_panel_1.jpg
+    ftu: thick ascending limb of loop of Henle
+    organ: kidney
+  - graphic: PMC10003153_ijms-24-04783-g001_panel_2.jpg
+    ftu: thick ascending limb of loop of Henle
+    organ: kidney
+  - graphic: PMC10003153_ijms-24-04783-g001_panel_3.jpg
+    ftu: thick ascending limb of loop of Henle
+    organ: kidney
+  - graphic: PMC10003153_ijms-24-04783-g002_panel_1.jpg
+    ftu: thick ascending limb of loop of Henle
+    organ: kidney
+  - graphic: PMC10003153_ijms-24-04783-g002_panel_2.jpg
+    ftu: thick ascending limb of loop of Henle
+    organ: kidney
 --- !u!4 &1908595915
 Transform:
   m_ObjectHideFlags: 0
@@ -2634,7 +2653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masterDirectory: /Volumes/Little-Cloudy/CNS/CNS new/Humanexus 2/Downloads/micro_ftu22_crop_200k
-  lastImportSet: test_150_kidney
+  lastImportSet: <empty>
 --- !u!1 &1941188781
 GameObject:
   m_ObjectHideFlags: 0

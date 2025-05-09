@@ -7,7 +7,7 @@ using UnityEngine;
 public class LoadExcel : MonoBehaviour
 {
     public Item blankItem;
-    public string lastImportSet;
+   // public string lastImportSet;
     public List<Item> itemDatabase = new List<Item>();
 
     public void LoadItemData(string filename)
