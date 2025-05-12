@@ -23,16 +23,21 @@ public class BuildMenu : MonoBehaviour
 
     static private Vector3[] vertices;
     static private List<Vector3> verticesDone = new List<Vector3>();    //list collects all unique vertices (icosphere1 has 12)
-    //static private List<GameObject> clones = new List<GameObject>();    //list of cloned objects
     static private Mesh mesh;
 
 
     [MenuItem("Humanexus/Cloud Building/1 Build from Current Set")]
     static void Build()
     {
-        Debug.Log("Starting to build cloud...");
-        Populate();
-        Debug.Log("Done building cloud....");
+        thisDatabase = GameObject.Find("Databases").GetComponent<LoadExcel>().itemDatabase;
+        if (thisDatabase.Count() != 0)
+        {
+            Debug.Log("Starting to build cloud...");
+            Populate();
+            Debug.Log("Done building cloud....");
+        } else {
+            Debug.LogError("No texture set installed");
+        }
 
     }
 
@@ -43,12 +48,12 @@ public class BuildMenu : MonoBehaviour
         Cleanup();
     }
 
+
     private static void Populate()
     {
-        GameObject materialRepo = GameObject.Find("MaterialRepo");  // parent where new materials are created
-        GameObject goMatt = GameObject.Find("Matt");                // template object for material holder GO
+        //GameObject materialRepo = GameObject.Find("MaterialRepo");  // parent where new materials are created
+        //GameObject goMatt = GameObject.Find("Matt");                // template object for material holder GO
         GameObject ball = GameObject.Find("Ball");                  // object to clone (it is a cube)
-        thisDatabase = GameObject.Find("Databases").GetComponent<LoadExcel>().itemDatabase;
 
         Debug.Log("Creating clones at vertices...");
 
@@ -104,10 +109,6 @@ public class BuildMenu : MonoBehaviour
     private static void Cleanup()
     {
         Debug.Log("Cleaning up...");
-        // delete all children of materialrepo
-        GameObject materialRepo = GameObject.Find("MaterialRepo");  // parent where new materials are created
-        for (int i = materialRepo.transform.childCount; i > 0; --i)
-            Object.DestroyImmediate(materialRepo.transform.GetChild(0).gameObject);
 
         // delete all children of vertexcloud
         GameObject spheres = GameObject.Find("Spheres");    // parent where clones go

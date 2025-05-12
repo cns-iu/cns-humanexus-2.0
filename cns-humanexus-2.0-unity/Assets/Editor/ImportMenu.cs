@@ -8,7 +8,7 @@ using System.Linq;
 using PlasticGui.WorkspaceWindow.BrowseRepository;
 using System.Dynamic;
 
-//  2025-5-8
+//  2025-5-11
 // adds Testure Sets menu under Humanexus
 // - persistent data (last import set & master image directory) are stored on Databases GO
 // - persistent data is updated by this script after changes were made
@@ -149,29 +149,43 @@ public class ImportMenu : EditorWindow
             }
             AssetDatabase.Refresh();
         }
-
         Debug.Log("Import done.");
     }
 
-
-
+    // this deletes/removes all assets produced by build process & tempTextures folder
     public void Cleanup()
     {
         Debug.Log("cleaning up...");
 
+        // delete all children of vertexcloud
+        GameObject spheres = GameObject.Find("Spheres");    // parent where clones go
+        foreach (Transform child in spheres.transform)
+        {
+            for (int i = child.childCount; i > 0; --i)
+                Object.DestroyImmediate(child.transform.GetChild(0).gameObject);
+        }
+
+        // delete TempMaterials folder and all contents, then creates new empty folder
+        List<string> failedPathsMat = new List<string>();
+        string[] assetPathsMat = { "Assets/TempMaterials/" };
+        AssetDatabase.DeleteAssets(assetPathsMat, failedPathsMat);
+        AssetDatabase.Refresh();
+        AssetDatabase.CreateFolder("Assets", "TempMaterials");
+
         // delete TempTextures folder and all contents, then creates new empty folder
         List<string> failedPathsTex = new List<string>();
         string[] assetPathsTex = { "Assets/TempTextures/" };
-
         AssetDatabase.DeleteAssets(assetPathsTex, failedPathsTex);
         AssetDatabase.Refresh();
         AssetDatabase.CreateFolder("Assets", "TempTextures");
 
         dataContainer.GetComponent<DataContainer>().lastImportSet = "<empty>";
+        dataContainer.GetComponent<LoadExcel>().itemDatabase.Clear();
         EditorUtility.SetDirty(dataContainer);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
     }
+
 
     // pull lastImportSet from Databases
     // return ID of valid (installed) CSV file
