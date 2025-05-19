@@ -26,7 +26,7 @@ public class LoadExcel : MonoBehaviour
         }
     }
 
-    void AddItem(string graphic, string ftu, string organ)
+    public void AddItem(string graphic, string ftu, string organ)
     {
         Item tempItem = new Item(blankItem);
         tempItem.graphic = graphic;

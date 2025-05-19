@@ -7,13 +7,10 @@ using Unity.VisualScripting;
 using System.Linq;
 using PlasticGui.WorkspaceWindow.BrowseRepository;
 
-// 2025-5-8
+// 2025-5-12
 // - Build From Current Set: builds a vertice cloud from installed set
 // - Cleanup: removes created clones, tempMaterials
 //
-// Improvements:
-// - should check that a set has been installed (TempFolder NOT empty? info on Databases?)
-
 
 public class BuildMenu : MonoBehaviour
 {
@@ -35,7 +32,9 @@ public class BuildMenu : MonoBehaviour
             Debug.Log("Starting to build cloud...");
             Populate();
             Debug.Log("Done building cloud....");
-        } else {
+        }
+        else
+        {
             Debug.LogError("No texture set installed");
         }
 
@@ -115,7 +114,10 @@ public class BuildMenu : MonoBehaviour
         foreach (Transform child in spheres.transform)
         {
             for (int i = child.childCount; i > 0; --i)
+            {
                 Object.DestroyImmediate(child.transform.GetChild(0).gameObject);
+            }
+            child.GetComponent<SphereInfo>().clones.Clear();        // clear clones list
         }
 
         // delete TempMaterials folder and all contents, then creates new empty folder
@@ -153,6 +155,8 @@ public class BuildMenu : MonoBehaviour
                 break;
             }
         }
+        GameObject dataContainer = GameObject.Find("Databases");
+        dataContainer.GetComponent<DataContainer>().usedIcosphere = icosphere;
 
         Debug.Log("sphere = " + icosphere);
     }

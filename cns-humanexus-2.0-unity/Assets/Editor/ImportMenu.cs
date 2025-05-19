@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,8 +9,8 @@ using System.Linq;
 using PlasticGui.WorkspaceWindow.BrowseRepository;
 using System.Dynamic;
 
-//  2025-5-11
-// adds Testure Sets menu under Humanexus
+//  2025-5-13
+// adds Texture Sets menu under Humanexus
 // - persistent data (last import set & master image directory) are stored on Databases GO
 // - persistent data is updated by this script after changes were made
 // - Gadgets in Texture Sets window:
@@ -97,6 +98,9 @@ public class ImportMenu : EditorWindow
         {
             if (GUILayout.Button("Import Images from master folder"))
             {
+                System.Diagnostics.Stopwatch st = new System.Diagnostics.Stopwatch();   // start timer for import
+                st.Start();
+   
                 ImportImages();
                 enableInitialize = false;
                 enableMenu = false;
@@ -104,12 +108,8 @@ public class ImportMenu : EditorWindow
                 enableCleanup = true;
                 enableInfo = true;
 
-                lastImportSet = selectedCSV + ".csv";
-
-                dataContainer.GetComponent<DataContainer>().lastImportSet = lastImportSet;
-                EditorUtility.SetDirty(dataContainer);
-                AssetDatabase.SaveAssets();
-                AssetDatabase.Refresh();
+                st.Stop();
+                Debug.Log("Duration of Import in milliseconds: " + st.ElapsedMilliseconds);
             }
         }
 
@@ -147,8 +147,15 @@ public class ImportMenu : EditorWindow
                 fileInfo.CopyTo(Path.Combine(destDi.ToString(), fileInfo.Name), true);
                 Debug.Log("Copying: " + fileInfo.Name);
             }
-            AssetDatabase.Refresh();
+            //AssetDatabase.Refresh();  // not refreshing here gives a 18% speed boost
         }
+        lastImportSet = selectedCSV + ".csv";
+
+        dataContainer.GetComponent<DataContainer>().lastImportSet = lastImportSet;
+        EditorUtility.SetDirty(dataContainer);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+
         Debug.Log("Import done.");
     }
 
@@ -157,12 +164,15 @@ public class ImportMenu : EditorWindow
     {
         Debug.Log("cleaning up...");
 
-        // delete all children of vertexcloud
+        // delete all children of vertexcloud - this goes through each icosphere GameObject
         GameObject spheres = GameObject.Find("Spheres");    // parent where clones go
         foreach (Transform child in spheres.transform)
         {
             for (int i = child.childCount; i > 0; --i)
+            {
                 Object.DestroyImmediate(child.transform.GetChild(0).gameObject);
+            }
+            child.GetComponent<SphereInfo>().clones.Clear();        // clear clones list
         }
 
         // delete TempMaterials folder and all contents, then creates new empty folder
