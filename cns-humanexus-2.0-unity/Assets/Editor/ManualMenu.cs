@@ -8,10 +8,11 @@ using System.Linq;
 using PlasticGui.WorkspaceWindow.BrowseRepository;
 using System.Dynamic;
 
-// 2025-5-14
+// 2025-5-18
 public class ManualMenu : EditorWindow
 {
     static GameObject dataContainer;
+    static string tempTexDirectory = "Assets/TempTextures";
 
     [MenuItem("Humanexus/Manual Import")]
     static void ImportManual()
@@ -21,11 +22,25 @@ public class ManualMenu : EditorWindow
 
     void OnGUI()
     {
-        // -- check if TempRTextures is NOT empty
-        if (GUILayout.Button("Build Database"))
+        // check if tempTextures folder is empty
+        if (IsDirectoryEmpty(tempTexDirectory))     // TRUE if empty
         {
-            BuildDatabaseFromFolder();
+            GUILayout.Label("TemptTextures folder is empty");
         }
+        else    // FALSE if not empty
+        {
+            // can we check to see if this needs to be built?
+            if (GUILayout.Button("Build Database"))
+            {
+                BuildDatabaseFromFolder();
+            }
+
+            if (GUILayout.Button("Cleanup"))
+            {
+                CleanupManual();
+            }
+        }
+
     }
 
     private static void BuildDatabaseFromFolder()
@@ -35,7 +50,7 @@ public class ManualMenu : EditorWindow
 
         // loop through all files in TempTextures folder
         int counter = 0;
-        DirectoryInfo tempTexDi = new DirectoryInfo("Assets/TempTextures");
+        DirectoryInfo tempTexDi = new DirectoryInfo(tempTexDirectory);
         FileInfo[] texs = tempTexDi.GetFiles("*.jpg");
         foreach (FileInfo tex in texs) counter++;       // count files in folder
         string[] texFilesArray = new string[counter];   // set up array
@@ -53,6 +68,56 @@ public class ManualMenu : EditorWindow
 
 
         Debug.Log("texs in tex = " + counter);
+    }
+
+
+    // exactly same as Cleanup() in ImportMenu.cs, maybe consolidate
+    private static void CleanupManual()
+    {
+        Debug.Log("cleaning up...");
+
+        // delete all children of vertexcloud - this goes through each icosphere GameObject
+        GameObject spheres = GameObject.Find("Spheres");    // parent where clones go
+        foreach (Transform child in spheres.transform)
+        {
+            for (int i = child.childCount; i > 0; --i)
+            {
+                Object.DestroyImmediate(child.transform.GetChild(0).gameObject);
+            }
+            child.GetComponent<SphereInfo>().clones.Clear();        // clear clones list
+        }
+
+        // delete TempMaterials folder and all contents, then creates new empty folder
+        List<string> failedPathsMat = new List<string>();
+        string[] assetPathsMat = { "Assets/TempMaterials/" };
+        AssetDatabase.DeleteAssets(assetPathsMat, failedPathsMat);
+        AssetDatabase.Refresh();
+        AssetDatabase.CreateFolder("Assets", "TempMaterials");
+
+        // delete TempTextures folder and all contents, then creates new empty folder
+        List<string> failedPathsTex = new List<string>();
+        string[] assetPathsTex = { "Assets/TempTextures/" };
+        AssetDatabase.DeleteAssets(assetPathsTex, failedPathsTex);
+        AssetDatabase.Refresh();
+        AssetDatabase.CreateFolder("Assets", "TempTextures");
+
+        dataContainer = GameObject.Find("Databases");
+        dataContainer.GetComponent<DataContainer>().lastImportSet = "<empty>";
+        dataContainer.GetComponent<LoadExcel>().itemDatabase.Clear();
+        EditorUtility.SetDirty(dataContainer);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+    }
+
+
+
+    public bool IsDirectoryEmpty(string path)
+    {
+        IEnumerable<string> items = Directory.EnumerateFileSystemEntries(path);
+        using (IEnumerator<string> en = items.GetEnumerator())
+        {
+            return !en.MoveNext();
+        }
     }
 
 }
