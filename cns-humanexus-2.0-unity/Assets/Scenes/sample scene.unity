@@ -1276,7 +1276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   masterDirectory: /Volumes/Little-Cloudy/CNS/CNS new/Humanexus 2/Downloads/micro_ftu22_crop_200k
   lastImportSet: <empty>
-  usedIcosphere: {fileID: 83727542}
+  usedIcosphere: {fileID: 2145046013}
 --- !u!1001 &2145046012
 PrefabInstance:
   m_ObjectHideFlags: 0

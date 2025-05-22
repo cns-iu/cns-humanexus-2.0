@@ -1,3 +1,31 @@
+Humanexus 2.0 notes
+last update: 2025-5-21
+
+-->Unity instructions
+1 - import jpgs for textures into TempTextures folder
+    A - slower method (completed)
+        use menu Humanexus-Texture Sets
+
+    B - faster (work in progress)
+        use menu Humanexus-Manual Import
+
+2 - build textured vertex cloud from contents in TempTextures folder
+    use menu Humanexus-Cloud Building-Build from Current Set
+
+
+3 - press "Play"
+    <spacebar> show/hide icosphere
+    <left/right arrow keys> decrease/increase diameter of cloud
+    <up/down arrow keys> dolly camera in/out
+
+
+
+
+
+
+
+
+-->preparations
 Use Icosphere objects created in Blender.
 (An icosphere is a polyhedral sphere made of triangles. It's a geodesic polyhedron, which means it's a convex shape with straight edges and flat faces that approximate a sphere.)
 
@@ -13,6 +41,7 @@ Check “Read/Write”.
 
 Apply
 
+-->this needs to be updated------------
 Put Icosphere object into scene.
 
 Check that Scale = 1, Position & Rotation = 0.

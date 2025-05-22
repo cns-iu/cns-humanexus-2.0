@@ -4,19 +4,14 @@ import csv
 import time
 from pathlib import Path
 
-# 2025-5-19
-# read csv file in as individual lists
-# grab first item on each list and copy file to destination folder
+# 2025-5-21
+# copy jpg files from source_folder to destination_folder
+# pick from csv_file according to filter keywords
 
 # masterfolder with 233k images
 source_folder = Path("/Volumes/Little-Cloudy/CNS/CNS new/Humanexus 2/Downloads/micro_ftu22_crop_200k")
+
 # Unity TempTextures folder - hopefully Unity can digest....
-
-# secondary CSV file (organ_donor.csv)
-secondary_csv_folder = Path("/Volumes/Little-Cloudy/CNS/CNS new/Humanexus 2/Downloads")
-secondary_csv_file = "donor_info_cleaned.csv"
-secondary_csv_path = os.path(secondary_csv_folder/secondary_csv_file)
-
 # destination_folder = Path("/Volumes/Little-Cloudy/CNS/github/cns-humanexus-2.0-unity/cns-humanexus-2.0-unity/Assets/TempTextures")
 destination_folder = Path("/Volumes/Little-Cloudy/CNS/CNS new/Humanexus 2/Python Testing/destination")
 
@@ -24,9 +19,8 @@ destination_folder = Path("/Volumes/Little-Cloudy/CNS/CNS new/Humanexus 2/Python
 csv_folder = Path("/Volumes/Little-Cloudy/CNS/CNS new/Humanexus 2/Python Testing")
 # csv_folder = Path("/Volumes/Little-Cloudy/CNS/CNS new/Humanexus 2/Downloads/With third column")
 
-
 # CSV file (3 column) determines which files of masterfolder get copied to Unity
-csv_file = "10_sheet mixed.csv"
+csv_file = "22ftu_micro_organ_metadata_expanded.csv"
 # csv_file = "22ftu_micro_organ_metadata new.csv"
 
 csv_file_path = os.path.join(csv_folder/csv_file)
@@ -34,8 +28,22 @@ csv_file_path = os.path.join(csv_folder/csv_file)
 # start counter
 tic = time.perf_counter()
 
-column1_content = "nephron"
-column2_content = ""    #"kidney"
+# column IDs
+graphic = 0
+ftu = 1
+organ = 2
+species = 3
+sex = 4
+
+# filters----full lists of all occurences in following files:
+# content_ftu.csv
+# content_organ.csv
+# content_sex.csv
+# content_species.csv
+filter_ftu = "nephron"       # "intestinal villus"
+filter_organ = "kidney"           # "kidney"
+filter_species = "human"         # "zebrafish"
+filter_sex = "female"             # "female"
 
 
 with open(csv_file_path) as file:
@@ -43,19 +51,24 @@ with open(csv_file_path) as file:
     counter = 0
 
     for line in csv_file:
-        column0 = line[0]   # file name
-        column1 = line[1]   # ftu
-        column2 = line[2]   # organ
+        # retrieve field contents for this line
+        col_graphic = line[graphic]
+        col_ftu = line[ftu]
+        col_organ = line[organ]
+        col_species = line[species]
+        col_sex = line[sex]
 
-        src_file_path = os.path.join(source_folder/column0)
-        dst_file_path = os.path.join(destination_folder/column0)
-
-        if column0 != "graphic":       # skip header line of CSV file
+        if col_graphic != "graphic":       # skip header line of CSV file
             # col1 match or blank AND col2 match or blank
-            if (column1 == column1_content or column1_content == "") and (column2 == column2_content or column2_content == ""):
+            if (col_ftu == filter_ftu or filter_ftu == "") and (col_organ == filter_organ or filter_organ == ""):
+
+                src_file_path = os.path.join(source_folder/col_graphic)         # make file names
+                dst_file_path = os.path.join(destination_folder/col_graphic)
                 print("source file: " + src_file_path)
                 print("dest file: " + dst_file_path)
+
                 counter += 1
+
                 shutil.copy(src_file_path, dst_file_path)
         else:
             headers_list = line     # pick up headers
