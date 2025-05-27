@@ -74,7 +74,7 @@ public class ManualMenu : EditorWindow
     // exactly same as Cleanup() in ImportMenu.cs, maybe consolidate
     private static void CleanupManual()
     {
-        Debug.Log("cleaning up...");
+        Debug.Log("Cleaning up: GameObjects, TempMaterials, TempTextures");
 
         // delete all children of vertexcloud - this goes through each icosphere GameObject
         GameObject spheres = GameObject.Find("Spheres");    // parent where clones go
@@ -107,6 +107,8 @@ public class ManualMenu : EditorWindow
         EditorUtility.SetDirty(dataContainer);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
+
+        Debug.Log("Cleanup done.");
     }
 
 

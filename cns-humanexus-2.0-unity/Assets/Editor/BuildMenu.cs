@@ -43,7 +43,6 @@ public class BuildMenu : MonoBehaviour
     [MenuItem("Humanexus/Cloud Building/2 Cloud Cleanup")]
     static void CloudCleanup()
     {
-        Debug.Log("cleaning cloud");
         Cleanup();
     }
 
@@ -107,7 +106,7 @@ public class BuildMenu : MonoBehaviour
 
     private static void Cleanup()
     {
-        Debug.Log("Cleaning up...");
+        Debug.Log("Cleaning up: GameObjects & TempMaterials");
 
         // delete all children of vertexcloud
         GameObject spheres = GameObject.Find("Spheres");    // parent where clones go

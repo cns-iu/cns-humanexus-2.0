@@ -4,9 +4,9 @@ import csv
 import time
 from pathlib import Path
 
-# 2025-5-21
-# copy jpg files from source_folder to destination_folder
-# pick from csv_file according to filter keywords
+# 2025-5-24
+# copies jpg files from source_folder to destination_folder
+# picking from csv_file according to filter keywords
 
 # masterfolder with 233k images
 source_folder = Path("/Volumes/Little-Cloudy/CNS/CNS new/Humanexus 2/Downloads/micro_ftu22_crop_200k")
@@ -35,7 +35,7 @@ organ = 2
 species = 3
 sex = 4
 
-# filters----full lists of all occurences in following files:
+# filter keywords----full lists of all occurences in following files:
 # content_ftu.csv
 # content_organ.csv
 # content_sex.csv
@@ -73,8 +73,6 @@ with open(csv_file_path) as file:
         else:
             headers_list = line     # pick up headers
             print(headers_list)
-
-
 
 toc = time.perf_counter()
 print(f"Copied {counter} images in {toc - tic:0.4f} seconds")
