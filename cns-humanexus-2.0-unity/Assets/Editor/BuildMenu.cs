@@ -7,12 +7,12 @@ using Unity.VisualScripting;
 using System.Linq;
 using PlasticGui.WorkspaceWindow.BrowseRepository;
 
-// 2025-5-12
+// 2025-5-29
 // - Build From Current Set: builds a vertice cloud from installed set
 // - Cleanup: removes created clones, tempMaterials
 //
 
-public class BuildMenu : MonoBehaviour
+public class BuildMenu : EditorWindow
 {
     static public GameObject icosphere;     // this is the sphere selected in InitSphere
     static public GameObject ball;
@@ -21,6 +21,9 @@ public class BuildMenu : MonoBehaviour
     static private Vector3[] vertices;
     static private List<Vector3> verticesDone = new List<Vector3>();    //list collects all unique vertices (icosphere1 has 12)
     static private Mesh mesh;
+    static private int nodeFactor;  // init'ed in InitSphere() used to determine if vertices are skipped for better distro
+    static bool vertexDistribution = false;  // would be nice to set somewhere in menu or panel
+    static bool showBtn;
 
 
     [MenuItem("Humanexus/Cloud Building/1 Build from Current Set")]
@@ -37,13 +40,27 @@ public class BuildMenu : MonoBehaviour
         {
             Debug.LogError("No texture set installed");
         }
-
     }
 
     [MenuItem("Humanexus/Cloud Building/2 Cloud Cleanup")]
     static void CloudCleanup()
     {
         Cleanup();
+    }
+
+    [MenuItem("Humanexus/Cloud Building/3 Vertex Distribution")]
+    static void VertexDistro()
+    {
+        GetWindow<BuildMenu>("Vertex Distribution");
+    }
+
+    void OnGUI()
+    {
+        showBtn = EditorGUILayout.Toggle("Better Vertex Distribution", showBtn);
+        if (showBtn)
+        { vertexDistribution = true; }
+        else { vertexDistribution = false; }
+
     }
 
 
@@ -53,7 +70,7 @@ public class BuildMenu : MonoBehaviour
         //GameObject goMatt = GameObject.Find("Matt");                // template object for material holder GO
         GameObject ball = GameObject.Find("Ball");                  // object to clone (it is a cube)
 
-        Debug.Log("Creating clones at vertices...");
+        Debug.Log("Creating clones at vertices...VertexDistribution = " + vertexDistribution);
 
         InitSphere();       // picks correct icosphere
         MakeVertexList();   // make vertex list, eliminate duplicates
@@ -67,12 +84,13 @@ public class BuildMenu : MonoBehaviour
 
         foreach (Item item in thisDatabase)
         {
-            Debug.Log(item.graphic);
+            //Debug.Log(item.graphic);
             FileInfo[] fileInfos = dirInfo.GetFiles(item.graphic);
 
             foreach (FileInfo fileInfo in fileInfos)
             {
-                Debug.Log(fileInfo.Name);
+                // create a new material...
+                Debug.Log(vertexCounter + ": " + fileInfo.Name);
                 string fullPath = fileInfo.FullName.Replace(@"\", "/");
                 string assetPath = "Assets" + fullPath.Replace(Application.dataPath, "");
                 Texture2D tex2d = AssetDatabase.LoadAssetAtPath(assetPath, typeof(Texture2D)) as Texture2D;
@@ -88,8 +106,19 @@ public class BuildMenu : MonoBehaviour
                 AssetDatabase.CreateAsset(newMaterial, newAssetName);
                 AssetDatabase.SaveAssets();
 
+                if (vertexDistribution)
+                {
+                    int skipNode = nodeFactor - 1;
+                    while (skipNode != 0)
+                    {
+                        skipNode--;
+                        vertexCounter++;
+                    }
+                }
+
+                // clone cube at vertex
                 clone = Instantiate(ball, verticesDone[vertexCounter], Quaternion.identity);   // make clone
-                clone.transform.parent = icosphere.transform;             // into parent (vertexCloud)
+                clone.transform.parent = icosphere.transform;               // into parent (vertexCloud)
                 clone.transform.LookAt(icosphere.transform);                // impose tidal lock so clone always faces center
                 clone.GetComponent<MeshRenderer>().material = newMaterial;  // assign new material to clone
                 clone.GetComponent<MeshRenderer>().enabled = true;          // make visible
@@ -100,7 +129,7 @@ public class BuildMenu : MonoBehaviour
             }
         }
 
-        Debug.Log("Done creating clones...");
+        Debug.Log("Done creating clones..." + vertexCounter);
     }
 
 
@@ -154,8 +183,16 @@ public class BuildMenu : MonoBehaviour
                 break;
             }
         }
-        GameObject dataContainer = GameObject.Find("Databases");
+
+        // override icosphere selection
+        icosphere = GameObject.Find("icosphere 4");
+
+
+        GameObject dataContainer = GameObject.Find("Databases");                // update info on databases
         dataContainer.GetComponent<DataContainer>().usedIcosphere = icosphere;
+
+        nodeFactor = icosphere.GetComponent<SphereInfo>().vertexCount / thisDatabase.Count();
+        Debug.Log("nodeFactor = " + nodeFactor);
 
         Debug.Log("sphere = " + icosphere);
     }
@@ -173,6 +210,7 @@ public class BuildMenu : MonoBehaviour
                 verticesDone.Add(vertex);
             }
         }
+        Debug.Log("verticesDone: " + verticesDone.Count());
     }
 
 }
