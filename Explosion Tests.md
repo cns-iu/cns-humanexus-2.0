@@ -1,10 +1,10 @@
 # Humanexus 2.0 notes
-last update: 2025-5-27
+last update: 2025-6-6
 
 ## Unity instructions
 ## 1 - import jpgs for textures into TempTextures folder
 
-### A - use Unity menu 'Humanexus-Texture Sets'
+### Method A (not recommended) - use Unity menu 'Humanexus/Texture Sets'
 Runs entirely from Unity Editor scripts. Manageable if <100 assets are needed and a pruned CSV sheet is available.
 
 #### timing:
@@ -15,31 +15,38 @@ Runs entirely from Unity Editor scripts. Manageable if <100 assets are needed an
 
 (the currect version supports CSV sheets with three columns: graphic, ftu, organ)
 
-### B - use Unity menu 'Humanexus-Manual Import (with manual image import)
-This Unity Editor script builds a scene and all needed assets from the image files contained in the TempTextures folder. It assumes that the user manually copies all image files into the TempTextures folder. Could be used for testing with very small sets of images. 
+---
 
-### ==>>C - use Unity menu 'Humanexus-Manual Import (with image import from external Python script)
+### Method B (BEST) - use Unity menu 'Humanexus/Manual Import (with image import from external Python script)
 This requires a Python script (copy_files_by_selector.py).
 
-The script requires the following information:<br>
-*source_folder* - folder containing of a collection of jpg image files to copy from
-*destination_folder* - folder into which selected image files will be copied (Unity TempTextures)
+The script requires the following information:
+
+*source_folder* - folder containing a collection of jpg image files to copy from (tested with "micro_ftu22_crop_200k")
+
+*destination_folder* - folder into which selected image files will be copied (most likely Unity TempTextures)
+
 *csv_folder* - Python script will look in this folder for the CSV file
-*csv_file* - name of the CSV file to be used as lookup (an extended version of "22ftu_micro.....")
+
+*csv_file* - name of the CSV file to be used as lookup (tested with "22ftu_micro_organ_metadata_expanded.csv")
 
 the CSV sheet has five columns (in this order):<br>
 *graphic, ftu, organ, species, sex*
 
-"graphic" contains the file name of the image file (ex.: PMC1555595_1471-2202-7-54-2_panel_1.jpg)<br>
-The other four columns can be used to select subsets from the sheet. For this the four filter strings are defined:<br>
-*filter_ftu* = "nephron <br>
-*filter_organ* = "kidney"<br>
-*filter_species* = "human"<br>
-*filter_sex* = "female"
+"graphic" contains the file name of the image file (ex.: "PMC1555595_1471-2202-7-54-2_panel_1.jpg")
+
+The other four columns can be used to select subsets from the sheet. For this four filter strings are defined at the top of the Python script as in this example:<br>
+&emsp;*filter_ftu* = "nephron <br>
+&emsp;*filter_organ* = "kidney"<br>
+&emsp;*filter_species* = "human"<br>
+&emsp;*filter_sex* = "female"
 
 This selection pattern would yield 29,018 images!
 
 (An empty filter string works like a 'joker' for the respective column)
+
+---
+### Some Statistics
 
 CSV file used for testing: 22ftu_micro_organ_metadata_expanded.csv<br>
 - contains 233,624 lines (unique images)
@@ -49,27 +56,69 @@ CSV file used for testing: 22ftu_micro_organ_metadata_expanded.csv<br>
 - 2,235 unique entries in the "species" column
 
 All unique column entries are listed in these files:<br>
-*content_ftu.csv*<br>
-*content_organ.csv*<br>
-*content_sex.csv*<br>
-*content_species.csv*
+&emsp;*content_ftu.csv*<br>
+&emsp;*content_organ.csv*<br>
+&emsp;*content_sex.csv*<br>
+&emsp;*content_species.csv*
 
-#### timing:
+Timing (using Python script):<br>
 - import 10 assets from 22ftu folder to Unity TempTextures 0.0978s
 - import 100 assets from 22ftu folder to Unity TempTextures 0.2899s
-- import 1000 assets from 22ftu folder to Unity TempTextures  1.7424s
-- import 10000 assets from 22ftu folder to Unity TempTextures  15.1904s, Unity indexing: 2-3minutes, ~20min to build scen
-- running copy_files_by_selector.py on 22ftu folder, copied 29018 images in 45s!
+- import 1,000 assets from 22ftu folder to Unity TempTextures  1.7424s
+- import 10,000 assets from 22ftu folder to Unity TempTextures  15.1904s + Unity indexing 2-3minutes + ~20min to build scene
+- running copy_files_by_selector.py on 22ftu folder with above filter settings copied 29,018 images in 45s!
+***
 
+### Use Unity menu 'Humanexus/Manual Import' to prepare build
+This Unity Editor script brings up an inspector panel. If the TempTextures folder is empty, this message will be displayed: "TempTextures folder is empty". If the TempTextures folder contains image files, the inspector will show two buttons:<br>
+- *Build Database* = builds a list of all image files on the Databases game object; required for the build.
+- *Cleanup* = full cleanup removes contents of TempTextures folder, TempMaterials folder, clears all lists and assets created in the import and build process.
+
+**When using Unity, files in project folders can be selected and deleted manually. Project folders can also be accessed using the computer's file system (MacOS/Finder). The quickest way is using the *Cleanup* button on one of the import panels!**
+
+---
 
 ## 2 - build textured vertex cloud from contents in TempTextures folder
-    use menu Humanexus-Cloud Building-Build from Current Set
+This step assumes that the desired image files are in the TempTextures folder and a database was created on the Databases game object.
+    
+Use menu *Humanexus/Cloud Building/Build from Current Set*
+
+If the database is empty, Unity will display an error message: "No texture set installed".
+
+If images are present and the database is initialized, the script will start the population process.
+
+
+### SphereInfo Properties
+These properties are starting values and are transferred to SphereController when Play starts.
+- *Vertex Count* = number of vertices on this specific icosphere
+- *Camerz Z Start* = initial distance of camera from populated sphere cloud; calibrated to fit complete sphere cloud in viewport
+- *Zoom Factor* = distance along Z axis the camera moves in/out using arrow up/down
+- *Start Size* = scale of the sphere cloud; calibrated to fit complete sphere in viewport
+
+### SphereController Properties
+The SphereController script handles user input in play mode. Its Start() function copies all relevant properties from the selected icosphere.
+- *Current Zoom* = current camera distance along Z axis from center of sphere cloud (always negative)
+- *Size Multiplier* = current scale of sphere cloud
+- *Camerz Z Start* = initial distance of camera from populated sphere cloud; calibrated to fit complete sphere cloud in viewport
+- *Zoom Factor* = distance along Z axis the camera moves in/out using arrow up/down
+- *Start Size* = scale of the sphere cloud; calibrated to fit complete sphere in viewport
 
 
 ### 3 - press "Play"
-    <spacebar> show/hide icosphere
-    <left/right arrow keys> decrease/increase diameter of cloud
-    <up/down arrow keys> dolly camera in/out
+Available user controls during play:
+
+*left/right arrow keys* = decrease/increase diameter of cloud sphere<br>
+&emsp;currently set to 0.1 in SphereController script.
+
+*up/down arrow keys* = move camera in/out along Z axis (zoom)<br>
+&emsp;moves the camera along Z axis by Zoom Factor
+    
+*R-key* = reset Size Multiplier to Start Size
+
+*C-key* = reset camera Z position to Camera Z Start
+
+*spacebar* = show/hide icosphere<br>
+&emsp;default is 'hide'; icosphere scale is always "1", if Size Multiplier is <1 the sphere cloud is "inside" the icosphere
 
 
 
@@ -77,6 +126,9 @@ All unique column entries are listed in these files:<br>
 
 
 
+
+---
+# below needs rewrite
 
 ## Preparations
 

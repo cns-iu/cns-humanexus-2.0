@@ -66,7 +66,6 @@ public class ManualMenu : EditorWindow
         dataContainer = GameObject.Find("Databases");
         dataContainer.GetComponent<DataContainer>().lastImportSet = "<manual import>>";
 
-
         Debug.Log("texs in tex = " + counter);
     }
 
@@ -84,7 +83,8 @@ public class ManualMenu : EditorWindow
             {
                 Object.DestroyImmediate(child.transform.GetChild(0).gameObject);
             }
-            child.GetComponent<SphereInfo>().clones.Clear();        // clear clones list
+            //child.GetComponent<SphereInfo>().clones.Clear();        // clear clones list
+            child.GetComponent<SphereInfo>().cloneItems.Clear();
         }
 
         // delete TempMaterials folder and all contents, then creates new empty folder

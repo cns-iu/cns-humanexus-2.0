@@ -172,7 +172,8 @@ public class ImportMenu : EditorWindow
             {
                 Object.DestroyImmediate(child.transform.GetChild(0).gameObject);
             }
-            child.GetComponent<SphereInfo>().clones.Clear();        // clear clones list
+            //child.GetComponent<SphereInfo>().clones.Clear();        // clear clones list
+            child.GetComponent<SphereInfo>().cloneItems.Clear();
         }
 
         // delete TempMaterials folder and all contents, then creates new empty folder

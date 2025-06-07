@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 using System.Linq;
 using PlasticGui.WorkspaceWindow.BrowseRepository;
 
-// 2025-5-29
+// 2025-6-6
 // - Build From Current Set: builds a vertice cloud from installed set
 // - Cleanup: removes created clones, tempMaterials
 //
@@ -24,6 +24,7 @@ public class BuildMenu : EditorWindow
     static private int nodeFactor;  // init'ed in InitSphere() used to determine if vertices are skipped for better distro
     static bool vertexDistribution = false;  // would be nice to set somewhere in menu or panel
     static bool showBtn;
+
 
 
     [MenuItem("Humanexus/Cloud Building/1 Build from Current Set")]
@@ -60,7 +61,6 @@ public class BuildMenu : EditorWindow
         if (showBtn)
         { vertexDistribution = true; }
         else { vertexDistribution = false; }
-
     }
 
 
@@ -74,9 +74,12 @@ public class BuildMenu : EditorWindow
 
         InitSphere();       // picks correct icosphere
         MakeVertexList();   // make vertex list, eliminate duplicates
-        icosphere.GetComponent<SphereInfo>().clones.Clear();
+        //icosphere.GetComponent<SphereInfo>().clones.Clear();
+        icosphere.GetComponent<SphereInfo>().cloneItems.Clear();    //------------
 
         GameObject clone;
+        CloneItem cloneItem; // = new(clone, verticesDone[vertexCounter]);
+
         int vertexCounter = 0;
 
         DirectoryInfo dirInfo = new DirectoryInfo("Assets/TempTextures");
@@ -123,12 +126,15 @@ public class BuildMenu : EditorWindow
                 clone.GetComponent<MeshRenderer>().material = newMaterial;  // assign new material to clone
                 clone.GetComponent<MeshRenderer>().enabled = true;          // make visible
                 clone.name = tex2d.name;                                    // rename clone with name of texture/material
-                icosphere.GetComponent<SphereInfo>().clones.Add(clone);
+
+                cloneItem = new(clone, verticesDone[vertexCounter]);
+                icosphere.GetComponent<SphereInfo>().cloneItems.Add(cloneItem); // this should be on the sphereInfo
 
                 vertexCounter++;
             }
         }
-
+        ResizeCloud(icosphere.GetComponent<SphereInfo>().startSize);    // set startsize of cloud from icosphere SphereInfo
+        //Debug.Log("start size = " + icosphere.GetComponent<SphereInfo>().startSize);
         Debug.Log("Done creating clones..." + vertexCounter);
     }
 
@@ -145,7 +151,7 @@ public class BuildMenu : EditorWindow
             {
                 Object.DestroyImmediate(child.transform.GetChild(0).gameObject);
             }
-            child.GetComponent<SphereInfo>().clones.Clear();        // clear clones list
+            child.GetComponent<SphereInfo>().cloneItems.Clear();
         }
 
         // delete TempMaterials folder and all contents, then creates new empty folder
@@ -184,9 +190,8 @@ public class BuildMenu : EditorWindow
             }
         }
 
-        // override icosphere selection
+        // override automatic icosphere selection-------------
         icosphere = GameObject.Find("icosphere 4");
-
 
         GameObject dataContainer = GameObject.Find("Databases");                // update info on databases
         dataContainer.GetComponent<DataContainer>().usedIcosphere = icosphere;
@@ -203,14 +208,38 @@ public class BuildMenu : EditorWindow
         mesh = icosphere.GetComponent<MeshFilter>().sharedMesh;
         vertices = mesh.vertices;
 
+        verticesDone.Clear();
+        icosphere.GetComponent<SphereInfo>().verticesDone.Clear();
+
         foreach (Vector3 vertex in vertices)
         {
             if (!verticesDone.Contains(vertex))
             {
-                verticesDone.Add(vertex);
+                verticesDone.Add(vertex * 1);     // why we need *1? Normalizing?
+                icosphere.GetComponent<SphereInfo>().verticesDone.Add(vertex * 1);  // build reference list on icosphere
             }
         }
         Debug.Log("verticesDone: " + verticesDone.Count());
     }
+    
 
+    // factor: 1=stays the same, <1 shrink, >1 expand
+    private static void ResizeCloud(float factor)
+    {
+        // for resize to work:
+        //  cloneItems <list>
+        //  add clones created in EditorScript to this list
+        //  can access for resizing
+        GameObject currentClone;
+        Vector3 savedVector;
+
+        foreach (CloneItem ci in icosphere.GetComponent<SphereInfo>().cloneItems)   // get access to clone gameobjects though the list
+        {
+            Debug.Log("cloneItem = " + ci.CloneObject);
+            currentClone = ci.CloneObject;
+            savedVector = ci.CloneVector;
+
+            currentClone.transform.localPosition = savedVector * factor;
+        }
+    }
 }
