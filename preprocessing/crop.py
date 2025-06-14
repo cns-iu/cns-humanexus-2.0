@@ -5,8 +5,8 @@ from tqdm import tqdm
 from PIL import Image
 
 # Folder paths
-input_folder = "C:/Users/parth/Downloads/schema/schema"
-output_folder = "C:/Users/parth/Downloads/HUmanexus/Crop/schema_ftu22_crop"
+input_folder = ""
+output_folder = ""
 
 if not os.path.exists(output_folder):
     os.makedirs(output_folder)
