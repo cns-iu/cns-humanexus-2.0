@@ -13,11 +13,11 @@ Runs entirely from Unity Editor scripts. Manageable if <100 assets are needed an
 - import 1000 assets from kidney_1000_micro.csv: 3,774,997ms (62.9min)
 - imports 1000+ are not practical with this method
 
-(the currect version supports CSV sheets with three columns: graphic, ftu, organ)
+(the current version supports CSV sheets with three columns: graphic, ftu, organ)
 
 ---
 
-### Method B (BEST) - use Unity menu 'Humanexus/Manual Import (with image import from external Python script)
+### Method B (BEST) - use Unity menu 'Humanexus/Manual Import (with selselective image ctedimage copy using external Python script)
 This requires a Python script (copy_files_by_selector.py).
 
 The script requires the following information:
@@ -35,7 +35,7 @@ the CSV sheet has five columns (in this order):<br>
 
 "graphic" contains the file name of the image file (ex.: "PMC1555595_1471-2202-7-54-2_panel_1.jpg")
 
-The other four columns can be used to select subsets from the sheet. For this four filter strings are defined at the top of the Python script as in this example:<br>
+The other four columns can be used to select subsets from the sheet. This requires four filter strings, defined at the top of the Python script as in this example:<br>
 &emsp;*filter_ftu* = "nephron <br>
 &emsp;*filter_organ* = "kidney"<br>
 &emsp;*filter_species* = "human"<br>
@@ -55,7 +55,7 @@ CSV file used for testing: 22ftu_micro_organ_metadata_expanded.csv<br>
 - 31 unique entries in the "sex" column
 - 2,235 unique entries in the "species" column
 
-All unique column entries are listed in these files:<br>
+For reference all unique column entries are listed in these files:<br>
 &emsp;*content_ftu.csv*<br>
 &emsp;*content_organ.csv*<br>
 &emsp;*content_sex.csv*<br>
@@ -96,11 +96,11 @@ These properties are starting values and are transferred to SphereController whe
 - *Start Size* = scale of the sphere cloud; calibrated to fit complete sphere in viewport
 
 ### SphereController Properties
-The SphereController script handles user input in play mode. Its Start() function copies all relevant properties from the selected icosphere.
+The SphereController script handles user input in play mode. Its Start() function copies all relevant properties from the selected icosphere and shows two additional text fields with current zoom and size information.
 - *Current Zoom* = current camera distance along Z axis from center of sphere cloud (always negative)
-- *Size Multiplier* = current scale of sphere cloud
+- *Current Size Multiplier* = current scale of sphere cloud
 - *Camerz Z Start* = initial distance of camera from populated sphere cloud; calibrated to fit complete sphere cloud in viewport
-- *Zoom Factor* = distance along Z axis the camera moves in/out using arrow up/down
+- *Zoom Factor* = step distance along Z axis the camera moves in/out using arrow up/down
 - *Start Size* = scale of the sphere cloud; calibrated to fit complete sphere in viewport
 
 

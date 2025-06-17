@@ -4,16 +4,17 @@ import csv
 import time
 from pathlib import Path
 
-# 2025-5-24
+# 2025-6-8
 # copies jpg files from source_folder to destination_folder
 # picking from csv_file according to filter keywords
+# added file number limiter
 
 # masterfolder with 233k images
 source_folder = Path("/Volumes/Little-Cloudy/CNS/CNS new/Humanexus 2/Downloads/micro_ftu22_crop_200k")
 
 # Unity TempTextures folder - hopefully Unity can digest....
-# destination_folder = Path("/Volumes/Little-Cloudy/CNS/github/cns-humanexus-2.0-unity/cns-humanexus-2.0-unity/Assets/TempTextures")
-destination_folder = Path("/Volumes/Little-Cloudy/CNS/CNS new/Humanexus 2/Python Testing/destination")
+destination_folder = Path("/Volumes/Little-Cloudy/CNS/github/cns-humanexus-2.0-unity/cns-humanexus-2.0-unity/Assets/TempTextures")
+# destination_folder = Path("/Volumes/Little-Cloudy/CNS/CNS new/Humanexus 2/Python Testing/destination")
 
 # folder where the CSV files live
 csv_folder = Path("/Volumes/Little-Cloudy/CNS/CNS new/Humanexus 2/Python Testing")
@@ -25,7 +26,7 @@ csv_file = "22ftu_micro_organ_metadata_expanded.csv"
 
 csv_file_path = os.path.join(csv_folder/csv_file)
 
-# start counter
+# start timer
 tic = time.perf_counter()
 
 # column IDs
@@ -40,10 +41,20 @@ sex = 4
 # content_organ.csv
 # content_sex.csv
 # content_species.csv
-filter_ftu = "nephron"       # "intestinal villus"
-filter_organ = "kidney"           # "kidney"
-filter_species = "human"         # "zebrafish"
-filter_sex = "female"             # "female"
+filter_ftu = ""       # "intestinal villus"
+filter_organ = ""           # "kidney"
+filter_species = ""         # "zebrafish"
+filter_sex = ""             # "female"
+
+# ico1 = 12 vertices
+# ico2 = 42 vertices
+# ico3 = 162
+# ico4 = 642
+# ico5 = 2,562
+# ico6 = 10,242
+# ico7 = 40,962
+# ico8 = 163,842
+fileLimiter = 162       # limit number of copied files (for testing) use >1 million?
 
 
 with open(csv_file_path) as file:
@@ -70,6 +81,9 @@ with open(csv_file_path) as file:
                 counter += 1
 
                 shutil.copy(src_file_path, dst_file_path)
+
+                if counter == fileLimiter:
+                    break
         else:
             headers_list = line     # pick up headers
             print(headers_list)

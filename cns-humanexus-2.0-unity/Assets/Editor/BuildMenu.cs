@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 using System.Linq;
 using PlasticGui.WorkspaceWindow.BrowseRepository;
 
-// 2025-6-6
+// 2025-6-11
 // - Build From Current Set: builds a vertice cloud from installed set
 // - Cleanup: removes created clones, tempMaterials
 //
@@ -98,10 +98,32 @@ public class BuildMenu : EditorWindow
                 string assetPath = "Assets" + fullPath.Replace(Application.dataPath, "");
                 Texture2D tex2d = AssetDatabase.LoadAssetAtPath(assetPath, typeof(Texture2D)) as Texture2D;
 
-                Material newMaterial = new(Shader.Find("Unlit/Texture"))
+                //Material newMaterial = new(Shader.Find("Unlit/Texture"))
+                Material newMaterial = new(Shader.Find("Universal Render Pipeline/Unlit"))
                 {
                     mainTexture = tex2d
+
                 };
+                // this is to make material transparent-------
+                newMaterial.SetFloat("_Surface", 1.0f);
+                newMaterial.SetFloat("_Blend", 0.0f);
+
+                Color baseColor = newMaterial.GetColor("_BaseColor");
+                baseColor.a = 1.0f; // this value control amount of transparency 0-1f
+                newMaterial.SetColor("_BaseColor", baseColor);
+
+                newMaterial.SetFloat("_ReceiveShadows", 0.0f);
+
+                newMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+                newMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+                newMaterial.SetInt("_ZWrite", 0);
+                newMaterial.DisableKeyword("_ALPHATEST_ON");
+                newMaterial.EnableKeyword("_ALPHABLEND_ON");
+                newMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+                newMaterial.renderQueue = 3000;
+                //--------------------
+
+
 
                 string savePath = "Assets/TempMaterials/";
                 string newAssetName = savePath + tex2d.name + ".mat";
@@ -126,8 +148,9 @@ public class BuildMenu : EditorWindow
                 clone.GetComponent<MeshRenderer>().material = newMaterial;  // assign new material to clone
                 clone.GetComponent<MeshRenderer>().enabled = true;          // make visible
                 clone.name = tex2d.name;                                    // rename clone with name of texture/material
+                clone.GetComponent<CloneInfo>().cloneID = vertexCounter;    // ID of new clone
 
-                cloneItem = new(clone, verticesDone[vertexCounter]);
+                cloneItem = new(vertexCounter, clone, verticesDone[vertexCounter]);
                 icosphere.GetComponent<SphereInfo>().cloneItems.Add(cloneItem); // this should be on the sphereInfo
 
                 vertexCounter++;
@@ -191,7 +214,7 @@ public class BuildMenu : EditorWindow
         }
 
         // override automatic icosphere selection-------------
-        icosphere = GameObject.Find("icosphere 4");
+        //icosphere = GameObject.Find("icosphere 4");
 
         GameObject dataContainer = GameObject.Find("Databases");                // update info on databases
         dataContainer.GetComponent<DataContainer>().usedIcosphere = icosphere;
@@ -221,7 +244,7 @@ public class BuildMenu : EditorWindow
         }
         Debug.Log("verticesDone: " + verticesDone.Count());
     }
-    
+
 
     // factor: 1=stays the same, <1 shrink, >1 expand
     private static void ResizeCloud(float factor)
