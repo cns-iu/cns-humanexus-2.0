@@ -6,6 +6,24 @@
             "id": "45df702e-f07a-42ae-ac8b-e382673f4169",
             "actions": [
                 {
+                    "name": "AlignRotation",
+                    "type": "Button",
+                    "id": "ad4aa1ab-ecf2-4129-8605-03ad802361e4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ComplexTest",
+                    "type": "Button",
+                    "id": "cb326661-e292-4935-b345-b65aa4665adb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "HideAllClones",
                     "type": "Button",
                     "id": "b022ccb2-fdc7-4c70-8207-ffedc6827afc",
@@ -18,6 +36,15 @@
                     "name": "ResetCloud",
                     "type": "Button",
                     "id": "8bfdccfd-4e44-4a44-b58c-75ba60e5d09c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ShowIcosphere",
+                    "type": "Button",
+                    "id": "47228ac6-ba06-4257-b44f-200207b9b055",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -72,15 +99,6 @@
                     "name": "ZoomReset",
                     "type": "Button",
                     "id": "b03d8680-8b5c-40f3-be8b-16ada5d4a052",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ComplexTest",
-                    "type": "Button",
-                    "id": "cb326661-e292-4935-b345-b65aa4665adb",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -184,6 +202,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "ComplexTest",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5e498bae-d959-49fe-9217-6d1454897fe7",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "AlignRotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3a32b3d1-7ede-4809-82c9-d66068a5ecd9",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "ShowIcosphere",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

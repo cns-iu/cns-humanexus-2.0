@@ -10,7 +10,7 @@ using UnityEditor.ShaderGraph.Internal;
 using UnityEngine.TextCore.Text;
 using System.Collections;
 
-// 2025-6-17
+// 2025-6-20
 
 [Serializable]
 public struct CloneItem
@@ -75,7 +75,22 @@ public class SphereController : MonoBehaviour
 
     void Update()
     {
+        // try this:
+        // all stuff that is now triggered from 'On....' functions ->
+        //  move to Update(), test if deltaTime can be used
+        // 'On...' functions change values in 'parameter block'
+        //  info in this block is evaluated in Update()
+        // so, 'parameter block' always has 'soll' parameters
+        //  functions called from Update() will try to 'achieve' 'soll' parameters over time!!
+
+        // we can have complete, self-contained On... functions for global, un-timed operations (reset)
+        // -> move individual clone ops in a loop in Update() - run each clone as Coroutine?
         icosphere.transform.Rotate(0, 10 * Time.deltaTime, 0);      // constant rotation (move to UI?)
+    }
+
+    void OnAlignRotation()
+    {
+        AlignRotation();
     }
 
     void OnSphereSizeIncrease()
@@ -137,7 +152,23 @@ public class SphereController : MonoBehaviour
         StartCoroutine(CoroutineTransparency());
         StartCoroutine(CouroutineExpand());
         StartCoroutine(CoroutineRotation());
+        //CoroutineRotation();
+        //StartCoroutine(CoroutineAlignRotation());
     }
+
+    void OnShowIcosphere()
+    {
+        if (icosphere.GetComponent<Renderer>().enabled == true)
+        {
+            icosphere.GetComponent<Renderer>().enabled = false;
+        }
+        else
+        {
+            icosphere.GetComponent<Renderer>().enabled = true;
+        }
+    }
+
+
 
     IEnumerator CouroutineExpand()
     {
@@ -168,6 +199,15 @@ public class SphereController : MonoBehaviour
         }
     }
 
+    IEnumerator CoroutineAlignRotation()
+    {
+        foreach (CloneItem ci in cloneItems)
+        {
+            AlignRotationSingle(ci.CloneObject);
+            yield return new WaitForSeconds(0.05f);
+        }
+    }
+
     void ResetCloud()
     {
         currentSizeMultiplier = startSize;
@@ -175,7 +215,7 @@ public class SphereController : MonoBehaviour
 
         ResizeCloud(currentSizeMultiplier);     // position of all clones to default
 
-        foreach (CloneItem ci in cloneItems)    
+        foreach (CloneItem ci in cloneItems)
         {
             ci.CloneObject.transform.LookAt(icosphere.transform);       // rotation to default
             SetTransparencySingle(ci.CloneObject, currentTransparency); // transparency to default
@@ -230,5 +270,18 @@ public class SphereController : MonoBehaviour
         baseColor = currentMat.GetColor("_BaseColor");
         baseColor.a = t; // this value control amount of transparency 0-1f
         currentMat.SetColor("_BaseColor", baseColor);
+    }
+
+    void AlignRotation()
+    {
+        foreach (CloneItem ci in cloneItems)
+        {
+            AlignRotationSingle(ci.CloneObject);
+        }
+    }
+
+    void AlignRotationSingle(GameObject c)
+    {
+        c.transform.LookAt(icosphere.transform);       // rotation to default
     }
 }

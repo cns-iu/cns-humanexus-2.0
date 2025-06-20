@@ -1,5 +1,5 @@
 # Humanexus 2.0 notes
-last update: 2025-6-6
+last update: 2025-6-20
 
 ## Unity instructions
 ## 1 - import jpgs for textures into TempTextures folder
@@ -74,7 +74,7 @@ This Unity Editor script brings up an inspector panel. If the TempTextures folde
 - *Build Database* = builds a list of all image files on the Databases game object; required for the build.
 - *Cleanup* = full cleanup removes contents of TempTextures folder, TempMaterials folder, clears all lists and assets created in the import and build process.
 
-**When using Unity, files in project folders can be selected and deleted manually. Project folders can also be accessed using the computer's file system (MacOS/Finder). The quickest way is using the *Cleanup* button on one of the import panels!**
+**When using Unity, files in project folders can be selected and deleted manually in project folders or accessed using the computer's file system (MacOS/Finder). By far the quickest way is using the *Cleanup* button on one of the import panels in Unity!**
 
 ---
 
@@ -88,14 +88,14 @@ If the database is empty, Unity will display an error message: "No texture set i
 If images are present and the database is initialized, the script will start the population process.
 
 
-### SphereInfo Properties
+### SphereInfo script Properties
 These properties are starting values and are transferred to SphereController when Play starts.
 - *Vertex Count* = number of vertices on this specific icosphere
 - *Camerz Z Start* = initial distance of camera from populated sphere cloud; calibrated to fit complete sphere cloud in viewport
 - *Zoom Factor* = distance along Z axis the camera moves in/out using arrow up/down
 - *Start Size* = scale of the sphere cloud; calibrated to fit complete sphere in viewport
 
-### SphereController Properties
+### SphereController script Properties
 The SphereController script handles user input in play mode. Its Start() function copies all relevant properties from the selected icosphere and shows two additional text fields with current zoom and size information.
 - *Current Zoom* = current camera distance along Z axis from center of sphere cloud (always negative)
 - *Current Size Multiplier* = current scale of sphere cloud
@@ -107,22 +107,23 @@ The SphereController script handles user input in play mode. Its Start() functio
 ### 3 - press "Play"
 Available user controls during play:
 
-*left/right arrow keys* = decrease/increase diameter of cloud sphere<br>
-&emsp;currently set to 0.1 in SphereController script.
+\<A\>   align all clones (LookAt())
 
-*up/down arrow keys* = move camera in/out along Z axis (zoom)<br>
-&emsp;moves the camera along Z axis by Zoom Factor
-    
-*R-key* = reset Size Multiplier to Start Size
+\<C\>   complex test -> to trigger work in progress
 
-*C-key* = reset camera Z position to Camera Z Start
+\<H\>   hide/unhide all clones (disable renderer)
 
-*spacebar* = show/hide icosphere<br>
-&emsp;default is 'hide'; icosphere scale is always "1", if Size Multiplier is <1 the sphere cloud is "inside" the icosphere
+\<R\>   reset sphere size, rotation & transparency
 
+\<space\>   show/hide icosphere object; size doesn’t necessarily match cloud! (enable renderer)
 
+\<arrow L/R\>   decrease/increase size of sphere cloud (clone Vector3 * factor)
 
+\<T\>   increase sphere cloud transparency in 0.1 steps (wrap around)
 
+\<arrow Up/Down\>   zoom in/out (camera Z)
+
+\<Z\>   reset zoom (Camera Z) position to value set on ico
 
 
 
