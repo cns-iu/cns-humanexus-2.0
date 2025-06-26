@@ -25,4 +25,4 @@ def extract_images_from_pdf(pdf_path, output_folder):
     print(f"Extracted {image_count} images to '{output_folder}'.")
 
 # Example usage
-extract_images_from_pdf(r"C:\Users\parth\Downloads\HIDDENTREASURE_NLM_BlastBooks.pdf", r"C:\Users\parth\Downloads\HUmanexus\NLM Extracts")
+extract_images_from_pdf(r"input_path", r"output_path")
