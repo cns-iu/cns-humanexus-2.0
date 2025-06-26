@@ -1,7 +1,8 @@
 # Project Title
 
 Brief description of what this project does.
-The code for separating multipanel images is present in the cns-humanexus-2.0-unity/preprocessing.crop.py
+The code for separating multipanel images is present in the cns-humanexus-2.0-unity/1.NLM_extract_script.
+You will need to run that to get basic data first.
 
 ## Usage
 
