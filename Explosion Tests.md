@@ -17,7 +17,7 @@ Runs entirely from Unity Editor scripts. Manageable if <100 assets are needed an
 
 ---
 
-### Method B (BEST) - use Unity menu 'Humanexus/Manual Import (with selselective image ctedimage copy using external Python script)
+### Method B (BEST) - use Unity menu 'Humanexus/Manual Import (with selective image copy using external Python script)
 This requires a Python script (copy_files_by_selector.py).
 
 The script requires the following information:
@@ -62,10 +62,10 @@ For reference all unique column entries are listed in these files:<br>
 &emsp;*content_species.csv*
 
 Timing (using Python script):<br>
-- import 10 assets from 22ftu folder to Unity TempTextures 0.0978s
-- import 100 assets from 22ftu folder to Unity TempTextures 0.2899s
-- import 1,000 assets from 22ftu folder to Unity TempTextures  1.7424s
-- import 10,000 assets from 22ftu folder to Unity TempTextures  15.1904s + Unity indexing 2-3minutes + ~20min to build scene
+- import 10 assets from 22ftu folder to Unity TempTextures: 0.0978s
+- import 100 assets from 22ftu folder to Unity TempTextures: 0.2899s
+- import 1,000 assets from 22ftu folder to Unity TempTextures: 1.7424s
+- import 10,000 assets from 22ftu folder to Unity TempTextures: 15.1904s + Unity indexing 2-3minutes + ~20min to build scene
 - running copy_files_by_selector.py on 22ftu folder with above filter settings copied 29,018 images in 45s!
 ***
 
@@ -112,6 +112,8 @@ Available user controls during play:
 \<C\>   complex test -> to trigger work in progress
 
 \<H\>   hide/unhide all clones (disable renderer)
+
+\<L>    look at sphere center (default) or camera
 
 \<R\>   reset sphere size, rotation & transparency
 

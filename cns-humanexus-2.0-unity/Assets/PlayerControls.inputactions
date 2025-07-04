@@ -33,6 +33,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "LookAt",
+                    "type": "Button",
+                    "id": "35edba74-37b1-488c-bbc2-28496cdf4d9f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "ResetCloud",
                     "type": "Button",
                     "id": "8bfdccfd-4e44-4a44-b58c-75ba60e5d09c",
@@ -42,9 +51,27 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Rotation",
+                    "type": "Button",
+                    "id": "eeb4a21d-09cf-452e-9d7c-9ad20083275c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "ShowIcosphere",
                     "type": "Button",
                     "id": "47228ac6-ba06-4257-b44f-200207b9b055",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SphereOpacity",
+                    "type": "Button",
+                    "id": "7f312c71-3f85-4255-9992-35b8271b3b75",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -63,15 +90,6 @@
                     "name": "SphereSizeDecrease",
                     "type": "Button",
                     "id": "e0d903dc-9456-4514-98fd-89f26e8b35c6",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "SphereTransparency",
-                    "type": "Button",
-                    "id": "7f312c71-3f85-4255-9992-35b8271b3b75",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -131,7 +149,7 @@
                 {
                     "name": "",
                     "id": "472edd44-ed75-46bd-bc16-560ceedb290f",
-                    "path": "<Keyboard>/#(R)",
+                    "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -186,11 +204,11 @@
                 {
                     "name": "",
                     "id": "ee827054-dcb9-46c0-9903-b923c4953b7f",
-                    "path": "<Keyboard>/t",
+                    "path": "<Keyboard>/o",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "SphereTransparency",
+                    "action": "SphereOpacity",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -224,6 +242,28 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "ShowIcosphere",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "478044f6-aef2-4a2b-b5a9-5d52331067cf",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8a90240d-283e-45e4-9704-0b79fdc18043",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "LookAt",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

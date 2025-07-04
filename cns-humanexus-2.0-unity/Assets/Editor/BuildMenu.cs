@@ -39,7 +39,7 @@ public class BuildMenu : EditorWindow
         }
         else
         {
-            Debug.LogError("No texture set installed");
+            Debug.LogError("No texture set installed: Manual Import->Build Database");
         }
     }
 
@@ -104,7 +104,7 @@ public class BuildMenu : EditorWindow
                     mainTexture = tex2d
 
                 };
-                // this is to make material transparent-------
+                // this is to make material opaque-------
                 newMaterial.SetFloat("_Surface", 1.0f);
                 newMaterial.SetFloat("_Blend", 0.0f);
 
@@ -150,7 +150,8 @@ public class BuildMenu : EditorWindow
                 clone.name = tex2d.name;                                    // rename clone with name of texture/material
                 clone.GetComponent<CloneInfo>().cloneID = vertexCounter;    // ID of new clone
 
-                cloneItem = new(vertexCounter, clone, verticesDone[vertexCounter]);
+                // populate clone info; ID, GameObject, Vector3 pos, Vector3 rotation
+                cloneItem = new(vertexCounter, clone, verticesDone[vertexCounter], clone.transform.rotation);
                 icosphere.GetComponent<SphereInfo>().cloneItems.Add(cloneItem); // this should be on the sphereInfo
 
                 vertexCounter++;
