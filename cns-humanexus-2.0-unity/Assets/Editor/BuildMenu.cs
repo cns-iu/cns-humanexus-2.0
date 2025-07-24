@@ -157,7 +157,7 @@ public class BuildMenu : EditorWindow
                 vertexCounter++;
             }
         }
-        ResizeCloud(icosphere.GetComponent<SphereInfo>().startSize);    // set startsize of cloud from icosphere SphereInfo
+        ResizeCloud(icosphere.GetComponent<SphereInfo>().startDiameter);    // set startsize of cloud from icosphere SphereInfo
         //Debug.Log("start size = " + icosphere.GetComponent<SphereInfo>().startSize);
         Debug.Log("Done creating clones..." + vertexCounter);
     }

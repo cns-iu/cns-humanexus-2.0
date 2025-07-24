@@ -37,7 +37,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ComplexTest"",
+                    ""name"": ""ComplexSequence"",
                     ""type"": ""Button"",
                     ""id"": ""cb326661-e292-4935-b345-b65aa4665adb"",
                     ""expectedControlType"": """",
@@ -55,16 +55,34 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""LookAt"",
+                    ""name"": ""LookHere0"",
                     ""type"": ""Button"",
-                    ""id"": ""35edba74-37b1-488c-bbc2-28496cdf4d9f"",
+                    ""id"": ""bf887efb-f900-4420-939f-1a9707a59d8e"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ResetCloud"",
+                    ""name"": ""LookHere1"",
+                    ""type"": ""Button"",
+                    ""id"": ""73bd53ee-902a-4d8d-886b-209c63f111c2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LookHere2"",
+                    ""type"": ""Button"",
+                    ""id"": ""c4d2e8c8-a7e1-485f-9bc9-b9ead25628ae"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FullReset"",
                     ""type"": ""Button"",
                     ""id"": ""8bfdccfd-4e44-4a44-b58c-75ba60e5d09c"",
                     ""expectedControlType"": """",
@@ -100,7 +118,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SphereSizeIncrease"",
+                    ""name"": ""SphereDiameterIncrease"",
                     ""type"": ""Button"",
                     ""id"": ""107e9689-f8b5-4404-8c15-97cb3128600d"",
                     ""expectedControlType"": """",
@@ -109,7 +127,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SphereSizeDecrease"",
+                    ""name"": ""SphereDiameterDecrease"",
                     ""type"": ""Button"",
                     ""id"": ""e0d903dc-9456-4514-98fd-89f26e8b35c6"",
                     ""expectedControlType"": """",
@@ -153,7 +171,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""SphereSizeIncrease"",
+                    ""action"": ""SphereDiameterIncrease"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -164,7 +182,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""SphereSizeDecrease"",
+                    ""action"": ""SphereDiameterDecrease"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -175,7 +193,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""ResetCloud"",
+                    ""action"": ""FullReset"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -241,7 +259,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ComplexTest"",
+                    ""action"": ""ComplexSequence"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -280,12 +298,34 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""8a90240d-283e-45e4-9704-0b79fdc18043"",
-                    ""path"": ""<Keyboard>/l"",
+                    ""id"": ""13fe231d-6279-425c-bede-3de1be21ceed"",
+                    ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""LookAt"",
+                    ""action"": ""LookHere1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""348a4abf-bc55-4774-b3d5-9b0cbacd0bb1"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""LookHere2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f7b05aa1-8083-4f69-96b7-47f57a635731"",
+                    ""path"": ""<Keyboard>/0"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""LookHere0"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -885,15 +925,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // SphereControl
         m_SphereControl = asset.FindActionMap("SphereControl", throwIfNotFound: true);
         m_SphereControl_AlignRotation = m_SphereControl.FindAction("AlignRotation", throwIfNotFound: true);
-        m_SphereControl_ComplexTest = m_SphereControl.FindAction("ComplexTest", throwIfNotFound: true);
+        m_SphereControl_ComplexSequence = m_SphereControl.FindAction("ComplexSequence", throwIfNotFound: true);
         m_SphereControl_HideAllClones = m_SphereControl.FindAction("HideAllClones", throwIfNotFound: true);
-        m_SphereControl_LookAt = m_SphereControl.FindAction("LookAt", throwIfNotFound: true);
-        m_SphereControl_ResetCloud = m_SphereControl.FindAction("ResetCloud", throwIfNotFound: true);
+        m_SphereControl_LookHere0 = m_SphereControl.FindAction("LookHere0", throwIfNotFound: true);
+        m_SphereControl_LookHere1 = m_SphereControl.FindAction("LookHere1", throwIfNotFound: true);
+        m_SphereControl_LookHere2 = m_SphereControl.FindAction("LookHere2", throwIfNotFound: true);
+        m_SphereControl_FullReset = m_SphereControl.FindAction("FullReset", throwIfNotFound: true);
         m_SphereControl_Rotation = m_SphereControl.FindAction("Rotation", throwIfNotFound: true);
         m_SphereControl_ShowIcosphere = m_SphereControl.FindAction("ShowIcosphere", throwIfNotFound: true);
         m_SphereControl_SphereOpacity = m_SphereControl.FindAction("SphereOpacity", throwIfNotFound: true);
-        m_SphereControl_SphereSizeIncrease = m_SphereControl.FindAction("SphereSizeIncrease", throwIfNotFound: true);
-        m_SphereControl_SphereSizeDecrease = m_SphereControl.FindAction("SphereSizeDecrease", throwIfNotFound: true);
+        m_SphereControl_SphereDiameterIncrease = m_SphereControl.FindAction("SphereDiameterIncrease", throwIfNotFound: true);
+        m_SphereControl_SphereDiameterDecrease = m_SphereControl.FindAction("SphereDiameterDecrease", throwIfNotFound: true);
         m_SphereControl_ZoomIn = m_SphereControl.FindAction("ZoomIn", throwIfNotFound: true);
         m_SphereControl_ZoomOut = m_SphereControl.FindAction("ZoomOut", throwIfNotFound: true);
         m_SphereControl_ZoomReset = m_SphereControl.FindAction("ZoomReset", throwIfNotFound: true);
@@ -977,15 +1019,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_SphereControl;
     private List<ISphereControlActions> m_SphereControlActionsCallbackInterfaces = new List<ISphereControlActions>();
     private readonly InputAction m_SphereControl_AlignRotation;
-    private readonly InputAction m_SphereControl_ComplexTest;
+    private readonly InputAction m_SphereControl_ComplexSequence;
     private readonly InputAction m_SphereControl_HideAllClones;
-    private readonly InputAction m_SphereControl_LookAt;
-    private readonly InputAction m_SphereControl_ResetCloud;
+    private readonly InputAction m_SphereControl_LookHere0;
+    private readonly InputAction m_SphereControl_LookHere1;
+    private readonly InputAction m_SphereControl_LookHere2;
+    private readonly InputAction m_SphereControl_FullReset;
     private readonly InputAction m_SphereControl_Rotation;
     private readonly InputAction m_SphereControl_ShowIcosphere;
     private readonly InputAction m_SphereControl_SphereOpacity;
-    private readonly InputAction m_SphereControl_SphereSizeIncrease;
-    private readonly InputAction m_SphereControl_SphereSizeDecrease;
+    private readonly InputAction m_SphereControl_SphereDiameterIncrease;
+    private readonly InputAction m_SphereControl_SphereDiameterDecrease;
     private readonly InputAction m_SphereControl_ZoomIn;
     private readonly InputAction m_SphereControl_ZoomOut;
     private readonly InputAction m_SphereControl_ZoomReset;
@@ -994,15 +1038,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         private @PlayerControls m_Wrapper;
         public SphereControlActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @AlignRotation => m_Wrapper.m_SphereControl_AlignRotation;
-        public InputAction @ComplexTest => m_Wrapper.m_SphereControl_ComplexTest;
+        public InputAction @ComplexSequence => m_Wrapper.m_SphereControl_ComplexSequence;
         public InputAction @HideAllClones => m_Wrapper.m_SphereControl_HideAllClones;
-        public InputAction @LookAt => m_Wrapper.m_SphereControl_LookAt;
-        public InputAction @ResetCloud => m_Wrapper.m_SphereControl_ResetCloud;
+        public InputAction @LookHere0 => m_Wrapper.m_SphereControl_LookHere0;
+        public InputAction @LookHere1 => m_Wrapper.m_SphereControl_LookHere1;
+        public InputAction @LookHere2 => m_Wrapper.m_SphereControl_LookHere2;
+        public InputAction @FullReset => m_Wrapper.m_SphereControl_FullReset;
         public InputAction @Rotation => m_Wrapper.m_SphereControl_Rotation;
         public InputAction @ShowIcosphere => m_Wrapper.m_SphereControl_ShowIcosphere;
         public InputAction @SphereOpacity => m_Wrapper.m_SphereControl_SphereOpacity;
-        public InputAction @SphereSizeIncrease => m_Wrapper.m_SphereControl_SphereSizeIncrease;
-        public InputAction @SphereSizeDecrease => m_Wrapper.m_SphereControl_SphereSizeDecrease;
+        public InputAction @SphereDiameterIncrease => m_Wrapper.m_SphereControl_SphereDiameterIncrease;
+        public InputAction @SphereDiameterDecrease => m_Wrapper.m_SphereControl_SphereDiameterDecrease;
         public InputAction @ZoomIn => m_Wrapper.m_SphereControl_ZoomIn;
         public InputAction @ZoomOut => m_Wrapper.m_SphereControl_ZoomOut;
         public InputAction @ZoomReset => m_Wrapper.m_SphereControl_ZoomReset;
@@ -1018,18 +1064,24 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @AlignRotation.started += instance.OnAlignRotation;
             @AlignRotation.performed += instance.OnAlignRotation;
             @AlignRotation.canceled += instance.OnAlignRotation;
-            @ComplexTest.started += instance.OnComplexTest;
-            @ComplexTest.performed += instance.OnComplexTest;
-            @ComplexTest.canceled += instance.OnComplexTest;
+            @ComplexSequence.started += instance.OnComplexSequence;
+            @ComplexSequence.performed += instance.OnComplexSequence;
+            @ComplexSequence.canceled += instance.OnComplexSequence;
             @HideAllClones.started += instance.OnHideAllClones;
             @HideAllClones.performed += instance.OnHideAllClones;
             @HideAllClones.canceled += instance.OnHideAllClones;
-            @LookAt.started += instance.OnLookAt;
-            @LookAt.performed += instance.OnLookAt;
-            @LookAt.canceled += instance.OnLookAt;
-            @ResetCloud.started += instance.OnResetCloud;
-            @ResetCloud.performed += instance.OnResetCloud;
-            @ResetCloud.canceled += instance.OnResetCloud;
+            @LookHere0.started += instance.OnLookHere0;
+            @LookHere0.performed += instance.OnLookHere0;
+            @LookHere0.canceled += instance.OnLookHere0;
+            @LookHere1.started += instance.OnLookHere1;
+            @LookHere1.performed += instance.OnLookHere1;
+            @LookHere1.canceled += instance.OnLookHere1;
+            @LookHere2.started += instance.OnLookHere2;
+            @LookHere2.performed += instance.OnLookHere2;
+            @LookHere2.canceled += instance.OnLookHere2;
+            @FullReset.started += instance.OnFullReset;
+            @FullReset.performed += instance.OnFullReset;
+            @FullReset.canceled += instance.OnFullReset;
             @Rotation.started += instance.OnRotation;
             @Rotation.performed += instance.OnRotation;
             @Rotation.canceled += instance.OnRotation;
@@ -1039,12 +1091,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @SphereOpacity.started += instance.OnSphereOpacity;
             @SphereOpacity.performed += instance.OnSphereOpacity;
             @SphereOpacity.canceled += instance.OnSphereOpacity;
-            @SphereSizeIncrease.started += instance.OnSphereSizeIncrease;
-            @SphereSizeIncrease.performed += instance.OnSphereSizeIncrease;
-            @SphereSizeIncrease.canceled += instance.OnSphereSizeIncrease;
-            @SphereSizeDecrease.started += instance.OnSphereSizeDecrease;
-            @SphereSizeDecrease.performed += instance.OnSphereSizeDecrease;
-            @SphereSizeDecrease.canceled += instance.OnSphereSizeDecrease;
+            @SphereDiameterIncrease.started += instance.OnSphereDiameterIncrease;
+            @SphereDiameterIncrease.performed += instance.OnSphereDiameterIncrease;
+            @SphereDiameterIncrease.canceled += instance.OnSphereDiameterIncrease;
+            @SphereDiameterDecrease.started += instance.OnSphereDiameterDecrease;
+            @SphereDiameterDecrease.performed += instance.OnSphereDiameterDecrease;
+            @SphereDiameterDecrease.canceled += instance.OnSphereDiameterDecrease;
             @ZoomIn.started += instance.OnZoomIn;
             @ZoomIn.performed += instance.OnZoomIn;
             @ZoomIn.canceled += instance.OnZoomIn;
@@ -1061,18 +1113,24 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @AlignRotation.started -= instance.OnAlignRotation;
             @AlignRotation.performed -= instance.OnAlignRotation;
             @AlignRotation.canceled -= instance.OnAlignRotation;
-            @ComplexTest.started -= instance.OnComplexTest;
-            @ComplexTest.performed -= instance.OnComplexTest;
-            @ComplexTest.canceled -= instance.OnComplexTest;
+            @ComplexSequence.started -= instance.OnComplexSequence;
+            @ComplexSequence.performed -= instance.OnComplexSequence;
+            @ComplexSequence.canceled -= instance.OnComplexSequence;
             @HideAllClones.started -= instance.OnHideAllClones;
             @HideAllClones.performed -= instance.OnHideAllClones;
             @HideAllClones.canceled -= instance.OnHideAllClones;
-            @LookAt.started -= instance.OnLookAt;
-            @LookAt.performed -= instance.OnLookAt;
-            @LookAt.canceled -= instance.OnLookAt;
-            @ResetCloud.started -= instance.OnResetCloud;
-            @ResetCloud.performed -= instance.OnResetCloud;
-            @ResetCloud.canceled -= instance.OnResetCloud;
+            @LookHere0.started -= instance.OnLookHere0;
+            @LookHere0.performed -= instance.OnLookHere0;
+            @LookHere0.canceled -= instance.OnLookHere0;
+            @LookHere1.started -= instance.OnLookHere1;
+            @LookHere1.performed -= instance.OnLookHere1;
+            @LookHere1.canceled -= instance.OnLookHere1;
+            @LookHere2.started -= instance.OnLookHere2;
+            @LookHere2.performed -= instance.OnLookHere2;
+            @LookHere2.canceled -= instance.OnLookHere2;
+            @FullReset.started -= instance.OnFullReset;
+            @FullReset.performed -= instance.OnFullReset;
+            @FullReset.canceled -= instance.OnFullReset;
             @Rotation.started -= instance.OnRotation;
             @Rotation.performed -= instance.OnRotation;
             @Rotation.canceled -= instance.OnRotation;
@@ -1082,12 +1140,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @SphereOpacity.started -= instance.OnSphereOpacity;
             @SphereOpacity.performed -= instance.OnSphereOpacity;
             @SphereOpacity.canceled -= instance.OnSphereOpacity;
-            @SphereSizeIncrease.started -= instance.OnSphereSizeIncrease;
-            @SphereSizeIncrease.performed -= instance.OnSphereSizeIncrease;
-            @SphereSizeIncrease.canceled -= instance.OnSphereSizeIncrease;
-            @SphereSizeDecrease.started -= instance.OnSphereSizeDecrease;
-            @SphereSizeDecrease.performed -= instance.OnSphereSizeDecrease;
-            @SphereSizeDecrease.canceled -= instance.OnSphereSizeDecrease;
+            @SphereDiameterIncrease.started -= instance.OnSphereDiameterIncrease;
+            @SphereDiameterIncrease.performed -= instance.OnSphereDiameterIncrease;
+            @SphereDiameterIncrease.canceled -= instance.OnSphereDiameterIncrease;
+            @SphereDiameterDecrease.started -= instance.OnSphereDiameterDecrease;
+            @SphereDiameterDecrease.performed -= instance.OnSphereDiameterDecrease;
+            @SphereDiameterDecrease.canceled -= instance.OnSphereDiameterDecrease;
             @ZoomIn.started -= instance.OnZoomIn;
             @ZoomIn.performed -= instance.OnZoomIn;
             @ZoomIn.canceled -= instance.OnZoomIn;
@@ -1289,15 +1347,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     public interface ISphereControlActions
     {
         void OnAlignRotation(InputAction.CallbackContext context);
-        void OnComplexTest(InputAction.CallbackContext context);
+        void OnComplexSequence(InputAction.CallbackContext context);
         void OnHideAllClones(InputAction.CallbackContext context);
-        void OnLookAt(InputAction.CallbackContext context);
-        void OnResetCloud(InputAction.CallbackContext context);
+        void OnLookHere0(InputAction.CallbackContext context);
+        void OnLookHere1(InputAction.CallbackContext context);
+        void OnLookHere2(InputAction.CallbackContext context);
+        void OnFullReset(InputAction.CallbackContext context);
         void OnRotation(InputAction.CallbackContext context);
         void OnShowIcosphere(InputAction.CallbackContext context);
         void OnSphereOpacity(InputAction.CallbackContext context);
-        void OnSphereSizeIncrease(InputAction.CallbackContext context);
-        void OnSphereSizeDecrease(InputAction.CallbackContext context);
+        void OnSphereDiameterIncrease(InputAction.CallbackContext context);
+        void OnSphereDiameterDecrease(InputAction.CallbackContext context);
         void OnZoomIn(InputAction.CallbackContext context);
         void OnZoomOut(InputAction.CallbackContext context);
         void OnZoomReset(InputAction.CallbackContext context);

@@ -2,27 +2,17 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using System;
-using Unity.VisualScripting;
+/* using Unity.VisualScripting;
 using UnityEngine.UIElements;
 using UnityEditor.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine.TextCore.Text;
-using System.Collections;
+using System.Collections; */
 
-// 2025-7-4
-// run live kewy controls in Update() loop
+// 2025-7-23
 
-// try this:
-// all stuff that is now triggered from 'On....' functions ->
-//  move to Update(), test if deltaTime can be used
-// 'On...' functions change values in 'parameter block'
-//  info in this block is evaluated in Update()
-// so, 'parameter block' always has 'soll' parameters
-//  functions called from Update() will try to 'achieve' 'soll' parameters over time!!
-
-// we can have complete, self-contained On... functions for global, un-timed operations (reset)
-// -> move individual clone ops in a loop in Update() - run each clone as Coroutine?
+// 4. add actions to affect individual clones (use a marker flag on clonmeInfo?)
 
 
 [Serializable]
@@ -45,48 +35,69 @@ public struct CloneItem
 [Serializable]
 public struct SequenceItem
 {
-    public SequenceItem(int sequenceDelta, string sequenceAction, float sequenceParameter1, float sequenceParameter2)
+    public SequenceItem(int SequenceTime, string sequenceAction, float sequenceParameter1, int sequenceParameter2)
     {
-        this.SequenceDelta = sequenceDelta;             // time since last action
+        this.SequenceTime = SequenceTime;             // time since last action
         this.SequenceAction = sequenceAction;         // action type
-        this.SequenceParamater1 = sequenceParameter1;   // magnitude, how much larger, further away etc. action-dependent
-        this.SequenceParamater2 = sequenceParameter2;   // experimental -> speed of action (multiplier for deltaTime())
+        this.SequenceMagnitude = sequenceParameter1;   // magnitude, how much larger, further away etc. action-dependent
+        this.SequenceDuration = sequenceParameter2;   // experimental -> speed of action (multiplier for deltaTime())
     }
-    public int SequenceDelta;
+    public int SequenceTime;
     public string SequenceAction;
-    public float SequenceParamater1;
-    public float SequenceParamater2;
+    public float SequenceMagnitude;
+    public int SequenceDuration;
 }
 
 public class SphereController : MonoBehaviour
 {
     static private GameObject mainCamera;
     //static private List<Item> thisDatabase = new();
+    [Header("Sequencer Parameters")]
+    public float cloudDiameterTarget;
+    public int cloudDiameterTimer;
+    public float cloudDiameterSlice;
+    public float cloudItemsOpacityTarget;
+    public int cloudItemsOpacityTimer;
+    public float cloudItemsOpacitySlice;
+    public float cloudItemsRotationTarget;
+    public int cloudItemsRotationTimer;
+    public float cloudItemsRotationSlice;
+    public float cloudRotationSpeedTarget;
+    public int cloudRotationSpeedTimer;
+    public float cloudRotationSpeedSlice;
+    public float cameraZoomTarget;
+    public int cameraZoomTimer;
+    public float cameraZoomSlice;
+    public int lookAtsIndex = 0;
 
+    [Header("Operating Parameters")]
     public float currentZoom;
     public float requestedZoom;
-    public float requestedSizeMultiplier;
+    public float requestedDiameterMultiplier;   // 
+    public float currentDiameterMultiplier;     // absolute value
     public float cameraZStart;
-    public float zoomFactor;
-    public float startSize;
+    //public float zoomFactor;
+    public float startDiameter;
     public float currentOpacity = 1.0f;    // start with full opaque
     static float requestedOpacity = 1.0f;
     public float requestedRotation = 0;
     public float currentRotation = 0;
-    public GameObject lookHere;    // this is opbject the clones are looking at
+    public GameObject currentLookHere;    // this is opbject the clones are looking at
+    //static GameObject requestedLookHere;
+    public List<GameObject> lookAts;
     public List<SequenceItem> sequenceItems;
     public List<CloneItem> cloneItems;
     public int currentSequenceItem = 0;
-    static int sequenceDeltaTime = 0;
+    static int SequenceTimeTime = 0;
+    public float lookAtTimer;
+    public float currentCloudRotationSpeed = 0.1f;
     GameObject icosphere;
-    static float currentSizeMultiplier;
-    static float sizeMultiplierTime = 1;
-    static float zoomTime = 1;
-    static float opacityTime = 1;
-    static float rotationTime = 1;
     static float rotationFactor;
+    //static float arrayRotationDefault = 0.1f;
     public bool complexFlag = false;
-
+    static int manualTimer = 20;    // timer used for manual operations
+    static float manualAmount = 0.1f;
+    static float manualRotationAmount = 10.0f;
 
     void Start()
     {
@@ -102,42 +113,67 @@ public class SphereController : MonoBehaviour
 
         // retrieve info from active icosphere as defaults - may not need all of these
         cameraZStart = icosphere.GetComponent<SphereInfo>().cameraZStart;
-        zoomFactor = icosphere.GetComponent<SphereInfo>().zoomFactor;
-        startSize = icosphere.GetComponent<SphereInfo>().startSize;
+        //zoomFactor = icosphere.GetComponent<SphereInfo>().zoomFactor;
+        startDiameter = icosphere.GetComponent<SphereInfo>().startDiameter;
         cloneItems = icosphere.GetComponent<SphereInfo>().cloneItems;   // can we just get a pointer to the list on SphereInfo?
 
         // populate working parameters
         mainCamera.transform.position = new Vector3(transform.position.x, transform.position.y, cameraZStart);
         currentZoom = mainCamera.transform.position.z;
         requestedZoom = currentZoom;
-        currentSizeMultiplier = startSize;
-        requestedSizeMultiplier = startSize;
+        currentDiameterMultiplier = startDiameter;
+        requestedDiameterMultiplier = startDiameter;
         requestedOpacity = currentOpacity;
 
-        // set cloud size and opcacity to defaults
-        ResizeCloud(currentSizeMultiplier);
-        mainCamera.transform.LookAt(icosphere.transform);
+        CloudDiameterInit(startDiameter);
 
-        lookHere = icosphere;   // center of sphere is default look at object
+        // add lookAt target gameobjects
+        lookAts.Add(icosphere);
+        lookAts.Add(mainCamera);
+        lookAts.Add(GameObject.Find("LookAtTarget1"));
 
-        // populate sequenceItems list
-        // timeDelta since previous action, action type, action magnitude, action speed
-        sequenceItems.Add(new SequenceItem(50, "sphere_opacity", 0.1f, 0.3f));
-        sequenceItems.Add(new SequenceItem(200, "sphere_opacity", 1.0f, 0.3f));
-        sequenceItems.Add(new SequenceItem(200, "sphere_size", -0.2f, 0.3f));
-        sequenceItems.Add(new SequenceItem(0, "camera_zoom", 0.5f, 0.3f));
+        currentLookHere = lookAts[lookAtsIndex];
+        mainCamera.transform.LookAt(currentLookHere.transform);   // look at item 0 in lookAts list
 
-        sequenceItems.Add(new SequenceItem(50, "sphere_rotation", 45.0f, 0.5f));
-        sequenceItems.Add(new SequenceItem(400, "sphere_opacity", 0.5f, 0.3f));
-        sequenceItems.Add(new SequenceItem(200, "sphere_opacity", 0.0f, 0.3f));
+        // populate sequenceItems list============================
+        // timeDelta since previous action, action type, action magnitude, action duration
 
-        sequenceItems.Add(new SequenceItem(200, "sphere_opacity", 1.0f, 0.3f));
-        sequenceItems.Add(new SequenceItem(0, "sphere_size", 0.4f, 0.3f));
-        sequenceItems.Add(new SequenceItem(0, "sphere_rotation", -45.0f, 0.5f));
-        sequenceItems.Add(new SequenceItem(0, "camera_zoom", -0.5f, 0.3f));
 
-        sequenceItems.Add(new SequenceItem(200, "full_reset", 0.0f, 1.0f));
-        sequenceItems.Add(new SequenceItem(10, "stop", 0, 0));
+        sequenceItems.Add(new SequenceItem(150, "cloud-rotation-speed", 1.0f, 300));
+        sequenceItems.Add(new SequenceItem(350, "cloud-diameter-absolute", 1.5f, 100));
+        sequenceItems.Add(new SequenceItem(150, "look-here", 2, 200));
+        sequenceItems.Add(new SequenceItem(250, "camera-zoom-absolute", 3.0f, 400));
+        sequenceItems.Add(new SequenceItem(400, "cloud-items-rotation", 60.0f, 200));
+        sequenceItems.Add(new SequenceItem(250, "cloud-items-opacity", 0.1f, 200));
+        sequenceItems.Add(new SequenceItem(400, "full-reset", 0.5f, 200));
+
+
+        /*  sequenceItems.Add(new SequenceItem(100, "cloud-hide", 0, 0));
+         sequenceItems.Add(new SequenceItem(50, "icosphere-show", 0, 0));
+         sequenceItems.Add(new SequenceItem(200, "icosphere-hide", 0, 0));
+
+         sequenceItems.Add(new SequenceItem(100, "cloud-show", 0, 0));
+         sequenceItems.Add(new SequenceItem(100, "cloud-diameter-absolute", 1.0f, 100));
+
+         sequenceItems.Add(new SequenceItem(150, "icosphere-hide", 0, 0));
+         sequenceItems.Add(new SequenceItem(100, "cloud-items-rotation", 60.0f, 200));
+
+         sequenceItems.Add(new SequenceItem(200, "cloud-diameter-absolute", 0.5f, 200));
+         sequenceItems.Add(new SequenceItem(200, "look-here", 1, 200));
+
+         sequenceItems.Add(new SequenceItem(200, "cloud-diameter-absolute", 1.2f, 200));
+
+         sequenceItems.Add(new SequenceItem(200, "look-here", 2, 200));
+
+         sequenceItems.Add(new SequenceItem(150, "cloud-rotation-speed", 0.5f, 200));
+         sequenceItems.Add(new SequenceItem(150, "cloud-diameter-absolute", startDiameter, 100));
+         sequenceItems.Add(new SequenceItem(150, "look-here", 0, 200));
+
+         sequenceItems.Add(new SequenceItem(200, "cloud-items-opacity", 0.0f, 200)); */
+
+        sequenceItems.Add(new SequenceItem(200, "stop", 0, 0));
+
+        //complexFlag = true;
 
     }
 
@@ -145,55 +181,77 @@ public class SphereController : MonoBehaviour
     void Update()
     {
         // works like thermostat==========================================
-        // modifies current parameters from requested parameters 
-        // modify size, this is continually balancing.....
-        if (currentSizeMultiplier < requestedSizeMultiplier)
-        { currentSizeMultiplier += Time.deltaTime * sizeMultiplierTime; }
-        if (currentSizeMultiplier > requestedSizeMultiplier)
-        { currentSizeMultiplier -= Time.deltaTime * sizeMultiplierTime; }
+        // modifies current parameters from requested parameters
+
+        // modify cloud diameter================
+        if (cloudDiameterTimer != 0)
+        {
+            //Debug.Log("sphereSize_timer: " +     cloudDiameterTimer);
+            currentDiameterMultiplier += cloudDiameterSlice;
+            cloudDiameterTimer--;
+
+            if (cloudDiameterTimer == 0)
+            { currentDiameterMultiplier = cloudDiameterTarget; }
+        }
 
         // modify Opacity==========================================
-        /*         if (currentOpacity > requestedOpacity)
-                { currentOpacity -= Time.deltaTime * opacityTime; }
-                else
-                { currentOpacity = requestedOpacity; } */
-        if (currentOpacity != requestedOpacity)
+        if (cloudItemsOpacityTimer != 0)
         {
-            if (currentOpacity > requestedOpacity)
-            { currentOpacity -= Time.deltaTime * opacityTime; }
-            if (currentOpacity < requestedOpacity)
-            { currentOpacity += Time.deltaTime * opacityTime; }
+            currentOpacity += cloudItemsOpacitySlice;
+            cloudItemsOpacityTimer--;
+
+            if (cloudItemsOpacityTimer == 0)
+            { currentOpacity = cloudItemsOpacityTarget; }
         }
 
         // modify rotation==========================================
-        if (currentRotation != requestedRotation)
+        if (cloudItemsRotationTimer != 0)
         {
-            rotationFactor = rotationTime;
-            if (currentRotation < requestedRotation)
-            { currentRotation += rotationFactor; }
-            if (currentRotation > requestedRotation)
-            { currentRotation -= rotationFactor; }
+            currentRotation += cloudItemsRotationSlice;
+            rotationFactor = cloudItemsRotationSlice;
+            cloudItemsRotationTimer--;
+
+            if (cloudItemsRotationTimer == 0)
+            {
+                currentRotation = cloudItemsRotationTarget;
+                rotationFactor = 0;
+            }
         }
-        else { rotationFactor = 0; }
+
+        // evaluate lookHere
+        if (currentLookHere != lookAts[lookAtsIndex])
+        {
+            Debug.Log("new lookAts index: " + lookAtsIndex);
+            currentLookHere = lookAts[lookAtsIndex];
+        }
 
         // modify zoom (camera.position.z)==========================================
-        if (currentZoom != requestedZoom)
+        if (cameraZoomTimer != 0)
         {
-            if (currentZoom < requestedZoom)
-            { currentZoom += Time.deltaTime * zoomTime; }
-            if (currentZoom > requestedZoom)
-            { currentZoom -= Time.deltaTime * zoomTime; }
+            currentZoom += cameraZoomSlice;
+            cameraZoomTimer--;
+
+            if (cameraZoomTimer == 0)
+            { currentZoom = cameraZoomTarget; }
+        }
+
+        // set rotation speed of icosphere
+        if (currentCloudRotationSpeed != cloudRotationSpeedTarget)
+        {
+            currentCloudRotationSpeed += cloudRotationSpeedSlice;
+            cloudRotationSpeedTimer--;
+
+            if (cloudRotationSpeedTimer == 0)
+            { currentCloudRotationSpeed = cloudRotationSpeedTarget; }
         }
 
         // apply requested changes==========================================
-        ModifyCloud(currentSizeMultiplier, currentOpacity, currentZoom, rotationFactor);
+        ModifyCloud(currentDiameterMultiplier, currentOpacity, currentZoom, rotationFactor, currentLookHere);
 
-        //=============
-        icosphere.transform.Rotate(0, 10 * Time.deltaTime, 0);      // constant rotation of sphere
     }
 
     // called from Update(); loops through all clones and applies all modifications
-    void ModifyCloud(float s, float o, float c, float r)
+    void ModifyCloud(float s, float o, float c, float r, GameObject l)
     {
         // modify camera.z
         Vector3 zoomVector;
@@ -204,87 +262,137 @@ public class SphereController : MonoBehaviour
         mainCamera.transform.LookAt(icosphere.transform);
         currentZoom = mainCamera.transform.position.z;
 
+        // rotate the cloud
+        icosphere.transform.Rotate(0, currentCloudRotationSpeed, 0);
+
         // apply individual clone mods
         foreach (CloneItem ci in cloneItems)
         {
-            // translate clone
+            // translate vector multiplication
             ci.CloneObject.transform.localPosition = ci.CloneVector * s;
 
-            // rotate
-            if (lookHere != icosphere)
-            { ci.CloneObject.transform.LookAt(lookHere.transform); }
-            else
-            { ci.CloneObject.transform.Rotate(r, 0.0f, 0.0f, Space.Self); }
+            // look here alignment
+            var lRotation = Quaternion.LookRotation(l.transform.position - ci.CloneObject.transform.position);
+            ci.CloneObject.transform.rotation = Quaternion.Slerp(ci.CloneObject.transform.rotation, lRotation, lookAtTimer);
+
+            // rotate by degrees
+            ci.CloneObject.transform.Rotate(r, 0.0f, 0.0f, Space.Self);
 
             // set to requested opacity
             SetOpacitySingle(ci.CloneObject, o);
-            //StartCoroutine(CoroutineModifyClone(ci, s, o, r)); // why running in Coroutine()?
-
         }
     }
 
+    // FixedUpdate() processes the SequenceItemss list if complexFlag is ON
     void FixedUpdate()
     {
         if (complexFlag)
         {
             int sTime;
-            string sCommand;
-            float sParameter1;
-            float sParameter2;
+            string sAction;
+            float sMagnitude;
+            int sDuration;
 
-            sTime = sequenceItems[currentSequenceItem].SequenceDelta;
-            sCommand = sequenceItems[currentSequenceItem].SequenceAction;
-            sParameter1 = sequenceItems[currentSequenceItem].SequenceParamater1;
-            sParameter2 = sequenceItems[currentSequenceItem].SequenceParamater2;
+            // pick this action apart
+            sTime = sequenceItems[currentSequenceItem].SequenceTime;
+            sAction = sequenceItems[currentSequenceItem].SequenceAction;
+            sMagnitude = sequenceItems[currentSequenceItem].SequenceMagnitude;
+            sDuration = sequenceItems[currentSequenceItem].SequenceDuration;
 
-            // this loop has to be set up above -
+            // duration should not be 0 ro prevent division-by-zero
+            if (sDuration == 0)
+            { sDuration = 1; }
+
             // i.e. only one sequenceItem can be active at any given time
-            // we pick up sequenceItem[n] and empy cycle for <time> FixedUpdates before actually executing command
+            // we pick up sequenceItem[n] and empty cycle for <time> FixedUpdates before actually executing command
 
-            if (sequenceDeltaTime == sTime)
+            if (SequenceTimeTime == sTime)
             {
                 // do action
-                Debug.Log("current sequence item " + currentSequenceItem + ", " + sCommand);
+                Debug.Log(currentSequenceItem + ": " + sTime + ", " + sAction + ", " + sMagnitude + ", " + sDuration);
 
-                switch (sCommand)
+                switch (sAction)
                 {
-                    case "sphere_size":
-                        Debug.Log("doing sphere size...");
-                        SetSphereSize(sParameter1, sParameter2);
+                    case "cloud-diameter-init":
+                        CloudDiameterInit(sMagnitude);
                         break;
-                    case "sphere_reset":
-                        Debug.Log("doing sphere reset...");
-                        SetSphereSizeReset();
+                    case "cloud-items-opacity-init":
+                        CloudItemsOpacityInit(sMagnitude);
                         break;
-                    case "sphere_opacity":
-                        Debug.Log("doing sphere opacity...");
-                        SetSphereOpacity(sParameter1, sParameter2);
+                    case "cloud-items-rotation-init":
+                        CloudItemsRotationInit(sMagnitude);
                         break;
-                    case "sphere_rotation":
-                        Debug.Log("doing sphere rotation...");
-                        SetSphereRotation(sParameter1, sParameter2);
+                    case "cloud-rotation-speed-init":
+                        CloudRotationSpeedInit(sMagnitude);
                         break;
-                    case "camera_zoom":
-                        Debug.Log("doing camera zoom...");
-                        SetCameraZoom(sParameter1, sParameter2);
+                    case "cloud-diameter-relative":
+                        CloudDiameterDiameterRelative(sMagnitude, sDuration);
                         break;
-                    case "full_reset":
-                        Debug.Log("doing full reset...");
-                        OnResetCloud();
+                    case "cloud-diameter-absolute":
+                        CloudDiameterDiameterAbsolute(sMagnitude, sDuration);
+                        break;
+                    case "cloud-diameter-reset":
+                        CloudDiameterDiameterReset();
+                        break;
+                    case "cloud-items-opacity":
+                        CloudItemsOpacity(sMagnitude, sDuration);
+                        break;
+                    case "cloud-items-rotation":
+                        CloudItemsRotation(sMagnitude, sDuration);
+                        break;
+                    case "cloud-show":
+                        CloudShow();
+                        break;
+                    case "cloud-hide":
+                        CloudHide();
+                        break;
+                    case "cloud-rotation-speed":
+                        CloudRotationSpeed(sMagnitude, sDuration);
+                        break;
+
+                    case "camera-zoom-init":
+                        CameraZoomInit(sMagnitude);
+                        break;
+                    case "camera-zoom-relative":
+                        CameraZoomRelative(sMagnitude, sDuration);
+                        break;
+                    case "camera-zoom-absolute":
+                        CameraZoomAbsolute(sMagnitude, sDuration);
+                        break;
+
+                    case "look-here":
+                        LookHere((int)sMagnitude, sDuration);    // sMagnitude is float by default but needs int for index here
+                        break;
+
+                    case "icosphere-show":
+                        IcosphereShow();
+                        break;
+                    case "icosphere-hide":
+                        IcosphereHide();
+                        break;
+
+                    case "full-reset":
+                        OnFullReset();
+                        break;
+                    case "stop":
+                        complexFlag = false;
+                        currentSequenceItem = -1;   // lame!! just because currentSequenceItem must be 0 after switch!
+                        ClearParameterBlock();
                         break;
                     default:    // to catch stop
+                        Debug.Log("+++++++++ illegal action request: " + sAction);
                         complexFlag = false;
                         currentSequenceItem = -1;   // lame!! just because currentSequenceItem must be 0 after switch!
                         break;
                 }
                 // end of command
-                sequenceDeltaTime = 0;
+                SequenceTimeTime = 0;
                 currentSequenceItem++;
             }
             else
             {
-                sequenceDeltaTime++;
-                //Debug.Log("sequence waiting for delta: " + sequenceDeltaTime);
+                SequenceTimeTime++;
+                //Debug.Log("sequence waiting for delta: " + SequenceTimeTime);
             }
         }
 
@@ -292,109 +400,237 @@ public class SphereController : MonoBehaviour
 
 
 
-
-
     //=============sequence commands=================================
 
-    // s = add to current vector
-    // t = multiplier for deltaTime()
-    void SetSphereSize(float s, float t)
+    // no delay sphere size
+    void CloudDiameterInit(float s)
     {
-        requestedSizeMultiplier = Mathf.Round((requestedSizeMultiplier += s) * 10) * 0.1f;
-        sizeMultiplierTime = t;
+        requestedDiameterMultiplier = s;
+        currentDiameterMultiplier = s;
     }
 
-    void SetSphereSizeReset()
+    // no delay opacity
+    void CloudItemsOpacityInit(float o)
     {
-        requestedSizeMultiplier = startSize;
-        sizeMultiplierTime = 1;
-    }
-
-    // opacity o is absolite amount 0-1
-    void SetSphereOpacity(float o, float t)
-    {
-        requestedOpacity = Mathf.Round((requestedOpacity = o) * 10) * 0.1f;   // round to n.0
-        opacityTime = t;
+        requestedOpacity = o;
+        currentOpacity = o;
     }
 
     // r = rotation along z by degrees from current 
-    void SetSphereRotation(float r, float t)
+    void CloudItemsRotationInit(float r)
     {
+        AlignRotation(r);
         requestedRotation = r;
-        /*  if (requestedRotation >= 360f)
-         { requestedRotation = 0; } */
-        rotationTime = t;
+        currentRotation = r;
+    }
+
+    // set rotation speed of sphere immediately
+    void CloudRotationSpeedInit(float s)
+    {
+        currentCloudRotationSpeed = s;
+        cloudRotationSpeedTarget = currentCloudRotationSpeed;
+    }
+
+    // s = add to current vector
+    // t = multiplier for deltaTime()
+    void CloudDiameterDiameterRelative(float s, int t)
+    {
+        cloudDiameterTarget = currentDiameterMultiplier + s;
+        cloudDiameterTimer = t;
+        cloudDiameterSlice = s / cloudDiameterTimer;
+    }
+
+    // s = absolute size
+    // t = multiplier for deltaTime()
+    void CloudDiameterDiameterAbsolute(float s, int t)
+    {
+        cloudDiameterTarget = s;
+        cloudDiameterTimer = t;
+        cloudDiameterSlice = (cloudDiameterTarget - currentDiameterMultiplier) / cloudDiameterTimer;
+    }
+
+    void CloudDiameterDiameterReset()
+    {
+        requestedDiameterMultiplier = startDiameter;
+        currentDiameterMultiplier = startDiameter;
+    }
+
+    // opacity o is absolite amount 0-1
+    void CloudItemsOpacity(float o, int t)
+    {
+        cloudItemsOpacityTarget = o;
+        cloudItemsOpacityTimer = t;
+        cloudItemsOpacitySlice = (cloudItemsOpacityTarget - currentOpacity) / cloudItemsOpacityTimer;
+    }
+
+    // r = absolute rotation along z by degrees 
+    void CloudItemsRotation(float r, int t)
+    {
+        cloudItemsRotationTarget = r;
+        cloudItemsRotationTimer = t;
+        cloudItemsRotationSlice = (cloudItemsRotationTarget - currentRotation) / cloudItemsRotationTimer;
+    }
+
+    // show all clones (enable renderer)
+    void CloudShow()
+    {
+        foreach (CloneItem ci in cloneItems)
+        {
+            ci.CloneObject.GetComponent<MeshRenderer>().enabled = true;
+        }
+    }
+
+    // show all clones (enable renderer)
+    void CloudHide()
+    {
+        foreach (CloneItem ci in cloneItems)
+        {
+            ci.CloneObject.GetComponent<MeshRenderer>().enabled = false;
+        }
+    }
+
+    // set rotation speed of sphere
+    void CloudRotationSpeed(float s, int t)
+    {
+        cloudRotationSpeedTarget = s;
+        cloudRotationSpeedTimer = t;
+        cloudRotationSpeedSlice = (cloudRotationSpeedTarget - currentCloudRotationSpeed) / cloudRotationSpeedTimer;
+    }
+
+    // no delay camera zoom
+    void CameraZoomInit(float z)
+    {
+        requestedZoom = z;
+        currentZoom = z;
     }
 
     // z = add to current zoom
     // t = multiplier for deltaTime()
-    void SetCameraZoom(float z, float t)
+    void CameraZoomRelative(float z, int t)
     {
-        requestedZoom = Mathf.Round((requestedZoom += z) * 10) * 0.1f;
-        zoomTime = t;
+        cameraZoomTarget = currentZoom + z;
+        cameraZoomTimer = t;
+        cameraZoomSlice = z / cameraZoomTimer;
+    }
+
+    // z = absolute zoom
+    // t = multiplier for deltaTime()
+    void CameraZoomAbsolute(float z, int t)
+    {
+        cameraZoomTarget = z;
+        cameraZoomTimer = t;
+        cameraZoomSlice = (cameraZoomTarget - currentZoom) / cameraZoomTimer;
+    }
+
+    // i = index in lookAts list
+    void LookHere(int i, int t)
+    {
+        if (i < lookAts.Count)
+        {
+            lookAtsIndex = i;
+            lookAtTimer = 8.0f / (float)t;
+        }
+    }
+
+    // show icosphere
+    void IcosphereShow()
+    {
+        icosphere.GetComponent<Renderer>().enabled = true;
+    }
+
+    // hide icosphere
+    void IcosphereHide()
+    {
+        icosphere.GetComponent<Renderer>().enabled = false;
+    }
+
+    void ClearParameterBlock()
+    {
+        /* sphereSize_requested = 0;
+        sphereSize_current = 0;
+        sphereSize_target = 0;
+        sphereSize_timer = 0;
+        sphereSize_slice = 0; */
     }
 
 
     //============keyboard commands=============================
+
     // flips sequencer flag; when this is TRUE FixedUpdate() plays the sequence
-    void OnComplexTest()
+    void OnComplexSequence()
     {
         // flip sequence on/off
         complexFlag = !complexFlag;
-        // clear current sequence item
+
+        // reset current sequence item
         if (complexFlag == false)
         { currentSequenceItem = 0; }
     }
 
     // <right arrow> increase size of clone cloud
-    void OnSphereSizeIncrease()
+    void OnSphereDiameterIncrease()
     {
-        requestedSizeMultiplier = Mathf.Round((requestedSizeMultiplier += 0.1f) * 10) * 0.1f;   // round to n.0
+        CloudDiameterDiameterRelative(manualAmount, manualTimer);
     }
 
     // <left arrow> decrease size of clone cloud
-    void OnSphereSizeDecrease()
+    void OnSphereDiameterDecrease()
     {
-        requestedSizeMultiplier = Mathf.Round((requestedSizeMultiplier -= 0.1f) * 10) * 0.1f;   // round to n.0
+        CloudDiameterDiameterRelative(-manualAmount, manualTimer);
     }
 
     // <R> reset clone cloud size, opacity, zoom, (cancel any rotation)
-    void OnResetCloud()
+    void OnFullReset()
     {
-        requestedSizeMultiplier = startSize;
-        sizeMultiplierTime = 1;
-        requestedOpacity = 1;
-        currentOpacity = 1;
-        rotationTime = 1;
-        rotationFactor = 0;
-        OnZoomReset();
-        OnAlignRotation();
+        // diameter to default
+        //requestedDiameterMultiplier = startDiameter;
+        //currentDiameterMultiplier = startDiameter;
+        CloudDiameterDiameterReset();
+
+        // cloud rotation to default
+        //currentCloudRotationSpeed = 0.1f;
+        //cloudRotationSpeedTarget = currentCloudRotationSpeed;
+        CloudRotationSpeedInit(0.1f);
+
+        // items opacity to 100%
+        //requestedOpacity = 1.0f;
+        //currentOpacity = 1.0f;
+        CloudItemsOpacityInit(1.0f);
+
+        // camera zoom to default
+        //OnZoomReset();
+        CameraZoomInit(cameraZStart);
+
+        // look at item 0
+        LookHere(0, 1);
+
+        // reset items rotation
+        CloudItemsRotationInit(0.0f);
     }
 
     // <down arrow> camera zoom out; position.z
     void OnZoomIn()
     {
-        requestedZoom = Mathf.Round((requestedZoom += zoomFactor) * 10) * 0.1f;
+        CameraZoomRelative(manualAmount, manualTimer);
     }
 
     // <up arrow> camera zoom in; position.z
     void OnZoomOut()
     {
-        requestedZoom = Mathf.Round((requestedZoom -= zoomFactor) * 10) * 0.1f;
+        CameraZoomRelative(-manualAmount, manualTimer);
     }
 
     // <Z> reset camera zoom; instantenous
     void OnZoomReset()
     {
-        requestedZoom = cameraZStart;
-        currentZoom = requestedZoom;
-        zoomTime = 1;
+        cameraZoomTarget = cameraZStart;
+        cameraZoomTimer = manualTimer;
+        cameraZoomSlice = (cameraZoomTarget - currentZoom) / cameraZoomTimer;
     }
 
     // <H> hide/show all clones; disable/enable renderer
     void OnHideAllClones()
     {
-        //HideAllClones();
         foreach (CloneItem ci in cloneItems)
         {
             if (ci.CloneObject.GetComponent<MeshRenderer>().enabled == false)
@@ -407,13 +643,11 @@ public class SphereController : MonoBehaviour
     // <O> +/- requested opacity
     void OnSphereOpacity()
     {
-        if (requestedOpacity <= 0)
-        { requestedOpacity = 1; }
-        else
-        {
-            //requestedOpacity -= 0.1f;
-            requestedOpacity = Mathf.Round((requestedOpacity -= 0.1f) * 10) * 0.1f;   // round to n.0
-        }
+        cloudItemsOpacityTarget = Mathf.Round((currentOpacity - manualAmount) * 10) * 0.1f;
+        if (cloudItemsOpacityTarget < 0)     // wrap around 
+        { cloudItemsOpacityTarget = 1.0f; }
+
+        CloudItemsOpacity(cloudItemsOpacityTarget, manualTimer);
     }
 
     // <space> show/hide used icosphere
@@ -429,41 +663,35 @@ public class SphereController : MonoBehaviour
         }
     }
 
-    // <L> look at ... camera
-    void OnLookAt()
+    // look at gameobject o on lookAts list
+    void OnLookHere0()
     {
-        if (lookHere == mainCamera)
-        { lookHere = icosphere; }
-        else
-        { lookHere = mainCamera; }
+        LookHere(0, manualTimer * 10);
+    }
 
-        AlignRotation();
+    // look at gameobject o on lookAts list
+    void OnLookHere1()
+    {
+        LookHere(1, manualTimer * 10);
+    }
+
+    // look at gameobject o on lookAts list
+    void OnLookHere2()
+    {
+        LookHere(2, manualTimer * 10);
     }
 
     // <T> rotate clones on x axis
     void OnRotation()
     {
-        requestedRotation += 10.0f;
-        if (requestedRotation >= 360f)
-        { requestedRotation = 0; }
+        float r;
+        r = manualRotationAmount + currentRotation;
+        if (r >= 360f)
+        { r = 0; }
+        CloudItemsRotation(r, manualTimer);
     }
-
-    void OnAlignRotation()
-    {
-        AlignRotation();
-    }
-
-
 
     //================================================
-    // factor: 1=stays the same, <1 shrink, >1 expand
-    void ResizeCloud(float factor)
-    {
-        foreach (CloneItem ci in cloneItems)
-        {
-            ci.CloneObject.transform.localPosition = ci.CloneVector * factor;
-        }
-    }
 
     // sets gameobject c to Opacity o
     void SetOpacitySingle(GameObject c, float o)
@@ -477,80 +705,20 @@ public class SphereController : MonoBehaviour
         currentMat.SetColor("_BaseColor", baseColor);
     }
 
-    void AlignRotation()
+    void AlignRotation(float r)
     {
         foreach (CloneItem ci in cloneItems)
         {
-            AlignRotationSingle(ci.CloneObject);
-            currentRotation = 0;
-            requestedRotation = 0;
+            AlignRotationSingle(ci.CloneObject, r);
+            currentRotation = r;
+            requestedRotation = r;
         }
     }
 
-    void AlignRotationSingle(GameObject c)
+    void AlignRotationSingle(GameObject c, float r)
     {
-        c.transform.LookAt(lookHere.transform);       // rotation to default
+        c.transform.LookAt(currentLookHere.transform);       // rotation to default
+        c.transform.Rotate(r, 0.0f, 0.0f, Space.Self);
     }
 
-
-
-    //=========================not used
-
-
-    IEnumerator CoroutineModifySingle(GameObject c, Vector3 cv)
-    {
-        c.transform.localPosition = cv * currentSizeMultiplier;
-
-        yield return new WaitForSeconds(0.5f);
-    }
-
-    IEnumerator CouroutineExpand()
-    {
-        foreach (CloneItem ci in cloneItems)
-        {
-            ci.CloneObject.transform.localPosition = ci.CloneVector * 0.6f;
-            yield return new WaitForSeconds(0.01f);
-        }
-    }
-
-    /*     IEnumerator CoroutineRotation()
-        {
-            GameObject currentClone;
-            foreach (CloneItem ci in cloneItems)
-            {
-                currentClone = ci.CloneObject;
-                currentClone.transform.Rotate(90.0f, 0.0f, 0.0f, Space.World);
-                yield return new WaitForSeconds(0.05f);
-            }
-        } */
-
-    IEnumerator CoroutineOpacity()
-    {
-        foreach (CloneItem ci in cloneItems)
-        {
-            SetOpacitySingle(ci.CloneObject, currentOpacity);
-            yield return new WaitForSeconds(0.05f);
-        }
-    }
-
-    IEnumerator CoroutineAlignRotation()
-    {
-        foreach (CloneItem ci in cloneItems)
-        {
-            AlignRotationSingle(ci.CloneObject);
-            yield return new WaitForSeconds(0.05f);
-        }
-    }
-
-
-    IEnumerator CoroutineModifyClone(CloneItem ci, float s, float o, float r)
-    {
-        ci.CloneObject.transform.localPosition = ci.CloneVector * s;
-
-        //currentClone = ci.CloneObject;
-        ci.CloneObject.transform.Rotate(r, 0.0f, 0.0f, Space.World);
-
-        SetOpacitySingle(ci.CloneObject, o);
-        yield return new WaitForSeconds(0.01f);
-    }
 }

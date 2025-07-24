@@ -25,7 +25,7 @@ public class ManualMenu : EditorWindow
         // check if tempTextures folder is empty
         if (IsDirectoryEmpty(tempTexDirectory))     // TRUE if empty
         {
-            GUILayout.Label("TemptTextures folder is empty");
+            GUILayout.Label("TempTextures folder is empty");
         }
         else    // FALSE if not empty
         {

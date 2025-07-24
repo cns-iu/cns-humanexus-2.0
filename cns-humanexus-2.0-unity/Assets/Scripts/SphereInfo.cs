@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 
-// 2025-6-6
+// 2025-7-23
 // - most of this code needs to be in one SINGLE script on databases (scenecontroller)
 // keep ONLY specific data for THIS icosphere!!!
 //
@@ -16,11 +16,7 @@ public class SphereInfo : MonoBehaviour
 {
     public int vertexCount;
     public float cameraZStart; // camera position.z where this icosphere fits on screen
-    public float zoomFactor;
-    //public float startZoom;
-    //public float sizeMultiplier;
-    public float startSize;
-
+    public float startDiameter;
     public List<Vector3> verticesDone = new();
 
     [SerializeField]

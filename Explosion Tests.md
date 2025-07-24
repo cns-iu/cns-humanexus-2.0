@@ -1,23 +1,10 @@
 # Humanexus 2.0 notes
-last update: 2025-6-20
+last update: 2025-7-11
 
-## Unity instructions
+## Unity instructions (setup)
 ## 1 - import jpgs for textures into TempTextures folder
 
-### Method A (not recommended) - use Unity menu 'Humanexus/Texture Sets'
-Runs entirely from Unity Editor scripts. Manageable if <100 assets are needed and a pruned CSV sheet is available.
-
-#### timing:
-- import 10 assets from kidney_10_micro.csv: 37,067ms (37s)
-- import 100 assets from kidney_100_micro.csv: 377,992ms (6.3min)
-- import 1000 assets from kidney_1000_micro.csv: 3,774,997ms (62.9min)
-- imports 1000+ are not practical with this method
-
-(the current version supports CSV sheets with three columns: graphic, ftu, organ)
-
----
-
-### Method B (BEST) - use Unity menu 'Humanexus/Manual Import (with selective image copy using external Python script)
+### Method A (BEST) - use Unity menu 'Humanexus/Manual Import (with selective image copy using external Python script)
 This requires a Python script (copy_files_by_selector.py).
 
 The script requires the following information:
@@ -44,6 +31,21 @@ The other four columns can be used to select subsets from the sheet. This requir
 This selection pattern would yield 29,018 images!
 
 (An empty filter string works like a 'joker' for the respective column)
+
+### Method B (not recommended) - use Unity menu 'Humanexus/Texture Sets'
+Runs entirely from Unity Editor scripts. Manageable if <100 assets are needed and a pruned CSV sheet is available.
+
+#### timing:
+- import 10 assets from kidney_10_micro.csv: 37,067ms (37s)
+- import 100 assets from kidney_100_micro.csv: 377,992ms (6.3min)
+- import 1000 assets from kidney_1000_micro.csv: 3,774,997ms (62.9min)
+- imports 1000+ are not practical with this method
+
+(the current version supports CSV sheets with three columns: graphic, ftu, organ)
+
+---
+
+
 
 ---
 ### Some Statistics
@@ -103,8 +105,8 @@ The SphereController script handles user input in play mode. Its Start() functio
 - *Zoom Factor* = step distance along Z axis the camera moves in/out using arrow up/down
 - *Start Size* = scale of the sphere cloud; calibrated to fit complete sphere in viewport
 
-
-### 3 - press "Play"
+---
+## Unity Instructions in play mode (currently out of commission)
 Available user controls during play:
 
 \<A\>   align all clones (LookAt())
@@ -126,6 +128,13 @@ Available user controls during play:
 \<arrow Up/Down\>   zoom in/out (camera Z)
 
 \<Z\>   reset zoom (Camera Z) position to value set on ico
+
+---
+
+## Unity Instructions to run action sequences
+
+\<C\>   to run a preprogrammed sequence while in playmode
+
 
 
 

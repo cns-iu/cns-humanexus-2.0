@@ -358,8 +358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vertexCount: 162
   cameraZStart: -0.8
-  zoomFactor: 0.2
-  startSize: 0.5
+  startDiameter: 0.5
   verticesDone:
   - {x: 0, y: 0, z: -1}
   - {x: 0.07760664, y: -0.23885271, z: -0.9679497}
@@ -840,8 +839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vertexCount: 2562
   cameraZStart: -3.9
-  zoomFactor: 0.2
-  startSize: 1.8
+  startDiameter: 1.8
   verticesDone:
   - {x: 0, y: 0, z: -1}
   - {x: 0.017862305, y: -0.054975446, z: -0.9983279}
@@ -3564,8 +3562,8 @@ Camera:
   m_GameObject: {fileID: 418453776}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -3701,8 +3699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vertexCount: 642
   cameraZStart: -1.9
-  zoomFactor: 0.2
-  startSize: 0.9
+  startDiameter: 0.9
   verticesDone:
   - {x: 0, y: 0, z: -1}
   - {x: 0.036847733, y: -0.11340759, z: -0.9928651}
@@ -4366,8 +4363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vertexCount: 163842
   cameraZStart: 0
-  zoomFactor: 0
-  startSize: 0
+  startDiameter: 0
   verticesDone: []
   cloneItems: []
 --- !u!4 &795010756 stripped
@@ -4375,37 +4371,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1f904456324234d48b777361c0dfcb49, type: 3}
   m_PrefabInstance: {fileID: 22602950}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1102351554
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1102351555}
-  m_Layer: 0
-  m_Name: Sequencer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1102351555
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1102351554}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.03880332, y: -0.119426355, z: -0.48397484}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1279977659
 GameObject:
   m_ObjectHideFlags: 0
@@ -4451,19 +4416,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c301b15a4a731438ba393b260129324a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cloudDiameterTarget: 0
+  cloudDiameterTimer: 0
+  cloudDiameterSlice: 0
+  cloudItemsOpacityTarget: 0
+  cloudItemsOpacityTimer: 0
+  cloudItemsOpacitySlice: 0
+  cloudItemsRotationTarget: 0
+  cloudItemsRotationTimer: 0
+  cloudItemsRotationSlice: 0
+  cloudRotationSpeedTarget: 0
+  cloudRotationSpeedTimer: 0
+  cloudRotationSpeedSlice: 0
+  cameraZoomTarget: 0
+  cameraZoomTimer: 0
+  cameraZoomSlice: 0
+  lookAtsIndex: 0
   currentZoom: 0
   requestedZoom: 0
-  requestedSizeMultiplier: 0
+  requestedDiameterMultiplier: 0
+  currentDiameterMultiplier: 0
   cameraZStart: 0
-  zoomFactor: 0
-  startSize: 0
+  startDiameter: 0
   currentOpacity: 1
   requestedRotation: 0
   currentRotation: 0
-  lookHere: {fileID: 0}
+  currentLookHere: {fileID: 0}
+  lookAts: []
   sequenceItems: []
   cloneItems: []
   currentSequenceItem: 0
+  lookAtTimer: 0
+  currentCloudRotationSpeed: 0.1
   complexFlag: 0
 --- !u!114 &1279977662
 MonoBehaviour:
@@ -4825,8 +4809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vertexCount: 42
   cameraZStart: -0.4
-  zoomFactor: 0.2
-  startSize: 0.3
+  startDiameter: 0.3
   verticesDone:
   - {x: 0, y: 0, z: -1}
   - {x: 0.16245556, y: -0.49999526, z: -0.8506544}
@@ -4886,7 +4869,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1781799089}
   m_Layer: 0
-  m_Name: LookAtTarget
+  m_Name: LookAtTarget1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4931,8 +4914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vertexCount: 10242
   cameraZStart: -8.3
-  zoomFactor: 0.2
-  startSize: 3.8
+  startDiameter: 3.8
   verticesDone:
   - {x: 0, y: 0, z: -1}
   - {x: 0.008785302, y: -0.027038852, z: -0.9995958}
@@ -15241,7 +15223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   masterDirectory: /Volumes/Little-Cloudy/CNS/CNS new/Humanexus 2/Downloads/micro_ftu22_crop_200k
   lastImportSet: <empty>
-  usedIcosphere: {fileID: 83727542}
+  usedIcosphere: {fileID: 707420583}
 --- !u!1 &2029853893 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9129a3c9a8fc040b484f76136f06c8ba, type: 3}
@@ -15266,8 +15248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vertexCount: 40962
   cameraZStart: -14.2
-  zoomFactor: 0.2
-  startSize: 6.4
+  startDiameter: 6.4
   verticesDone:
   - {x: 0, y: 0, z: -1}
   - {x: 0.0043557063, y: -0.013405724, z: -0.9999006}
@@ -56316,7 +56297,6 @@ SceneRoots:
   - {fileID: 1570824209}
   - {fileID: 1279977660}
   - {fileID: 1908595915}
-  - {fileID: 1102351555}
   - {fileID: 1427691144}
   - {fileID: 93276198}
   - {fileID: 515880361}

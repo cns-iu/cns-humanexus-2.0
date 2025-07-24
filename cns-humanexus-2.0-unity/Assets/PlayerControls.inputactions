@@ -15,7 +15,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ComplexTest",
+                    "name": "ComplexSequence",
                     "type": "Button",
                     "id": "cb326661-e292-4935-b345-b65aa4665adb",
                     "expectedControlType": "",
@@ -33,16 +33,34 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "LookAt",
+                    "name": "LookHere0",
                     "type": "Button",
-                    "id": "35edba74-37b1-488c-bbc2-28496cdf4d9f",
+                    "id": "bf887efb-f900-4420-939f-1a9707a59d8e",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ResetCloud",
+                    "name": "LookHere1",
+                    "type": "Button",
+                    "id": "73bd53ee-902a-4d8d-886b-209c63f111c2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LookHere2",
+                    "type": "Button",
+                    "id": "c4d2e8c8-a7e1-485f-9bc9-b9ead25628ae",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "FullReset",
                     "type": "Button",
                     "id": "8bfdccfd-4e44-4a44-b58c-75ba60e5d09c",
                     "expectedControlType": "",
@@ -78,7 +96,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SphereSizeIncrease",
+                    "name": "SphereDiameterIncrease",
                     "type": "Button",
                     "id": "107e9689-f8b5-4404-8c15-97cb3128600d",
                     "expectedControlType": "",
@@ -87,7 +105,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SphereSizeDecrease",
+                    "name": "SphereDiameterDecrease",
                     "type": "Button",
                     "id": "e0d903dc-9456-4514-98fd-89f26e8b35c6",
                     "expectedControlType": "",
@@ -131,7 +149,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "SphereSizeIncrease",
+                    "action": "SphereDiameterIncrease",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -142,7 +160,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "SphereSizeDecrease",
+                    "action": "SphereDiameterDecrease",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -153,7 +171,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "ResetCloud",
+                    "action": "FullReset",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -219,7 +237,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ComplexTest",
+                    "action": "ComplexSequence",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -258,12 +276,34 @@
                 },
                 {
                     "name": "",
-                    "id": "8a90240d-283e-45e4-9704-0b79fdc18043",
-                    "path": "<Keyboard>/l",
+                    "id": "13fe231d-6279-425c-bede-3de1be21ceed",
+                    "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "LookAt",
+                    "action": "LookHere1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "348a4abf-bc55-4774-b3d5-9b0cbacd0bb1",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "LookHere2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f7b05aa1-8083-4f69-96b7-47f57a635731",
+                    "path": "<Keyboard>/0",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "LookHere0",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
