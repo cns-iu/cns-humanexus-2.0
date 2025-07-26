@@ -34,7 +34,7 @@ Theis sphere of clones is referred to as the "cloud".
 ### A. Real-time live interactions
 While Unity is in play mode, the sphere of clones will be spinning at the default rotation speed.
 
-<img src="images/renal corpuscle sphere_1.gif" height="300">
+<img src="images/renal corpuscle sphere_1.gif">
 
 
 The following keyboard actions are available to modify properties of the sphere in real-time:
@@ -77,7 +77,7 @@ In addition to real-time live control via keyboard the project can be animated b
 
 Playback of a sample sequence:
 
-<video src="images/renal corpuscle sphere.mp4" width="360" height="240" controls></video>
+[video: sample sequence](https://drive.google.com/file/d/1jPe9UNfo2tWCgbdq_idcjZ5OCd_14XCi/view?usp=share_link)
 
 The sequence has to be coded manually by adding a list of instructions at the end of the Start() function of the SphereController class. The Unity project sets up a list called **sequenceItems**. Each action is a single line of code called **SequenceItem**. This is a sample excerpt of the code:
 ```
@@ -687,9 +687,5 @@ Ignore (don't touch):
 - import 10,000 assets from 22ftu folder to Unity TempTextures: 15.1904s + Unity indexing 2-3minutes + ~20min to build scene
 - running copy_files_by_selector.py on 22ftu folder with sample filter settings copied 29,018 images in 45s!
 ***
-
-
-
-
 
 ## 4. Error messages
