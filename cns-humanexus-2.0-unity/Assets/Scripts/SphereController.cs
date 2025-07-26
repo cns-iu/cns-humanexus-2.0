@@ -138,14 +138,21 @@ public class SphereController : MonoBehaviour
         // populate sequenceItems list============================
         // timeDelta since previous action, action type, action magnitude, action duration
 
+        sequenceItems.Add(new SequenceItem(0, "cloud-hide", 0, 0));
+        sequenceItems.Add(new SequenceItem(0, "cloud-items-opacity-init", 0.0f, 0));
+        sequenceItems.Add(new SequenceItem(0, "cloud-rotation-speed", 0.2f, 0));
+        sequenceItems.Add(new SequenceItem(0, "cloud-diameter-init", 0.5f, 0));
+        sequenceItems.Add(new SequenceItem(5, "cloud-show", 0, 0));
+        sequenceItems.Add(new SequenceItem(10, "cloud-diameter-absolute", 1.8f, 200));
+        sequenceItems.Add(new SequenceItem(15, "cloud-items-opacity", 1.0f, 150));
 
-        sequenceItems.Add(new SequenceItem(150, "cloud-rotation-speed", 1.0f, 300));
-        sequenceItems.Add(new SequenceItem(350, "cloud-diameter-absolute", 1.5f, 100));
-        sequenceItems.Add(new SequenceItem(150, "look-here", 2, 200));
-        sequenceItems.Add(new SequenceItem(250, "camera-zoom-absolute", 3.0f, 400));
-        sequenceItems.Add(new SequenceItem(400, "cloud-items-rotation", 60.0f, 200));
-        sequenceItems.Add(new SequenceItem(250, "cloud-items-opacity", 0.1f, 200));
-        sequenceItems.Add(new SequenceItem(400, "full-reset", 0.5f, 200));
+        sequenceItems.Add(new SequenceItem(150, "look-here", 1, 200));
+        sequenceItems.Add(new SequenceItem(100, "camera-zoom-absolute", 3.9f, 400));
+
+
+        //sequenceItems.Add(new SequenceItem(1000, "cloud-items-rotation", 60.0f, 200));
+        //sequenceItems.Add(new SequenceItem(250, "cloud-items-opacity", 0.1f, 200));
+        //sequenceItems.Add(new SequenceItem(400, "full-reset", 0.5f, 200));
 
 
         /*  sequenceItems.Add(new SequenceItem(100, "cloud-hide", 0, 0));

@@ -41,8 +41,8 @@ sex = 4
 # content_organ.csv
 # content_sex.csv
 # content_species.csv
-filter_ftu = "renal corpuscle"       # "intestinal villus"
-filter_organ = ""           # "kidney"
+filter_ftu = ""       # "intestinal villus"
+filter_organ = "small intestine"           # "kidney"
 filter_species = ""         # "zebrafish"
 filter_sex = ""             # "female"
 
@@ -54,7 +54,7 @@ filter_sex = ""             # "female"
 # ico6 = 10,242
 # ico7 = 40,962
 # ico8 = 163,842
-fileLimiter = 642       # limit number of copied files (for testing) use >1 million?
+fileLimiter = 2562       # limit number of copied files (for testing) use >1 million?
 
 
 with open(csv_file_path) as file:
