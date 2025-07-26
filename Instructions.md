@@ -1,5 +1,5 @@
 # Humanexus 2.0 Unity Project Instructions
-last update: 2025-7-24
+last update: 2025-7-26
 
 ## Table of contents
 1. Overview
@@ -693,9 +693,3 @@ Ignore (don't touch):
 
 
 ## 4. Error messages
-
-[actions_camera-zoom-absolute-1.mp4](https://drive.google.com/file/d/1l3QZvUJNAdURULJvUrEyrd_GJwO7OUaH/view?usp=share_link)
-
-<a data-type="iframe" href="[[link to GDrive video](https://drive.google.com/file/d/1l3QZvUJNAdURULJvUrEyrd_GJwO7OUaH/view?usp=share_link)]" data-fancybox="gallery-video">
-
-[![Watch the video](https://drive.google.com/file/d/1l3QZvUJNAdURULJvUrEyrd_GJwO7OUaH/view?usp=share_link)](https://drive.google.com/file/d/1l3QZvUJNAdURULJvUrEyrd_GJwO7OUaH/view?usp=share_link)
