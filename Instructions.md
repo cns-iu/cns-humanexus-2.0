@@ -695,3 +695,5 @@ Ignore (don't touch):
 ## 4. Error messages
 
 [actions_camera-zoom-absolute-1.mp4](https://drive.google.com/file/d/1l3QZvUJNAdURULJvUrEyrd_GJwO7OUaH/view?usp=share_link)
+
+<a data-type="iframe" href="[[link to GDrive video](https://drive.google.com/file/d/1l3QZvUJNAdURULJvUrEyrd_GJwO7OUaH/view?usp=share_link)]" data-fancybox="gallery-video">
