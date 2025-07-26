@@ -71,10 +71,6 @@ Look at gameobject <n\> from the lookAts list (this list is defined in Start() o
 
 ---
 
-
-https://github.com/user-attachments/assets/0495cd01-bd06-40cb-9d08-4f0379e489b6
-
-
 ### B. Sequencer
 
 In addition to real-time live control via keyboard the project can be animated by a preprogrammed sequence of precisely timed actions called a **Sequence**. The inspiration for this comes from the MIDI protocol, which has been in use on electronic instruments for decades. This makes it possible to apply a list of animation actions, precisely timed.
