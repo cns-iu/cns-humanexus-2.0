@@ -116,7 +116,8 @@ p2 = no duration, applied immediately, parameter ignored
 ```
         SequenceItem(0, "cloud-diameter-init", 0.1f, 0)
 ```
-<video src="images/actions_cloud_diameter_init.mp4" width="360" height="240" controls></video>
+
+[video: actions_cloud_diameter_init](https://drive.google.com/file/d/1K18sT7S9ePF9qZQrMpXbpe5Z8IWh0NIK/view?usp=share_link)
 
 Sets the cloud diameter to 0.1 immediately without transition. 
 
@@ -130,7 +131,7 @@ p2 = no duration, applied immediately, parameter ignored
 ```
         SequenceItem(0, "cloud-items-opacity-init", 0.5f, 0)
 ```
-<video src="images/actions_cloud_items_opacity_init.mp4" width="360" height="240" controls></video>
+[video: actions_cloud_items_opacity_init](https://drive.google.com/file/d/1cCse4Rbh-3IAj6iXVHc03HAeIb7XtsjZ/view?usp=share_link)
 
 ---
 
@@ -140,7 +141,8 @@ p2 = no duration, applied immediately, parameter ignored
 ```
          SequenceItem(100, "cloud-items-rotation-init", 15.0f, 0)
 ```
-<video src="images/actions_cloud-items-rotation-init.mp4" width="360" height="240" controls></video>
+
+[video: actions_cloud-items-rotation-init](https://drive.google.com/file/d/1x4ql76Oy-BkUO4AjNx6_KlMIYdx2RUsR/view?usp=share_link)
 
 As default the image panels (or clones) are turned so that they "look" towards the center of the cloud (using the "look-here" action they can be made to look at any gameobject in the scene). The "LookAt" rotation is the "zero rotation" state. Any action that applies a rotation rotates each clone by <float\> amount of degrees around the X axis.
 
@@ -164,7 +166,8 @@ p2 = duration (0....n)
 ```
         SequenceItem(50, "cloud-diameter-relative", 0.3f, 80)
 ```
-<video src="images/actions_cloud-diameter-relative.mp4" width="360" height="240" controls></video>
+
+[video: actions_cloud-diameter-relative](https://drive.google.com/file/d/1JoWaURiAZxQhdMApFRkQpc90w60aYWH1/view?usp=share_link)
 
 Adds the positive or negative value in p1 to current cloud dimension. Change takes place gradually over duration in p2.
 
@@ -189,7 +192,7 @@ p2 = ignored
         SequenceItem(100, "cloud-diameter-reset", 0.3f, 80)
 ```
 
-<video src="images/actions_cloud-diameter-reset.mp4" width="360" height="240" controls></video>
+[video: actions_cloud-diameter-reset](https://drive.google.com/file/d/1iVj_sLFr44w73_fTvXZoZjWr06bLxjBJ/view?usp=share_link)
 
 Resets cloud diameter to default (startDimension) immediately. Alternatively this gives the same result:
 ```
@@ -207,7 +210,8 @@ p2 = duration (0....n)
        SequenceItem(200, "cloud-items-opacity", 1.0f, 100)
 ```
 
-<video src="images/actions_cloud-items-opacity.mp4" width="360" height="240" controls></video>
+
+[video: actions_cloud-items-opacity](https://drive.google.com/file/d/1cCse4Rbh-3IAj6iXVHc03HAeIb7XtsjZ/view?usp=share_link)
 
 Opacity is in a range of 0.0 (100% transparent) to 1.0 (fully opaque). p1 is not range-checked.
 
@@ -221,7 +225,7 @@ p2 = duration (0....n)
         SequenceItem(50, "cloud-items-rotation", -45.0f, 80)
 ```
 
-<video src="images/actions_cloud-items-rotation.mp4" width="360" height="240" controls></video>
+[video: actions_cloud-items-rotation](https://drive.google.com/file/d/10QCFoRt-Ws8nPBzXybOlQdTyEbRy23mh/view?usp=share_link)
 
 ---
 
@@ -258,7 +262,7 @@ p2 = duration (0....n)
         SequenceItem(250, "cloud-rotation-speed", 0.1f, 200)
 ```
 
-<video src="images/actions_cloud-rotation-speed.mp4" width="360" height="240" controls></video>
+[video: actions_cloud-rotation-speed](https://drive.google.com/file/d/1l3QZvUJNAdURULJvUrEyrd_GJwO7OUaH/view?usp=share_link)
 
 As default the cloud is slowly rotating at a rate of 0.1 degrees per update. This shows clearly that playmode is on. With this action rotation speed can be set to a specific value gradually of p2 Update() cycles. 
 
@@ -286,7 +290,7 @@ p2 = duration (p2 calls to Update())
 ```
         SequenceItem(50, "camera-zoom-relative", 1.8f, 200)
 ```
-<video src="images/actions_camera-zoom-relative.mp4" width="360" height="240" controls></video>
+[video: actions_camera-zoom-relative](https://drive.google.com/file/d/17UlsfA3szPMre3g6FDNAYFy9bSkwnL7p/view?usp=share_link)
 
 The example starts from a zoom of -1.9; by adding p1, camera will gradually zoom in until it reaches -0.1. 
 
@@ -300,7 +304,7 @@ p2 = duration (p2 calls to Update())
         SequenceItem(50, "camera-zoom-absolute", 2.0f, 200)
 ```
 
-<video src="images/actions_camera-zoom-absolute.mp4" width="360" height="240" controls></video>
+[video: actions_camera-zoom-absolute](https://drive.google.com/file/d/13_CXNRgMraW6rcznKec3dO9DH9twWdCN/view?usp=share_link)
 
 The camera is always looking at the center of the cloud. Here the zoom value goes from -1.9 to 2.0, flying the camera through the center of the cloud.
 
@@ -313,7 +317,8 @@ p2 = duration (p2 calls to Update())
 ```
         SequenceItem(50, "look-here", 1, 200)
 ```
-<video src="images/actions_look-here.mp4" width="360" height="240" controls></video>
+
+[video: actions_look-here](https://drive.google.com/file/d/1wfpsnxRhWgG6ELn9pLdYB1i-_N049i11/view?usp=share_link)
 
 As default the clones in the cloud look towards the cloud (icosphere) center; this produces the shperical shell. The example starts with the clones looking at the cloud center, then slowly turn to look directly at the camera object (which is item 1 in the lookAts list). The "lookAts" list contains three gameobjects as alternate look-at goals (more could be added).
 
@@ -332,7 +337,8 @@ p2 = ignored
 ```
         SequenceItem(100, "icosphere-show", 0, 0)
 ```
-<video src="images/actions_icosphere-show.mp4" width="360" height="240" controls></video>
+
+[video: actions_icosphere-show](https://drive.google.com/file/d/1CvHfGF12KhJUuewxknrUnRGrLO2cMATo/view?usp=share_link)
 
 Unity builds the cloud sphere by placing clones (very thin square gameobjects) at the vertices of an [icosphere](https://en.wikipedia.org/wiki/Geodesic_polyhedron). As a default the icosphere for a scene is hidden. This action can show it. It's diameter is always 1.0.
 
