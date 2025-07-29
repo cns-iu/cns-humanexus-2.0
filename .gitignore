@@ -72,10 +72,9 @@ crashlytics-build.properties
 [Aa]ssets/[Ss]treamingAssets/aa/*
 
 # TempTextures folder
-[Aa]ssets/[Tt]empTextures/
-[Aa]ssets/[Tt]empMaterials/
-[Aa]ssets/[Tt]empTextures.meta
-[Aa]ssets/[Tt]empMaterials.meta
 
-[Aa]ssets/[Tt]empTest/
-[Aa]ssets/[Tt]empTest.meta
+*.meta
+
+/cns-humanexus-2.0-unity/Assets/TempTest
+/cns-humanexus-2.0-unity/Assets/TempTextures
+/cns-humanexus-2.0-unity/Assets/TempMaterials
