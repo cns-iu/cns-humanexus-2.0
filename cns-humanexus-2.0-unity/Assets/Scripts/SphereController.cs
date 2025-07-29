@@ -10,7 +10,7 @@ using UnityEditor.ShaderGraph.Internal;
 using UnityEngine.TextCore.Text;
 using System.Collections; */
 
-// 2025-7-28
+// 2025-7-29
 
 // 4. add actions to affect individual clones (use a marker flag on clonmeInfo?)
 
