@@ -74,5 +74,5 @@ crashlytics-build.properties
 # TempTextures folder
 [Aa]ssets/[Tt]empTextures/*
 [Aa]ssets/[Tt]empMaterials/*
-[Aa]ssets/[Tt]empTextures.*
-[Aa]ssets/[Tt]empMaterials.*
+[Aa]ssets/[Tt]empTextures.meta
+[Aa]ssets/[Tt]empMaterials.meta
