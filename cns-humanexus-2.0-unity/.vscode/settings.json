@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "cns-humanexus-2.0-unity.sln"
+    "dotnet.defaultSolution": "cns-humanexus-2.0-unity.sln",
+    "git.ignoreLimitWarning": true
 }

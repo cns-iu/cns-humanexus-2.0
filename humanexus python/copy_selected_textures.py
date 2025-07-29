@@ -54,7 +54,7 @@ filter_sex = ""             # "female"
 # ico6 = 10,242
 # ico7 = 40,962
 # ico8 = 163,842
-fileLimiter = 2562       # limit number of copied files (for testing) use >1 million?
+fileLimiter = 42       # limit number of copied files (for testing) use >1 million?
 
 
 with open(csv_file_path) as file:

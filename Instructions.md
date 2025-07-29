@@ -16,7 +16,9 @@ last update: 2025-7-26
     - C. Unity editor scripts for asset management
     - D. Details for reference
 
-4. Error messages
+4. Output using Unity Recorder
+
+5. Error messages
 
 ---
 ## 1. Overview
@@ -694,4 +696,18 @@ Ignore (don't touch):
 - running copy_files_by_selector.py on 22ftu folder with sample filter settings copied 29,018 images in 45s!
 ***
 
-## 4. Error messages
+
+## 4. Output using Unity Recorder
+- to output to video without dropped frames due to speed limitations use Unity Recorder 
+- add recorder Image Sequence, to PNG format
+- on recording camera (MainCamera) use solid black background and default camera settings
+
+- for transparent background turn off HDR Rendering (on MainCamera-Output)
+- Main Camera-Rendering->Culling Occlusion set to ONLY render "spheres" layer
+- put icosphere and all node objects on layer "spheres" (if image set is deleted these objects are deleted, have to add "spheres" layer on new set!)
+- 
+
+
+
+
+## 5. Error messages

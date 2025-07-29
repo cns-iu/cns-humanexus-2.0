@@ -10,7 +10,7 @@ using UnityEditor.ShaderGraph.Internal;
 using UnityEngine.TextCore.Text;
 using System.Collections; */
 
-// 2025-7-23
+// 2025-7-28
 
 // 4. add actions to affect individual clones (use a marker flag on clonmeInfo?)
 
@@ -135,9 +135,17 @@ public class SphereController : MonoBehaviour
         currentLookHere = lookAts[lookAtsIndex];
         mainCamera.transform.LookAt(currentLookHere.transform);   // look at item 0 in lookAts list
 
+        PopulateSequence();
+
+        //complexFlag = true;
+    }
+
+    void PopulateSequence()
+    {
         // populate sequenceItems list============================
         // timeDelta since previous action, action type, action magnitude, action duration
 
+        // sequence 1
         sequenceItems.Add(new SequenceItem(0, "cloud-hide", 0, 0));
         sequenceItems.Add(new SequenceItem(0, "cloud-items-opacity-init", 0.0f, 0));
         sequenceItems.Add(new SequenceItem(0, "cloud-rotation-speed", 0.2f, 0));
@@ -149,38 +157,8 @@ public class SphereController : MonoBehaviour
         sequenceItems.Add(new SequenceItem(150, "look-here", 1, 200));
         sequenceItems.Add(new SequenceItem(100, "camera-zoom-absolute", 3.9f, 400));
 
-
-        //sequenceItems.Add(new SequenceItem(1000, "cloud-items-rotation", 60.0f, 200));
-        //sequenceItems.Add(new SequenceItem(250, "cloud-items-opacity", 0.1f, 200));
-        //sequenceItems.Add(new SequenceItem(400, "full-reset", 0.5f, 200));
-
-
-        /*  sequenceItems.Add(new SequenceItem(100, "cloud-hide", 0, 0));
-         sequenceItems.Add(new SequenceItem(50, "icosphere-show", 0, 0));
-         sequenceItems.Add(new SequenceItem(200, "icosphere-hide", 0, 0));
-
-         sequenceItems.Add(new SequenceItem(100, "cloud-show", 0, 0));
-         sequenceItems.Add(new SequenceItem(100, "cloud-diameter-absolute", 1.0f, 100));
-
-         sequenceItems.Add(new SequenceItem(150, "icosphere-hide", 0, 0));
-         sequenceItems.Add(new SequenceItem(100, "cloud-items-rotation", 60.0f, 200));
-
-         sequenceItems.Add(new SequenceItem(200, "cloud-diameter-absolute", 0.5f, 200));
-         sequenceItems.Add(new SequenceItem(200, "look-here", 1, 200));
-
-         sequenceItems.Add(new SequenceItem(200, "cloud-diameter-absolute", 1.2f, 200));
-
-         sequenceItems.Add(new SequenceItem(200, "look-here", 2, 200));
-
-         sequenceItems.Add(new SequenceItem(150, "cloud-rotation-speed", 0.5f, 200));
-         sequenceItems.Add(new SequenceItem(150, "cloud-diameter-absolute", startDiameter, 100));
-         sequenceItems.Add(new SequenceItem(150, "look-here", 0, 200));
-
-         sequenceItems.Add(new SequenceItem(200, "cloud-items-opacity", 0.0f, 200)); */
-
         sequenceItems.Add(new SequenceItem(200, "stop", 0, 0));
-
-        //complexFlag = true;
+        // end sequence 1
 
     }
 
