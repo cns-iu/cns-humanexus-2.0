@@ -76,3 +76,6 @@ crashlytics-build.properties
 [Aa]ssets/[Tt]empMaterials/**
 [Aa]ssets/[Tt]empTextures.meta
 [Aa]ssets/[Tt]empMaterials.meta
+
+[Aa]ssets/[Tt]empTest/**
+[Aa]ssets/[Tt]empTest.meta
