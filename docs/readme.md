@@ -1,4 +1,5 @@
 # Metadata for Humanexus 2.0
+Todd Theriault
 
 Example text you can build on:
 
