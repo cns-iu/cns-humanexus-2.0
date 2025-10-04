@@ -1,5 +1,5 @@
 # Metadata for Humanexus 2.0
-Todd Theriault
+
 
 Example text you can build on:
 
@@ -11,6 +11,7 @@ This document demonstrates various **Markdown** features.
 
 ## Headings
 
+# Title
 # H1 Heading
 ## H2 Heading
 ### H3 Heading
