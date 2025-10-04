@@ -1,7 +1,15 @@
 # Metadata for Humanexus 2.0
 
+# Credit & Cast
 
-Example text you can build on:
+- Producer (Initial Story / Guidance / Resources): Katy Börner (Indiana University)
+- Creative Director (Animation / Art / Design / Editing): Ushma Patel (Indiana University)
+- HRA Models: Andreas Bueckle (Indiana University)
+- Sphere Animation Programmer: Peter Kienle (Indiana University)
+- Heliosweb Programmer: Filipi Nascimento Silva (Indiana University)
+- Sound Artist (Music / Sound Track): Norbert Herber (Indiana University)
+- NLM Publications Images Extractions: Kiki Kong (Indiana University)
+- Narrative Consultant: Todd Theriault (Indiana University)
 
 # Markdown Showcase
 
