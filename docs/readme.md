@@ -24,12 +24,12 @@ This work has been funded by the NIH Common Fund through the Office of Strategic
 
 - Anatomical images from the Notebooks of Leonardo da Vinci (1490, 1506–13).
 - Mosaic, sphere, and grid features around 400,000 images from National Library of Medicine publications. 
-- Featured images from research groups funded by HuBMAP (The Human Biomolecular Atlas Program) (2025), https://hubmapconsortium.org/image-of-the-week.
+- Featured images from research groups funded by HuBMAP (The Human Biomolecular Atlas Program) (2025), [https://hubmapconsortium.org/image-of-the-week] (https://hubmapconsortium.org/image-of-the-week).
   - 3D map of multiscalar neurovascular connections between nephrons of the human kidney across the lifespan from Dr. Sanjay Jain and Dr. Gloria Pryhuber. 
   - 3D, 50x light sheet fluorescence microscopy (LSFM) image of an adult human kidney cortex from Dr. Sanjay Jain and Liam McLaughlin.
   - CODEX image of the small intestine Joanna Bi and Dr. Bei Wei.
-- 3D HRA Pop Helios animation uses open-access data from the GTEx v9 release. https://gtexportal.org/home/downloads/adult-gtex/single_cell. 
-- Functional Tissue Unit images from https://humanatlas.io/2d-ftu-illustrations?releaseVersion=2.3. 
+- 3D HRA Pop Helios animation uses open-access data from the GTEx v9 release. [https://gtexportal.org/home/downloads/adult-gtex/single_cell] (https://gtexportal.org/home/downloads/adult-gtex/single_cell). 
+- Functional Tissue Unit images from [https://humanatlas.io/2d-ftu-illustrations?releaseVersion=2.3]. 
 
 # References
 
