@@ -2,15 +2,16 @@
 
 ## Credits
 
-- Producer (Initial Story / Guidance / Resources): Katy Börner (Indiana University)
-- Creative Director (Animation / Art / Design / Editing): Ushma Patel (Indiana University)
-- HRA Models: Andreas Bueckle (Indiana University)
-- Sphere Animation Programmer: Peter Kienle (Indiana University)
-- Heliosweb Programmer: Filipi Nascimento Silva (Indiana University)
-- Sound Artist (Music / Sound Track): Norbert Herber (Indiana University)
-- Programmer: Parth Godse (Indiana University)
-- NLM Publications Images Extractions: Kiki Kong (Indiana University)
-- Narrative Consultant: Todd Theriault (Indiana University)
+- Producer (Initial Story / Guidance / Resources): Katy Börner, Luddy School of Informatics, Computing, and Engineering, Indiana University
+- Director (Animation / Art / Design / Editing): Ushma Patel, Indiana University
+- Animator/Programmer: Andreas Bueckle, Luddy School of Informatics, Computing, and Engineering, Indiana University
+- Story Advisor: Todd N. Theriault, Luddy School of Informatics, Computing, and Engineering, Indiana University
+- Sound Artist (Music / Soundtrack): Norbert Herber, Department of Telecommunications, Indiana University
+- Sphere Animation Programmer: Peter Kienle, Luddy School of Informatics, Computing, and Engineering, Indiana University
+- Helios-Web Programmer: Filipi Nascimento Silva, Indiana University Network Science Institute (IUNI)
+- Programmer: Parth Godse, Luddy School of Informatics, Computing, and Engineering, Indiana University
+- Programmer: Kiki Kong, Luddy School of Informatics, Computing, and Engineering, Indiana University
+-2D FTUs Programmer: Supriya Bidanta, Luddy School of Informatics, Computing, and Engineering, Indiana University
 
 ## Overview
 
@@ -18,13 +19,13 @@ This short animation is both an exciting journey through the human body and a vi
 
 ## Sponsor
 
-This work has been funded by the NIH Common Fund through the Office of Strategic Coordination/Office of the NIH Director under awards OT2OD033756 and OT2OD026671.
+This work has been funded by the NIH Common Fund through the Office of Strategic Coordination / Office of the NIH Director under awards OT2OD033756 and OT2OD026671.
 
 ## Data and Image Credits
 
 - Anatomical images from the Notebooks of Leonardo da Vinci (1490, 1506–13).
 - Mosaic, sphere, and grid features around 400,000 images from National Library of Medicine publications. 
-- Featured images from research groups funded by HuBMAP (The Human Biomolecular Atlas Program) (2025), [https://hubmapconsortium.org/image-of-the-week] (https://hubmapconsortium.org/image-of-the-week).
+- Featured images from research groups funded by HuBMAP (The Human Biomolecular Atlas Program) (2025), [https://hubmapconsortium.org/image-of-the-week](https://hubmapconsortium.org/image-of-the-week).
   - 3D map of multiscalar neurovascular connections between nephrons of the human kidney across the lifespan from Dr. Sanjay Jain and Dr. Gloria Pryhuber. 
   - 3D, 50x light sheet fluorescence microscopy (LSFM) image of an adult human kidney cortex from Dr. Sanjay Jain and Liam McLaughlin.
   - CODEX image of the small intestine Joanna Bi and Dr. Bei Wei.
