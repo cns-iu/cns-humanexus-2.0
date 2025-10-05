@@ -28,16 +28,16 @@ This work has been funded by the NIH Common Fund through the Office of Strategic
   - 3D map of multiscalar neurovascular connections between nephrons of the human kidney across the lifespan from Dr. Sanjay Jain and Dr. Gloria Pryhuber. 
   - 3D, 50x light sheet fluorescence microscopy (LSFM) image of an adult human kidney cortex from Dr. Sanjay Jain and Liam McLaughlin.
   - CODEX image of the small intestine Joanna Bi and Dr. Bei Wei.
-- 3D HRA Pop Helios animation uses open-access data from the GTEx v9 release. [https://gtexportal.org/home/downloads/adult-gtex/single_cell] (https://gtexportal.org/home/downloads/adult-gtex/single_cell). 
-- Functional Tissue Unit images from [https://humanatlas.io/2d-ftu-illustrations?releaseVersion=2.3]. 
+- 3D HRA Pop Helios animation uses open-access data from the GTEx v9 release. [https://gtexportal.org/home/downloads/adult-gtex/single_cell](https://gtexportal.org/home/downloads/adult-gtex/single_cell). 
+- Functional Tissue Unit images from [https://humanatlas.io/2d-ftu-illustrations?releaseVersion=2.3](https://humanatlas.io/2d-ftu-illustrations?releaseVersion=2.3). 
 
 # References
 
-Bidanta, Supriya, Katy Börner, Bruce W. Herr II, Ellen M. Quardokus, Marcell Nagy, Katherine S. Gustilo, Rachel Bajema, Elizabeth Maier, Roland Molontay, and Griffin Weber. 2025. "Functional Tissue Units in the Human Reference Atlas." *Nature Communications* 16: 1526. https://doi-org.proxyiub.uits.iu.edu/10.1038/s41467-024-54591-6. 
+Bidanta, Supriya, Katy Börner, Bruce W. Herr II, Ellen M. Quardokus, Marcell Nagy, Katherine S. Gustilo, Rachel Bajema, Elizabeth Maier, Roland Molontay, and Griffin Weber. 2025. "Functional Tissue Units in the Human Reference Atlas." *Nature Communications* 16: 1526. [https://doi-org.proxyiub.uits.iu.edu/10.1038/s41467-024-54591-6](https://doi-org.proxyiub.uits.iu.edu/10.1038/s41467-024-54591-6). 
 
-Patel, Ushma, Griffin Weber, Katherine S. Gustilo, and Katy Börner. 2023. *Human Reference Atlas: Vasculature Common Coordinate Framework (VCCF)*. https://www.youtube.com/watch?v=zQeMgxo8n_U. 
+Patel, Ushma, Griffin Weber, Katherine S. Gustilo, and Katy Börner. 2023. *Human Reference Atlas: Vasculature Common Coordinate Framework (VCCF)*. [https://www.youtube.com/watch?v=zQeMgxo8n_U](https://www.youtube.com/watch?v=zQeMgxo8n_U). 
 
-Patel, Ushma, John W. Hickey, and Katy Börner. 2025. *Human Reference Atlas: Define Yourself—The Human Gut Atlas Story*. https://www.youtube.com/watch?v=_H3S5HeFFPE. 
+Patel, Ushma, John W. Hickey, and Katy Börner. 2025. *Human Reference Atlas: Define Yourself—The Human Gut Atlas Story*. [https://www.youtube.com/watch?v=_H3S5HeFFPE](https://www.youtube.com/watch?v=_H3S5HeFFPE). 
 
 Sappol, Michael, ed. 2011. *Hidden Treasure: The National Library of Medicine*. New York: Blast Books. ISBN 978-0-922233-42-7.
 
