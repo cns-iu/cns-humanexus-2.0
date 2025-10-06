@@ -32,6 +32,23 @@ This work has been funded by the NIH Common Fund through the Office of Strategic
 - 3D HRA Pop Helios animation uses open-access data from the GTEx v9 release. [https://gtexportal.org/home/downloads/adult-gtex/single_cell](https://gtexportal.org/home/downloads/adult-gtex/single_cell). 
 - Functional Tissue Unit images from [https://humanatlas.io/2d-ftu-illustrations?releaseVersion=2.3](https://humanatlas.io/2d-ftu-illustrations?releaseVersion=2.3). 
 
+# Code
+
+## FTU Images Extraction
+
+Parsed NLM publications and extracted 821,642 images related to the 22 FTUs at [https://humanatlas.io/2d-ftu-illustrations](https://humanatlas.io/2d-ftu-illustrations). Using Vision LLM to classify images into
+- statistical image
+- microscopy image
+- schematics image
+- 3D structure diagram
+- chemical structure diagram
+- mathematical expression
+These multipanel images were then separated into around 400k single pane images using a simple Canny algorithm of edge and contour detection using OpenCV library. The code for this is available at this [Github](https://github.com/cns-iu/cns-humanexus-2.0/tree/main/2.PubMed%20Extract%20Script). These images were later used to create visualizations and animations of Spheres [(Code)](https://github.com/cns-iu/cns-humanexus-2.0), Mosaics [(Code)](https://github.com/cns-iu/cns-humanexus-2.0/tree/main/3b-Mosaic), and a grid [(Code)](https://github.com/cns-iu/cns-humanexus-2.0/tree/main/3a-Grid).
+
+## NLM Book Images
+
+*Hidden Treasure: The National Library of Medicine* contains images along with information from where they are sourced by artists around the world throughout decades. These images were extracted and used for telling a story in this project about human body evolution. You can find the code for the script here [Code](https://github.com/cns-iu/cns-humanexus-2.0/tree/main/1.NLM_extract_script).
+
 # References
 
 Bidanta, Supriya, Katy Börner, Bruce W. Herr II, Ellen M. Quardokus, Marcell Nagy, Katherine S. Gustilo, Rachel Bajema, Elizabeth Maier, Roland Molontay, and Griffin Weber. 2025. "Functional Tissue Units in the Human Reference Atlas." *Nature Communications* 16: 1526. [https://doi-org.proxyiub.uits.iu.edu/10.1038/s41467-024-54591-6](https://doi-org.proxyiub.uits.iu.edu/10.1038/s41467-024-54591-6). 
