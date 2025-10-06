@@ -21,9 +21,20 @@ This short animation is both an exciting journey through the human body and a vi
 
 This work has been funded by the NIH Common Fund through the Office of Strategic Coordination / Office of the NIH Director under awards OT2OD033756 and OT2OD026671.
 
-# Data and Image Credits
+# Data
 
-- Anatomical images from the Notebooks of Leonardo da Vinci (1490, 1506–13).
+## Da Vinci Drawings
+
+Anatomical images from the Notebooks of Leonardo da Vinci (1490, 1506–13).
+
+## FTU Images
+
+Extracted images from the multipanel NLM publications can be found at [Data](https://drive.google.com/drive/u/0/folders/1U59da-zREHxIQsuy1CMMXTsmOgSiymjB).
+
+## 2D FTUs
+
+A functional tissue unit (FTU) is the smallest tissue organization that performs a unique physiologic function and is replicated multiple times in a whole organ. Functional tissue unit illustrations may be used to explore cell type populations by gene, protein, and lipid biomarkers in the Functional Tissue Unit (FTU) Explorer app.
+
 - Mosaic, sphere, and grid features around 400,000 images from National Library of Medicine publications. 
 - Featured images from research groups funded by HuBMAP (The Human Biomolecular Atlas Program) (2025), [https://hubmapconsortium.org/image-of-the-week](https://hubmapconsortium.org/image-of-the-week).
   - 3D map of multiscalar neurovascular connections between nephrons of the human kidney across the lifespan from Dr. Sanjay Jain and Dr. Gloria Pryhuber. 
