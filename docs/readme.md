@@ -1,5 +1,7 @@
 # Metadata for Humanexus 2.0
 
+# Description
+
 ## Credits
 
 - Producer (Initial Story / Guidance / Resources): Katy Börner, Luddy School of Informatics, Computing, and Engineering, Indiana University
@@ -35,13 +37,11 @@ Extracted images from the multipanel NLM publications can be found at [Data](htt
 
 A functional tissue unit (FTU) is the smallest tissue organization that performs a unique physiologic function and is replicated multiple times in a whole organ. Functional tissue unit illustrations may be used to explore cell type populations by gene, protein, and lipid biomarkers in the Functional Tissue Unit (FTU) Explorer app.
 
-- Mosaic, sphere, and grid features around 400,000 images from National Library of Medicine publications. 
-- Featured images from research groups funded by HuBMAP (The Human Biomolecular Atlas Program) (2025), [https://hubmapconsortium.org/image-of-the-week](https://hubmapconsortium.org/image-of-the-week).
-  - 3D map of multiscalar neurovascular connections between nephrons of the human kidney across the lifespan from Dr. Sanjay Jain and Dr. Gloria Pryhuber. 
-  - 3D, 50x light sheet fluorescence microscopy (LSFM) image of an adult human kidney cortex from Dr. Sanjay Jain and Liam McLaughlin.
-  - CODEX image of the small intestine Joanna Bi and Dr. Bei Wei.
-- 3D HRA Pop Helios animation uses open-access data from the GTEx v9 release. [https://gtexportal.org/home/downloads/adult-gtex/single_cell](https://gtexportal.org/home/downloads/adult-gtex/single_cell). 
-- Functional Tissue Unit images from [https://humanatlas.io/2d-ftu-illustrations?releaseVersion=2.3](https://humanatlas.io/2d-ftu-illustrations?releaseVersion=2.3). 
+The 2D FTUs can be found at the HRA [website](https://humanatlas.io/2d-ftu-illustrations?releaseVersion=2.3).
+
+## 3D GLB Files
+
+The HRA 3D Reference Object Library provides anatomically correct reference organs. The organs are developed by 3D medical illustrators and approved by subject matter experts for organs. The organs can be downloaded from the HRA Portal [(https://humanatlas.io/3d-reference-library)](https://humanatlas.io/3d-reference-library) in the GLB format [(https://www.khronos.org/gltf)](https://www.khronos.org/gltf).
 
 # Code
 
@@ -59,6 +59,17 @@ These multipanel images were then separated into around 400k single pane images 
 ## NLM Book Images
 
 *Hidden Treasure: The National Library of Medicine* contains images along with information from where they are sourced by artists around the world throughout decades. These images were extracted and used for telling a story in this project about human body evolution. You can find the code for the script here [Code](https://github.com/cns-iu/cns-humanexus-2.0/tree/main/1.NLM_extract_script).
+
+## Images of the Week
+
+HuBMAP (The Human Biomolecular Atlas Program) features an image each week from one of their funded research groups. Three images, all from 2025, appear in the animation:
+1. The 3D map of multiscalar neurovascular connections between nephrons of the human kidney across the lifespan from Dr.Sanjay Jain and Dr. Gloria Pryhuber ([Image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg)).
+2. The 3D, 50x light sheet fluorescence microscopy (LSFM) image of an adult human kidney cortex from Dr. Sanjay Jain and Liam McLaughlin ([Image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg)).
+3. The CODEX image of the small intestine from Joanna Bi and Dr. Bei Wei ([(Image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg)).
+
+## HRA Pop Helios
+
+The 3d HRA Pop Helios animation was done using open access data from GTEx v9 release from the project named “Adult GTEx” -> “Single cell.” This data can be downloaded from [source](https://gtexportal.org/home/downloads/adult-gtex/single_cell). Currently we are using GTEx 8 tissues snRNA-Seq Data. The program basically creates a k-nearest neighbors network for biological data and prepares it to be exported to Helios-Web [(heliosweb.io)]. This program is accessible at Github. It comes along with a readme file with detailed instructions on how to access the data and follow the steps to get the 3d model.
 
 # References
 
