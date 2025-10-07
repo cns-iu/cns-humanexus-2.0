@@ -55,29 +55,29 @@ The HRA 3D Reference Object Library provides anatomically correct reference orga
 
 ## FTU Images Extraction
 
-Parsed NLM publications and extracted 821,642 images related to the 22 FTUs at [https://humanatlas.io/2d-ftu-illustrations](https://humanatlas.io/2d-ftu-illustrations). Using Vision LLM to classify images into
-- statistical image
-- microscopy image
-- schematics image
-- 3D structure diagram
-- chemical structure diagram
-- mathematical expression
+Parsed NLM publications and extracted 821,642 images related to the 22 FTUs at [https://humanatlas.io/2d-ftu-illustrations](https://humanatlas.io/2d-ftu-illustrations). Vision LLM was used to classify images into
+- statistical images
+- microscopy images
+- schematics images
+- 3D structure diagrams
+- chemical structure diagrams
+- mathematical expressions
 These multipanel images were then separated into around 400k single pane images using a simple Canny algorithm of edge and contour detection using OpenCV library. The code for this is available at this [Github](https://github.com/cns-iu/cns-humanexus-2.0/tree/main/2.PubMed%20Extract%20Script). These images were later used to create visualizations and animations of Spheres ([Code](https://github.com/cns-iu/cns-humanexus-2.0)), Mosaics ([Code](https://github.com/cns-iu/cns-humanexus-2.0/tree/main/3b-Mosaic)), and a grid ([Code](https://github.com/cns-iu/cns-humanexus-2.0/tree/main/3a-Grid)).
 
 ## NLM Book Images
 
-*Hidden Treasure: The National Library of Medicine* contains images along with information from where they are sourced by artists around the world throughout decades. These images were extracted and used for telling a story in this project about human body evolution. You can find the code for the script here [Code](https://github.com/cns-iu/cns-humanexus-2.0/tree/main/1.NLM_extract_script).
+*Hidden Treasure: The National Library of Medicine* contains images along with information from where they are sourced by artists around the world throughout decades. These images were extracted and used for telling a story in this project about human body evolution. You can find the [code for the script here](https://github.com/cns-iu/cns-humanexus-2.0/tree/main/1.NLM_extract_script).
 
 ## Images of the Week
 
 HuBMAP (The Human Biomolecular Atlas Program) features an image each week from one of their funded research groups. Three images, all from 2025, appear in the animation:
-1. The 3D map of multiscalar neurovascular connections between nephrons of the human kidney across the lifespan from Dr.Sanjay Jain and Dr. Gloria Pryhuber ([Image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg)).
-2. The 3D, 50x light sheet fluorescence microscopy (LSFM) image of an adult human kidney cortex from Dr. Sanjay Jain and Liam McLaughlin ([Image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg)).
-3. The CODEX image of the small intestine from Joanna Bi and Dr. Bei Wei ([Image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg)).
+1. The [3D map](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg) of multiscalar neurovascular connections between nephrons of the human kidney across the lifespan from Dr.Sanjay Jain and Dr. Gloria Pryhuber.
+2. The 3D, 50x light sheet fluorescence microscopy (LSFM) [image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg) of an adult human kidney cortex from Dr. Sanjay Jain and Liam McLaughlin.
+3. The CODEX [image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg) of the small intestine from Joanna Bi and Dr. Bei Wei.
 
 ## HRA Pop Helios
 
-The 3d HRA Pop Helios animation was done using open access data from GTEx v9 release from the project named “Adult GTEx” -> “Single cell.” This data can be downloaded from [source](https://gtexportal.org/home/downloads/adult-gtex/single_cell). Currently we are using GTEx 8 tissues snRNA-Seq Data. The program basically creates a k-nearest neighbors network for biological data and prepares it to be exported to [Helios-Web](heliosweb.io). This program is accessible at [GitHub](https://github.com/cns-iu/hra-pop-helios). It comes along with a readme file with detailed instructions on how to access the data and follow the steps to get the 3d model.
+The 3d HRA Pop Helios animation was done using open access data from GTEx v9 release from the project named “Adult GTEx” -> “Single cell.” This data can be downloaded from the [GTEx Portal](https://gtexportal.org/home/downloads/adult-gtex/single_cell). Currently, we are using GTEx 8 tissues snRNA-Seq Data. The program basically creates a k-nearest neighbors network for biological data and prepares it to be exported to [Helios-Web](heliosweb.io). This program is accessible at [GitHub](https://github.com/cns-iu/hra-pop-helios). It comes along with a README file with detailed instructions on how to access the data and follow the steps to get the 3d model.
 
 ---
 
