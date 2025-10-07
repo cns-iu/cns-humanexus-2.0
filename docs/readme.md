@@ -13,7 +13,7 @@
 - Helios-Web Programmer: Filipi Nascimento Silva, Indiana University Network Science Institute (IUNI)
 - Programmer: Parth Godse, Luddy School of Informatics, Computing, and Engineering, Indiana University
 - Programmer: Kiki Kong, Luddy School of Informatics, Computing, and Engineering, Indiana University
--2D FTUs Programmer: Supriya Bidanta, Luddy School of Informatics, Computing, and Engineering, Indiana University
+- 2D FTUs Programmer: Supriya Bidanta, Luddy School of Informatics, Computing, and Engineering, Indiana University
 
 ## Overview
 
@@ -37,21 +37,19 @@ Sappol, Michael, ed. 2011. *Hidden Treasure: The National Library of Medicine*. 
 
 ## Da Vinci Drawings
 
-Anatomical images from the Notebooks of Leonardo da Vinci ([Images](https://drive.google.com/drive/u/0/folders/1wgK6cJWuPYzvcREmwT7O8XKep8pMsjnS)).
+[Anatomical images](https://drive.google.com/drive/u/0/folders/1wgK6cJWuPYzvcREmwT7O8XKep8pMsjnS) from the Notebooks of Leonardo da Vinci.
 
 ## FTU Images
 
-Extracted images from the multipanel NLM publications can be found at [Data](https://drive.google.com/drive/u/0/folders/1U59da-zREHxIQsuy1CMMXTsmOgSiymjB).
+[Extracted images](https://drive.google.com/drive/u/0/folders/1U59da-zREHxIQsuy1CMMXTsmOgSiymjB) from the multipanel National Library of Medicine (NLM) publications. 
 
 ## 2D FTUs
 
-A functional tissue unit (FTU) is the smallest tissue organization that performs a unique physiologic function and is replicated multiple times in a whole organ. Functional tissue unit illustrations may be used to explore cell type populations by gene, protein, and lipid biomarkers in the Functional Tissue Unit (FTU) Explorer app.
-
-The 2D FTUs can be found at the HRA [website](https://humanatlas.io/2d-ftu-illustrations?releaseVersion=2.3).
+A functional tissue unit (FTU) is the smallest tissue organization that performs a unique physiologic function and is replicated multiple times in a whole organ. Functional tissue unit illustrations may be used to explore cell type populations by gene, protein, and lipid biomarkers in the Functional Tissue Unit Explorer app.The 2D FTUs can be found at the [HRA website](https://humanatlas.io/2d-ftu-illustrations?releaseVersion=2.3).
 
 ## 3D GLB Files
 
-The HRA 3D Reference Object Library provides anatomically correct reference organs. The organs are developed by 3D medical illustrators and approved by subject matter experts for organs. The organs can be downloaded from the HRA Portal ([https://humanatlas.io/3d-reference-library](https://humanatlas.io/3d-reference-library)) in the GLB format ([https://www.khronos.org/gltf](https://www.khronos.org/gltf)).
+The HRA 3D Reference Object Library provides anatomically correct reference organs. The organs are developed by 3D medical illustrators and approved by subject matter experts for organs. The organs can be downloaded from the [HRA Portal](https://humanatlas.io/3d-reference-library) in the [GLB format](https://www.khronos.org/gltf).
 
 # Code
 
@@ -79,8 +77,7 @@ HuBMAP (The Human Biomolecular Atlas Program) features an image each week from o
 
 ## HRA Pop Helios
 
-The 3d HRA Pop Helios animation was done using open access data from GTEx v9 release from the project named “Adult GTEx” -> “Single cell.” This data can be downloaded from [source](https://gtexportal.org/home/downloads/adult-gtex/single_cell). Currently we are using GTEx 8 tissues snRNA-Seq Data. The program basically creates a k-nearest neighbors network for biological data and prepares it to be exported to Helios-Web [(heliosweb.io)]. This program is accessible at Github. It comes along with a readme file with detailed instructions on how to access the data and follow the steps to get the 3d model.
-
+The 3d HRA Pop Helios animation was done using open access data from GTEx v9 release from the project named “Adult GTEx” -> “Single cell.” This data can be downloaded from [source](https://gtexportal.org/home/downloads/adult-gtex/single_cell). Currently we are using GTEx 8 tissues snRNA-Seq Data. The program basically creates a k-nearest neighbors network for biological data and prepares it to be exported to [Helios-Web](heliosweb.io). This program is accessible at [GitHub](https://github.com/cns-iu/hra-pop-helios). It comes along with a readme file with detailed instructions on how to access the data and follow the steps to get the 3d model.
 
 ---
 
