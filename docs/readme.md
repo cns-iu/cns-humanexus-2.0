@@ -33,6 +33,7 @@ Patel, Ushma, John W. Hickey, and Katy Börner. 2025. *Human Reference Atlas: De
 
 Sappol, Michael, ed. 2011. *Hidden Treasure: The National Library of Medicine*. New York: Blast Books. ISBN 978-0-922233-42-7.
 
+
 # Data
 
 ## Early Anatomical Drawings
@@ -51,6 +52,7 @@ A functional tissue unit (FTU) is the smallest tissue organization that performs
 
 The HRA 3D Reference Object Library provides anatomically correct reference organs. The organs are developed by 3D medical illustrators and approved by subject matter experts for organs. The organs can be downloaded from the [HRA Portal](https://humanatlas.io/3d-reference-library) in the [GLB format](https://www.khronos.org/gltf).
 
+
 # Code
 
 ## FTU Images Extraction
@@ -62,6 +64,7 @@ Parsed NLM publications and extracted 821,642 images related to [22 FTUs](https:
 - 3D structure diagrams
 - chemical structure diagrams
 - mathematical expressions
+
 These multipanel images were then separated into around 400k single pane images using a simple Canny algorithm of edge and contour detection using OpenCV library. The code for this is available at this [Github](https://github.com/cns-iu/cns-humanexus-2.0/tree/main/2.PubMed%20Extract%20Script). These images were later used to create visualizations and animations of Spheres ([Code](https://github.com/cns-iu/cns-humanexus-2.0)), Mosaics ([Code](https://github.com/cns-iu/cns-humanexus-2.0/tree/main/3b-Mosaic)), and a grid ([Code](https://github.com/cns-iu/cns-humanexus-2.0/tree/main/3a-Grid)).
 
 ## NLM Book Images
