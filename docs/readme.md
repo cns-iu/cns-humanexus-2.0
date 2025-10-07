@@ -23,6 +23,16 @@ This short animation is both an exciting journey through the human body and a vi
 
 This work has been funded by the NIH Common Fund through the Office of Strategic Coordination / Office of the NIH Director under awards OT2OD033756 and OT2OD026671.
 
+## References
+
+Bidanta, Supriya, Katy Börner, Bruce W. Herr II, Ellen M. Quardokus, Marcell Nagy, Katherine S. Gustilo, Rachel Bajema, Elizabeth Maier, Roland Molontay, and Griffin Weber. 2025. "Functional Tissue Units in the Human Reference Atlas." *Nature Communications* 16: 1526. [https://doi-org.proxyiub.uits.iu.edu/10.1038/s41467-024-54591-6](https://doi-org.proxyiub.uits.iu.edu/10.1038/s41467-024-54591-6). 
+
+Patel, Ushma, Griffin Weber, Katherine S. Gustilo, and Katy Börner. 2023. *Human Reference Atlas: Vasculature Common Coordinate Framework (VCCF)*. [https://www.youtube.com/watch?v=zQeMgxo8n_U](https://www.youtube.com/watch?v=zQeMgxo8n_U). 
+
+Patel, Ushma, John W. Hickey, and Katy Börner. 2025. *Human Reference Atlas: Define Yourself—The Human Gut Atlas Story*. [https://www.youtube.com/watch?v=_H3S5HeFFPE](https://www.youtube.com/watch?v=_H3S5HeFFPE). 
+
+Sappol, Michael, ed. 2011. *Hidden Treasure: The National Library of Medicine*. New York: Blast Books. ISBN 978-0-922233-42-7.
+
 # Data
 
 ## Da Vinci Drawings
@@ -41,7 +51,7 @@ The 2D FTUs can be found at the HRA [website](https://humanatlas.io/2d-ftu-illus
 
 ## 3D GLB Files
 
-The HRA 3D Reference Object Library provides anatomically correct reference organs. The organs are developed by 3D medical illustrators and approved by subject matter experts for organs. The organs can be downloaded from the HRA Portal [(https://humanatlas.io/3d-reference-library)](https://humanatlas.io/3d-reference-library) in the GLB format [(https://www.khronos.org/gltf)](https://www.khronos.org/gltf).
+The HRA 3D Reference Object Library provides anatomically correct reference organs. The organs are developed by 3D medical illustrators and approved by subject matter experts for organs. The organs can be downloaded from the HRA Portal ([https://humanatlas.io/3d-reference-library](https://humanatlas.io/3d-reference-library)) in the GLB format ([https://www.khronos.org/gltf](https://www.khronos.org/gltf)).
 
 # Code
 
@@ -54,7 +64,7 @@ Parsed NLM publications and extracted 821,642 images related to the 22 FTUs at [
 - 3D structure diagram
 - chemical structure diagram
 - mathematical expression
-These multipanel images were then separated into around 400k single pane images using a simple Canny algorithm of edge and contour detection using OpenCV library. The code for this is available at this [Github](https://github.com/cns-iu/cns-humanexus-2.0/tree/main/2.PubMed%20Extract%20Script). These images were later used to create visualizations and animations of Spheres [(Code)](https://github.com/cns-iu/cns-humanexus-2.0), Mosaics [(Code)](https://github.com/cns-iu/cns-humanexus-2.0/tree/main/3b-Mosaic), and a grid [(Code)](https://github.com/cns-iu/cns-humanexus-2.0/tree/main/3a-Grid).
+These multipanel images were then separated into around 400k single pane images using a simple Canny algorithm of edge and contour detection using OpenCV library. The code for this is available at this [Github](https://github.com/cns-iu/cns-humanexus-2.0/tree/main/2.PubMed%20Extract%20Script). These images were later used to create visualizations and animations of Spheres ([Code](https://github.com/cns-iu/cns-humanexus-2.0)), Mosaics ([Code](https://github.com/cns-iu/cns-humanexus-2.0/tree/main/3b-Mosaic)), and a grid ([Code](https://github.com/cns-iu/cns-humanexus-2.0/tree/main/3a-Grid)).
 
 ## NLM Book Images
 
@@ -65,21 +75,12 @@ These multipanel images were then separated into around 400k single pane images 
 HuBMAP (The Human Biomolecular Atlas Program) features an image each week from one of their funded research groups. Three images, all from 2025, appear in the animation:
 1. The 3D map of multiscalar neurovascular connections between nephrons of the human kidney across the lifespan from Dr.Sanjay Jain and Dr. Gloria Pryhuber ([Image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg)).
 2. The 3D, 50x light sheet fluorescence microscopy (LSFM) image of an adult human kidney cortex from Dr. Sanjay Jain and Liam McLaughlin ([Image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg)).
-3. The CODEX image of the small intestine from Joanna Bi and Dr. Bei Wei ([(Image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg)).
+3. The CODEX image of the small intestine from Joanna Bi and Dr. Bei Wei ([Image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg)).
 
 ## HRA Pop Helios
 
 The 3d HRA Pop Helios animation was done using open access data from GTEx v9 release from the project named “Adult GTEx” -> “Single cell.” This data can be downloaded from [source](https://gtexportal.org/home/downloads/adult-gtex/single_cell). Currently we are using GTEx 8 tissues snRNA-Seq Data. The program basically creates a k-nearest neighbors network for biological data and prepares it to be exported to Helios-Web [(heliosweb.io)]. This program is accessible at Github. It comes along with a readme file with detailed instructions on how to access the data and follow the steps to get the 3d model.
 
-# References
-
-Bidanta, Supriya, Katy Börner, Bruce W. Herr II, Ellen M. Quardokus, Marcell Nagy, Katherine S. Gustilo, Rachel Bajema, Elizabeth Maier, Roland Molontay, and Griffin Weber. 2025. "Functional Tissue Units in the Human Reference Atlas." *Nature Communications* 16: 1526. [https://doi-org.proxyiub.uits.iu.edu/10.1038/s41467-024-54591-6](https://doi-org.proxyiub.uits.iu.edu/10.1038/s41467-024-54591-6). 
-
-Patel, Ushma, Griffin Weber, Katherine S. Gustilo, and Katy Börner. 2023. *Human Reference Atlas: Vasculature Common Coordinate Framework (VCCF)*. [https://www.youtube.com/watch?v=zQeMgxo8n_U](https://www.youtube.com/watch?v=zQeMgxo8n_U). 
-
-Patel, Ushma, John W. Hickey, and Katy Börner. 2025. *Human Reference Atlas: Define Yourself—The Human Gut Atlas Story*. [https://www.youtube.com/watch?v=_H3S5HeFFPE](https://www.youtube.com/watch?v=_H3S5HeFFPE). 
-
-Sappol, Michael, ed. 2011. *Hidden Treasure: The National Library of Medicine*. New York: Blast Books. ISBN 978-0-922233-42-7.
 
 ---
 
