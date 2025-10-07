@@ -4,16 +4,16 @@
 
 ## Credits
 
-- Producer (Initial Story / Guidance / Resources): Katy Börner, Luddy School of Informatics, Computing, and Engineering, Indiana University
-- Director (Animation / Art / Design / Editing): Ushma Patel, Indiana University
-- Animator/Programmer: Andreas Bueckle, Luddy School of Informatics, Computing, and Engineering, Indiana University
-- Story Advisor: Todd N. Theriault, Luddy School of Informatics, Computing, and Engineering, Indiana University
-- Sound Artist (Music / Soundtrack): Norbert Herber, Department of Telecommunications, Indiana University
-- Sphere Animation Programmer: Peter Kienle, Luddy School of Informatics, Computing, and Engineering, Indiana University
-- Helios-Web Programmer: Filipi Nascimento Silva, Indiana University Network Science Institute (IUNI)
-- Programmer: Parth Godse, Luddy School of Informatics, Computing, and Engineering, Indiana University
-- Programmer: Kiki Kong, Luddy School of Informatics, Computing, and Engineering, Indiana University
-- 2D FTUs Programmer: Supriya Bidanta, Luddy School of Informatics, Computing, and Engineering, Indiana University
+- **Producer(Initial Story / Guidance / Resources)**: Katy Börner, Luddy School of Informatics, Computing, and Engineering, Indiana University
+- **Director (Animation / Art / Design / Editing)**: Ushma Patel, Indiana University
+- **Animator / Programmer**: Andreas Bueckle, Luddy School of Informatics, Computing, and Engineering, Indiana University
+- **Story Advisor**: Todd N. Theriault, Luddy School of Informatics, Computing, and Engineering, Indiana University
+- **Sound Artist (Music / Soundtrack)**: Norbert Herber, Department of Telecommunications, Indiana University
+- **Sphere Animation Programmer**: Peter Kienle, Luddy School of Informatics, Computing, and Engineering, Indiana University
+- **Helios-Web Programmer**: Filipi Nascimento Silva, Indiana University Network Science Institute (IUNI)
+- **Programmer**: Parth Godse, Luddy School of Informatics, Computing, and Engineering, Indiana University
+- **Programmer**: Kiki Kong, Luddy School of Informatics, Computing, and Engineering, Indiana University
+- **2D FTUs Programmer**: Supriya Bidanta, Luddy School of Informatics, Computing, and Engineering, Indiana University
 
 ## Overview
 
@@ -35,9 +35,9 @@ Sappol, Michael, ed. 2011. *Hidden Treasure: The National Library of Medicine*. 
 
 # Data
 
-## Da Vinci Drawings
+## Early Anatomical Drawings
 
-[Anatomical images](https://drive.google.com/drive/u/0/folders/1wgK6cJWuPYzvcREmwT7O8XKep8pMsjnS) from the Notebooks of Leonardo da Vinci.
+[Anatomical images](https://drive.google.com/drive/u/0/folders/1wgK6cJWuPYzvcREmwT7O8XKep8pMsjnS) from the *Notebooks of Leonardo da Vinci*.
 
 ## FTU Images
 
@@ -45,7 +45,7 @@ Sappol, Michael, ed. 2011. *Hidden Treasure: The National Library of Medicine*. 
 
 ## 2D FTUs
 
-A functional tissue unit (FTU) is the smallest tissue organization that performs a unique physiologic function and is replicated multiple times in a whole organ. Functional tissue unit illustrations may be used to explore cell type populations by gene, protein, and lipid biomarkers in the Functional Tissue Unit Explorer app.The 2D FTUs can be found at the [HRA website](https://humanatlas.io/2d-ftu-illustrations?releaseVersion=2.3).
+A functional tissue unit (FTU) is the smallest tissue organization that performs a unique physiologic function and is replicated multiple times in a whole organ. Functional tissue unit illustrations may be used to explore cell type populations by gene, protein, and lipid biomarkers in the Functional Tissue Unit Explorer app. The 2D FTUs can be found at the [HRA website](https://humanatlas.io/2d-ftu-illustrations?releaseVersion=2.3).
 
 ## 3D GLB Files
 
@@ -55,7 +55,7 @@ The HRA 3D Reference Object Library provides anatomically correct reference orga
 
 ## FTU Images Extraction
 
-Parsed NLM publications and extracted 821,642 images related to the 22 FTUs at [https://humanatlas.io/2d-ftu-illustrations](https://humanatlas.io/2d-ftu-illustrations). Vision LLM was used to classify images into
+Parsed NLM publications and extracted 821,642 images related to [22 FTUs](https://humanatlas.io/2d-ftu-illustrations). Vision LLM was used to classify images into
 - statistical images
 - microscopy images
 - schematics images
@@ -79,7 +79,7 @@ HuBMAP (The Human Biomolecular Atlas Program) features an image each week from o
 
 The 3d HRA Pop Helios animation was done using open access data from GTEx v9 release from the project named “Adult GTEx” -> “Single cell.” This data can be downloaded from the [GTEx Portal](https://gtexportal.org/home/downloads/adult-gtex/single_cell). Currently, we are using GTEx 8 tissues snRNA-Seq Data. The program basically creates a k-nearest neighbors network for biological data and prepares it to be exported to [Helios-Web](heliosweb.io). This program is accessible at [GitHub](https://github.com/cns-iu/hra-pop-helios). It comes along with a README file with detailed instructions on how to access the data and follow the steps to get the 3d model.
 
----
+
 
 
 
