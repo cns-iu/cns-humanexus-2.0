@@ -27,7 +27,7 @@ This work has been funded by the NIH Common Fund through the Office of Strategic
 
 ## Da Vinci Drawings
 
-Anatomical images from the Notebooks of Leonardo da Vinci (1490, 1506–13).
+Anatomical images from the Notebooks of Leonardo da Vinci ([Images](https://drive.google.com/drive/u/0/folders/1wgK6cJWuPYzvcREmwT7O8XKep8pMsjnS)).
 
 ## FTU Images
 
