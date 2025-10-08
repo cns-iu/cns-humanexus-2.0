@@ -80,7 +80,7 @@ HuBMAP (The Human Biomolecular Atlas Program) features an image each week from o
 
 ## HRA Pop Helios
 
-The 3d HRA Pop Helios animation was done using open access data from GTEx v9 release from the project named “Adult GTEx” -> “Single cell.” This data can be downloaded from the [GTEx Portal](https://gtexportal.org/home/downloads/adult-gtex/single_cell). Currently, we are using GTEx 8 tissues snRNA-Seq Data. The program basically creates a k-nearest neighbors network for biological data and prepares it to be exported to [Helios-Web](heliosweb.io). This program is accessible at [GitHub](https://github.com/cns-iu/hra-pop-helios). It comes along with a README file with detailed instructions on how to access the data and follow the steps to get the 3d model.
+The 3d HRA Pop Helios animation was done using open access data from GTEx v9 release from the project named “Adult GTEx” -> “Single cell.” This data can be downloaded from the [GTEx Portal](https://gtexportal.org/home/downloads/adult-gtex/single_cell). Currently, we are using GTEx 8 tissues snRNA-Seq Data. The program basically creates a k-nearest neighbors network for biological data and prepares it to be exported to [Helios-Web](heliosweb.io). This program is accessible at [GitHub](https://github.com/cns-iu/hra-pop-helios). It comes along with a README file with detailed instructions on how to access the data and follow the steps to get the 3D model.
 
 
 
