@@ -1,4 +1,4 @@
-# Metadata for Humanexus 2.0
+# Metadata for *10^10^ — A Multiscale Voyage through the Human Body*
 
 # Description
 
