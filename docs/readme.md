@@ -1,4 +1,4 @@
-# Metadata for *10^10 — A Multiscale Voyage through the Human Body*
+# *10^10 — A Multiscale Voyage through the Human Body*
 
 # Description
 
