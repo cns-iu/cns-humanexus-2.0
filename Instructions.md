@@ -1,5 +1,5 @@
 # Humanexus 2.0 Unity Project Instructions
-last update: 2025-7-26
+last update: 2025-7-30
 
 ## Table of contents
 1. Overview
@@ -98,8 +98,11 @@ Because a SequenceItem is a piece of code, variables or constants defined in the
 ```
 
 **<start-time\>**<br>
-Integer. Delta time since start of previous action. One unit per Update() cycle. Update() runs once per screen refresh; at 30 frames per second Update() executes about every 0.03s.<br>
+Integer. Delta time since start of previous action. One unit per Update() cycle. Update() runs once per screen refresh; at 30 frames per second Update() (theoretically) executes about every 0.03s.<br>
 Example: start-time = 200 => 200/0.03 = 6s
+
+Actual measured durations:<br>
+- start-time = 50 has a duration of ~ 1s;
 
 **<action\>**<br>
 String. Name of requested action, written as string (for example "cloud-hide"). All available actions and their parameters are listed below. 
@@ -369,15 +372,39 @@ Resets all clones to default diameter, opacity and rotation. Resets to defaults:
 
 ---
 
-**stop**<br>
+**timer-start**<br>
 p1 = ignored<br>
 p2 = ignored
 
 ```
-        SequenceItem(200, "stop", 0, 0)
+        SequenceItem(0, "timer-start", 0, 0)
 ```
 
-Marks end of sequence, stops sequence by clearing complexFlag.
+Starts a stopwatch which will keep counting milliseconds until a "timer-stop" action is encountered. "timer-start" and "timer-stop" actions can be used to time durations of sequence items.
+
+---
+
+**timer-stop**<br>
+p1 = ignored<br>
+p2 = ignored
+
+```
+        SequenceItem(200, "timer-stop", 0, 0)
+```
+
+Stops the stopwatch and displays duration since "timer-start" action in milliseconds.
+
+---
+
+**sequence-end**<br>
+p1 = ignored<br>
+p2 = ignored
+
+```
+        SequenceItem(100, "sequence-end", 0, 0)
+```
+
+Ends sequence mode by clearing complex_flag, stops timer, resets sequence pointer. Should be used at the end of a sequence.
 
 ---
 
@@ -704,7 +731,7 @@ Ignore (don't touch):
 
 - for transparent background turn off HDR Rendering (on MainCamera-Output)
 - Main Camera-Rendering->Culling Occlusion set to ONLY render "spheres" layer
-- put icosphere and all node objects on layer "spheres" (if image set is deleted these objects are deleted, have to add "spheres" layer on new set!)
+- put icosphere and all node objects on layer "spheres" (if image set is renewed, these objects are deleted and have to add "spheres" layer on new set!)
 - 
 
 

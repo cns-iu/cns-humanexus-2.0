@@ -10,7 +10,7 @@ using UnityEditor.ShaderGraph.Internal;
 using UnityEngine.TextCore.Text;
 using System.Collections; */
 
-// 2025-7-29
+// 2025-7-30
 
 // 4. add actions to affect individual clones (use a marker flag on clonmeInfo?)
 
@@ -99,6 +99,9 @@ public class SphereController : MonoBehaviour
     static float manualAmount = 0.1f;
     static float manualRotationAmount = 10.0f;
 
+    // stopwatch
+    System.Diagnostics.Stopwatch st;
+
     void Start()
     {
         GameObject dataContainer = GameObject.Find("Databases");
@@ -145,7 +148,30 @@ public class SphereController : MonoBehaviour
         // populate sequenceItems list============================
         // timeDelta since previous action, action type, action magnitude, action duration
 
+        // add start time of each item to calculate duration of sequence
+
+        // sequence 2
+        // -- hide, diameter to 0.5, opacity = 0
+        sequenceItems.Add(new SequenceItem(0, "cloud-hide", 0, 0));
+        sequenceItems.Add(new SequenceItem(0, "cloud-diameter-init", 0.5f, 0));
+        sequenceItems.Add(new SequenceItem(0, "cloud-items-opacity-init", 0.0f, 0));
+
+        sequenceItems.Add(new SequenceItem(0, "timer-start", 0, 0));
+
+        sequenceItems.Add(new SequenceItem(5, "cloud-show", 0, 0));
+        sequenceItems.Add(new SequenceItem(5, "cloud-items-opacity", 1.0f, 150));
+        sequenceItems.Add(new SequenceItem(0, "cloud-diameter-absolute", 1.8f, 150));
+
+
+        sequenceItems.Add(new SequenceItem(100, "camera-zoom-absolute", 1.0f, 140));
+
+
+        sequenceItems.Add(new SequenceItem(140, "timer-stop", 0, 0));
+
+        // end sequence 2
+
         // sequence 1
+        /* sequenceItems.Add(new SequenceItem(0, "start", 0, 0));
         sequenceItems.Add(new SequenceItem(0, "cloud-hide", 0, 0));
         sequenceItems.Add(new SequenceItem(0, "cloud-items-opacity-init", 0.0f, 0));
         sequenceItems.Add(new SequenceItem(0, "cloud-rotation-speed", 0.2f, 0));
@@ -157,8 +183,10 @@ public class SphereController : MonoBehaviour
         sequenceItems.Add(new SequenceItem(150, "look-here", 1, 200));
         sequenceItems.Add(new SequenceItem(100, "camera-zoom-absolute", 3.9f, 400));
 
-        sequenceItems.Add(new SequenceItem(200, "stop", 0, 0));
+        sequenceItems.Add(new SequenceItem(200, "stop", 0, 0)); */
         // end sequence 1
+
+        sequenceItems.Add(new SequenceItem(500, "sequence-end", 0, 0));
 
     }
 
@@ -359,10 +387,14 @@ public class SphereController : MonoBehaviour
                     case "full-reset":
                         OnFullReset();
                         break;
-                    case "stop":
-                        complexFlag = false;
-                        currentSequenceItem = -1;   // lame!! just because currentSequenceItem must be 0 after switch!
-                        ClearParameterBlock();
+                    case "timer-start":
+                        TimerStart();
+                        break;
+                    case "timer-stop":
+                        TimerStop();
+                        break;
+                    case "sequence-end":
+                        SequenceEnd();
                         break;
                     default:    // to catch stop
                         Debug.Log("+++++++++ illegal action request: " + sAction);
@@ -527,6 +559,28 @@ public class SphereController : MonoBehaviour
     void IcosphereHide()
     {
         icosphere.GetComponent<Renderer>().enabled = false;
+    }
+
+    void TimerStart()
+    {
+        st = new System.Diagnostics.Stopwatch();   // start timer for import
+        st.Start();
+        Debug.Log("stopwatch timer started");
+    }
+
+    void TimerStop()
+    {
+        st.Stop();
+        Debug.Log("stopwatch timer stopped");
+        Debug.Log("Duration of sequence in milliseconds: " + st.ElapsedMilliseconds);
+    }
+
+    void SequenceEnd()
+    {
+        complexFlag = false;
+        currentSequenceItem = -1;   // lame!! just because currentSequenceItem must be 0 after switch!
+        ClearParameterBlock();
+        st.Stop();
     }
 
     void ClearParameterBlock()

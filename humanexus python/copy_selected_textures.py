@@ -4,7 +4,7 @@ import csv
 import time
 from pathlib import Path
 
-# 2025-6-8
+# 2025-10-10
 # copies jpg files from source_folder to destination_folder
 # picking from csv_file according to filter keywords
 # added file number limiter
@@ -54,12 +54,14 @@ filter_sex = ""             # "female"
 # ico6 = 10,242
 # ico7 = 40,962
 # ico8 = 163,842
-fileLimiter = 42       # limit number of copied files (for testing) use >1 million?
+fileLimiter = 2562       # limit number of copied files (for testing) use >1 million?
 
 
 with open(csv_file_path) as file:
     csv_file = csv.reader(file)
     counter = 0
+    old_pmccode = ""
+    current_pmccode = ""
 
     for line in csv_file:
         # retrieve field contents for this line
@@ -71,19 +73,25 @@ with open(csv_file_path) as file:
 
         if col_graphic != "graphic":       # skip header line of CSV file
             # col1 match or blank AND col2 match or blank
-            if (col_ftu == filter_ftu or filter_ftu == "") and (col_organ == filter_organ or filter_organ == ""):
+            if (col_ftu == filter_ftu or filter_ftu == "") and (col_organ == filter_organ or filter_organ == "") and (col_species == filter_species or filter_species == "") and (col_sex == filter_sex or filter_sex == ""):
 
-                src_file_path = os.path.join(source_folder/col_graphic)         # make file names
-                dst_file_path = os.path.join(destination_folder/col_graphic)
-                print("source file: " + src_file_path)
-                print("dest file: " + dst_file_path)
+                current_pmccode = col_graphic[:10]
+                
+                if current_pmccode != old_pmccode:
 
-                counter += 1
+                    src_file_path = os.path.join(source_folder/col_graphic)         # make file names
+                    dst_file_path = os.path.join(destination_folder/col_graphic)
+                    print("source file: " + src_file_path)
+                    print("dest file: " + dst_file_path)
 
-                shutil.copy(src_file_path, dst_file_path)
+                    counter += 1
+                    old_pmccode = current_pmccode
+                    print (current_pmccode)
 
-                if counter == fileLimiter:
-                    break
+                    shutil.copy(src_file_path, dst_file_path)
+
+                    if counter == fileLimiter:
+                        break
         else:
             headers_list = line     # pick up headers
             print(headers_list)
