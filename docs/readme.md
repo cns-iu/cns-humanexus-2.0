@@ -25,7 +25,9 @@ This work has been funded by the NIH Common Fund through the Office of Strategic
 
 ## References
 
-Bidanta, Supriya, Katy Börner, Bruce W. Herr II, Ellen M. Quardokus, Marcell Nagy, Katherine S. Gustilo, Rachel Bajema, Elizabeth Maier, Roland Molontay, and Griffin Weber. 2025. "Functional Tissue Units in the Human Reference Atlas." *Nature Communications* 16: 1526. [https://doi-org.proxyiub.uits.iu.edu/10.1038/s41467-024-54591-6](https://doi-org.proxyiub.uits.iu.edu/10.1038/s41467-024-54591-6). 
+Bidanta, Supriya, Katy Börner, Bruce W. Herr II, Ellen M. Quardokus, Marcell Nagy, Katherine S. Gustilo, Rachel Bajema, Elizabeth Maier, Roland Molontay, and Griffin Weber. 2025. "Functional Tissue Units in the Human Reference Atlas." *Nature Communications* 16: 1526. DOI: 10.1101/2023.10.16.562593. 
+
+McLaughlin, Liam, Bo Zhang, Siddharth Sharma, Amanda L. Knoten, Madhurima Kaushal, Jeffrey M. Purkerson, Heidie L. Huyck, Gloria S. Pryhuber, Joseph P. Gaut, and Sanjay Jain. 2025. "Three Dimensional Multiscalar Neurovascular Nephron Connectivity Map of the Human Kidney Across the Lifespan." *Nature Communications* 16: 5161. DOI: 10.1038/s41467-025-60435-8.
 
 Patel, Ushma, Griffin Weber, Katherine S. Gustilo, and Katy Börner. 2023. *Human Reference Atlas: Vasculature Common Coordinate Framework (VCCF)*. [https://www.youtube.com/watch?v=zQeMgxo8n_U](https://www.youtube.com/watch?v=zQeMgxo8n_U). 
 
@@ -74,7 +76,7 @@ These multipanel images were then separated into around 400k single pane images 
 ## Images of the Week
 
 HuBMAP (The Human Biomolecular Atlas Program) features an image each week from one of their funded research groups. Four images, all from 2025, appear in the animation:
-1. The [3D map](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg) of multiscalar neurovascular connections between nephrons of the human kidney across the lifespan from Dr.Sanjay Jain and Dr. Gloria Pryhuber.
+1. The [3D map](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg) of multiscalar neurovascular connections between nephrons of the human kidney across the lifespan from Dr. Sanjay Jain, Liam McLaughlin, and Dr. Gloria Pryhuber (see McLaughlin et al. 2025).
 2. The 3D, 50x light sheet fluorescence microscopy (LSFM) [image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg) of an adult human kidney cortex from Dr. Sanjay Jain and Liam McLaughlin.
 3. The CODEX [image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg) of the small intestine from Joanna Bi and Dr. Bei Wei.
 4. The Cell DIVE [image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg) of organ mapping antibody panel-22 for skin from Dr. Fiona Ginty, Liz McDonough, and Christine Surrette from GE Research.
