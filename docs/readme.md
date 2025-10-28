@@ -98,4 +98,11 @@ The 3d HRA Pop Helios animation was done using open access data from GTEx v9 rel
 ![Lymph node](images/3.%20Lymph%20Node.png)
 **0:22 Lymph node**
 
+![HRA Pop Kidney](images/4.%20HRA%20Pop%20Kidney.png)
+**0:24 HRA Pop Kidney**
 
+![Renal Corpuscle](images/5.%20Renal%20Corpuscle.png)
+**0:26 Renal Corpuscle**
+
+![Renal Corpuscle - 2D FTU](images/6.%20Renal%20Corpuscle%20(2D%20FTU).png)
+**0:28 Renal Corpuscle (2D FTU)**
