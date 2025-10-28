@@ -92,8 +92,10 @@ The 3d HRA Pop Helios animation was done using open access data from GTEx v9 rel
 ![Mammary Glands](images/1.%20MammaryGlands.png)
 **0:15 Mammary glands**
 
+![Iris](images/2.%20Iris.png)
+**0:18 Iris**
 
-
-
+![Lymph node](images/3.%20Lymph%20Node.png)
+**0:22 Lymph node**
 
 
