@@ -4,7 +4,7 @@
 
 ## Credits
 
-- **Producer(Initial Story / Guidance / Resources)**: Katy Börner, Luddy School of Informatics, Computing, and Engineering, Indiana University
+- **Producer (Initial Story / Guidance / Resources)**: Katy Börner, Luddy School of Informatics, Computing, and Engineering, Indiana University
 - **Director (Animation / Art / Design / Editing)**: Ushma Patel, Indiana University
 - **Animator / Programmer**: Andreas Bueckle, Luddy School of Informatics, Computing, and Engineering, Indiana University
 - **Story Advisor**: Todd N. Theriault, Luddy School of Informatics, Computing, and Engineering, Indiana University
@@ -21,13 +21,13 @@ This short animation is both an exciting journey through the human body and a vi
 
 ## Sponsor
 
-This work has been funded by the NIH Common Fund through the Office of Strategic Coordination / Office of the NIH Director under awards OT2OD033756 and OT2OD026671.
+Human Reference Atlas construction is funded by the NIH Common Fund through the Office of Strategic Coordination / Office of the NIH Director under awards OT2OD033756 and OT2OD026671.
 
 ## References
 
-Bidanta, Supriya, Katy Börner, Bruce W. Herr II, Ellen M. Quardokus, Marcell Nagy, Katherine S. Gustilo, Rachel Bajema, Elizabeth Maier, Roland Molontay, and Griffin Weber. 2025. "Functional Tissue Units in the Human Reference Atlas." *Nature Communications* 16: 1526. DOI: 10.1101/2023.10.16.562593. 
+Bidanta, Supriya, Katy Börner, Bruce W. Herr II, Ellen M. Quardokus, Marcell Nagy, Katherine S. Gustilo, Rachel Bajema, Elizabeth Maier, Roland Molontay, and Griffin Weber. 2025. "Functional Tissue Units in the Human Reference Atlas." *Nature Communications* 16: 1526. [https://doi.org/10.1038/s41467-024-54591-6](https://doi.org/10.1038/s41467-024-54591-6). 
 
-McLaughlin, Liam, Bo Zhang, Siddharth Sharma, Amanda L. Knoten, Madhurima Kaushal, Jeffrey M. Purkerson, Heidie L. Huyck, Gloria S. Pryhuber, Joseph P. Gaut, and Sanjay Jain. 2025. "Three Dimensional Multiscalar Neurovascular Nephron Connectivity Map of the Human Kidney Across the Lifespan." *Nature Communications* 16: 5161. DOI: 10.1038/s41467-025-60435-8.
+McLaughlin, Liam, Bo Zhang, Siddharth Sharma, Amanda L. Knoten, Madhurima Kaushal, Jeffrey M. Purkerson, Heidie L. Huyck, Gloria S. Pryhuber, Joseph P. Gaut, and Sanjay Jain. 2025. "Three Dimensional Multiscalar Neurovascular Nephron Connectivity Map of the Human Kidney Across the Lifespan." *Nature Communications* 16: 5161. [https://doi.org/10.1038/s41467-025-60435-8](https://doi.org/10.1038/s41467-025-60435-8).
 
 Patel, Ushma, Griffin Weber, Katherine S. Gustilo, and Katy Börner. 2023. *Human Reference Atlas: Vasculature Common Coordinate Framework (VCCF)*. [https://www.youtube.com/watch?v=zQeMgxo8n_U](https://www.youtube.com/watch?v=zQeMgxo8n_U). 
 
@@ -44,7 +44,7 @@ Sappol, Michael, ed. 2011. *Hidden Treasure: The National Library of Medicine*. 
 
 ## FTU Images
 
-[Extracted images](https://drive.google.com/drive/u/0/folders/1U59da-zREHxIQsuy1CMMXTsmOgSiymjB) from the multipanel National Library of Medicine (NLM) publications. 
+[Extracted images](https://drive.google.com/drive/u/0/folders/1U59da-zREHxIQsuy1CMMXTsmOgSiymjB) from the multipanel figures in scholarly publications made available by the National Library of Medicine (NLM). 
 
 ## 2D FTUs
 
