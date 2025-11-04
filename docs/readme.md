@@ -48,7 +48,7 @@ Sappol, Michael, ed. 2011. *Hidden Treasure: The National Library of Medicine*. 
 
 ## 2D FTUs
 
-A functional tissue unit (FTU) is the smallest tissue organization that performs a unique physiologic function and is replicated multiple times in a whole organ. Functional tissue unit illustrations may be used to explore cell type populations by gene, protein, and lipid biomarkers in the Functional Tissue Unit Explorer app. The 2D FTUs can be found at the [HRA website](https://humanatlas.io/2d-ftu-illustrations?releaseVersion=2.3).
+A functional tissue unit (FTU) is the smallest tissue organization that performs a unique physiologic function and is replicated multiple times in a whole organ. Functional tissue unit illustrations may be used to explore cell type populations by gene, protein, and lipid biomarkers in the [Functional Tissue Unit Explorer](https://apps.humanatlas.io/ftu-explorer/) application. The 2D FTUs can be downloaded from the [HRA Portal](https://humanatlas.io/2d-ftu-illustrations) in different formats.
 
 ## 3D GLB Files
 
@@ -83,7 +83,7 @@ HuBMAP (The Human Biomolecular Atlas Program) features an image each week from o
 
 ## HRA Pop Helios
 
-The 3d HRA Pop Helios animation was done using open access data from GTEx v9 release from the project named “Adult GTEx” -> “Single cell.” This data can be downloaded from the [GTEx Portal](https://gtexportal.org/home/downloads/adult-gtex/single_cell). Currently, we are using GTEx 8 tissues snRNA-Seq Data. The program basically creates a k-nearest neighbors network for biological data and prepares it to be exported to [Helios-Web](heliosweb.io). This program is accessible at [GitHub](https://github.com/cns-iu/hra-pop-helios). It comes along with a README file with detailed instructions on how to access the data and follow the steps to get the 3D model.
+The 3D HRA Pop Helios animation was implemented using open access data from GTEx v9 release from the project named “Adult GTEx” -> “Single cell.” This data can be downloaded from the [GTEx Portal](https://gtexportal.org/home/downloads/adult-gtex/single_cell). Currently, we are using GTEx 8 tissues snRNA-Seq Data. The program basically creates a k-nearest neighbors network for biological data and prepares it to be exported to [Helios-Web](heliosweb.io). This program is accessible at [GitHub](https://github.com/cns-iu/hra-pop-helios). It comes along with a README file with detailed instructions on how to access the data and follow the steps to get the 3D model.
 
 
 
