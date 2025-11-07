@@ -87,7 +87,8 @@ The 3D HRA Pop Helios animation was implemented using open access data from GTEx
 
 ## Image Guide
 
-**0:14 Kidney**
+![Kidney Interior](images/0.%20Kidney.png)
+**0:14 Kidney Interior**
 
 ![Mammary Glands](images/1.%20MammaryGlands.png)
 **0:18 Mammary Glands**
