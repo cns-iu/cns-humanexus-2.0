@@ -111,7 +111,7 @@ The 3D HRA Pop Helios animation was implemented using open access data from GTEx
 ![Renal corpuscle](images/5.%20Renal%20Corpuscle.png)
 **0:40 Renal Corpuscle**
 
-![Renal corpuscle - 2D FTU](images/6.%20Renal%20Corpuscle%20(2D%20FTU).png)
+![Renal Corpuscle - 2D FTU](images/6.%20Renal%20Corpuscle%20(2D%20FTU).png)
 **0:42 Renal Corpuscle (2D FTU)**
 
 ![Islet of Langerhans (2D FTU)](images/7.%20Islet%20of%20Langerhans%20(2D%20FTU).png)
