@@ -100,7 +100,7 @@ The 3D HRA Pop Helios animation was implemented using open access data from GTEx
 **0:24 Lymph Node**
 
 ![CODEX Image of the Small Intestine](images/9.%20CODEX%20image%20small%20intestine.png)
-**0:26 CODEX Image of the Small Intestine**
+**0:27 CODEX Image of the Small Intestine**
 
 ![Neurovascular connections between nephrons of the human kidney](images/11.%20Neurovascular%20Connections%20Nephrons%20Kidney.png)
 **0:31 Neurovascular Connections between Nephrons of the Human Kidney**
@@ -121,7 +121,7 @@ The 3D HRA Pop Helios animation was implemented using open access data from GTEx
 **0:48 Prostate Glandular Acinus (2D FTU)**
 
 ![TBD](images/12.%20TBD.png)
-**1:00 Cell Similarity Network (Adult GTEx Gene Expression)**
+**0:59 Cell Similarity Network (Adult GTEx Gene Expression)**
 
 ![TBD](images/13.%20TBD.png)
 **1:03 Cell Similarity Network (Adult GTEx Gene Expression)**
