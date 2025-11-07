@@ -10,7 +10,7 @@
 - **Story Advisor**: Todd N. Theriault, Luddy School of Informatics, Computing, and Engineering, Indiana University
 - **Sound Artist (Music / Soundtrack)**: Norbert Herber, Department of Telecommunications, Indiana University
 - **Sphere Animation Programmer**: Peter Kienle, Luddy School of Informatics, Computing, and Engineering, Indiana University
-- **Helios-Web Programmer**: Filipi Nascimento Silva, Indiana University Network Science Institute (IUNI)
+- **Helios-Web Programmer**: Filipi Nascimento Silva, Northwestern University–Kellogg
 - **Programmer**: Parth Godse, Luddy School of Informatics, Computing, and Engineering, Indiana University
 - **Programmer**: Kiki Kong, Luddy School of Informatics, Computing, and Engineering, Indiana University
 - **2D FTUs Programmer**: Supriya Bidanta, Luddy School of Informatics, Computing, and Engineering, Indiana University
@@ -89,69 +89,53 @@ The 3D HRA Pop Helios animation was implemented using open access data from GTEx
 
 ## Image Guide
 
-![Mammary Glands](images/1.%20MammaryGlands.png)
-**0:15 Mammary Glands**
+**0:14 TBA**
 
+![Mammary Glands](images/1.%20MammaryGlands.png)
+**0:18 Mammary Glands**
 
 ![Iris](images/2.%20Iris.png)
-**0:18 Iris**
-
+**0:21 Iris**
 
 ![Lymph node](images/3.%20Lymph%20Node.png)
-**0:22 Lymph Node**
-
-
-![HRA Pop Kidney](images/4.%20HRA%20Pop%20Kidney.png)
-**0:24 HRA Pop Kidney**
-
-
-![Renal Corpuscle](images/5.%20Renal%20Corpuscle.png)
-**0:26 Renal Corpuscle**
-
-
-![Renal Corpuscle - 2D FTU](images/6.%20Renal%20Corpuscle%20(2D%20FTU).png)
-**0:28 Renal Corpuscle (2D FTU)**
-
-
-![Islet of Langerhans (2D FTU)](images/7.%20Islet%20of%20Langerhans%20(2D%20FTU).png)
-**0:30 Islet of Langerhans (2D FTU)**
-
-
-![Prostate Glandular Acinus (2D FTU)](images/8.%20Prostate%20glandular%20acinus.png)
-**0:34 Prostate Glandular Acinus (2D FTU)**
-
+**0:24 Lymph Node**
 
 ![CODEX Image of the Small Intestine](images/9.%20CODEX%20image%20small%20intestine.png)
-**0:46 CODEX Image of the Small Intestine**
-
-
-![Cell DIVE image of organ mapping antibody panel-22 for skin](images/10.%20Antibody%20panel-22%20skin.png)
-**0:49 Cell DIVE Image of Organ Mapping Antibody Panel-22 for Skin**
-
+**0:26 CODEX Image of the Small Intestine**
 
 ![Neurovascular connections between nephrons of the human kidney](images/11.%20Neurovascular%20Connections%20Nephrons%20Kidney.png)
-**0:51 Neurovascular Connections between Nephrons of the Human Kidney**
+**0:31 Neurovascular Connections between Nephrons of the Human Kidney**
 
+![Cell DIVE image of organ mapping antibody panel-22 for skin](images/10.%20Antibody%20panel-22%20skin.png)
+**0:35 Cell DIVE Image of Organ Mapping Antibody Panel-22 for Skin**
+
+![Renal Corpuscle](images/5.%20Renal%20Corpuscle.png)
+**0:40 Renal Corpuscle**
+
+![Renal Corpuscle - 2D FTU](images/6.%20Renal%20Corpuscle%20(2D%20FTU).png)
+**0:42 Renal Corpuscle (2D FTU)**
+
+![Islet of Langerhans (2D FTU)](images/7.%20Islet%20of%20Langerhans%20(2D%20FTU).png)
+**0:45 Islet of Langerhans (2D FTU)**
+
+![Prostate Glandular Acinus (2D FTU)](images/8.%20Prostate%20glandular%20acinus.png)
+**0:48 Prostate Glandular Acinus (2D FTU)**
 
 ![TBD](images/12.%20TBD.png)
-**0:59 TBD**
-
+**1:00 Cell Similarity Network (Adult GTEx Gene Expression)**
 
 ![TBD](images/13.%20TBD.png)
-**1:01 TBD**
-
+**1:03 Cell Similarity Network (Adult GTEx Gene Expression)**
 
 ![Podocyte](images/14.%20Podocyte.png)
-**1:03 Podocyte**
-
+**1:06 Podocyte**
 
 ![Cell Scape with Organelles](images/15.%20Cell%20scape%20with%20organelles.png)
-**1:07 Cell Scape with Organelles**
-
+**1:11 Cell Scape with Organelles**
 
 ![Mitochondria](images/16.%20Mitochondria.png)
-**1:13 Mitochondria**
+**1:15 Mitochondria**
 
 ![Ribosome](images/17.%20Ribosome.png)
-**1:21 Ribosome**
+**1:24 Ribosome**
 
