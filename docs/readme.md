@@ -87,10 +87,10 @@ The 3D HRA Pop Helios animation was implemented using open access data from GTEx
 
 ## Image Guide
 
-![Kidney Interior](images/0.%20Kidney.png)
+![Kidney interior](images/0.%20Kidney.png)
 **0:14 Kidney Interior**
 
-![Mammary Glands](images/1.%20MammaryGlands.png)
+![Mammary glands](images/1.%20MammaryGlands.png)
 **0:18 Mammary Glands**
 
 ![Iris](images/2.%20Iris.png)
@@ -99,7 +99,7 @@ The 3D HRA Pop Helios animation was implemented using open access data from GTEx
 ![Lymph node](images/3.%20Lymph%20Node.png)
 **0:24 Lymph Node**
 
-![CODEX Image of the Small Intestine](images/9.%20CODEX%20image%20small%20intestine.png)
+![CODEX image of the small intestine](images/9.%20CODEX%20image%20small%20intestine.png)
 **0:27 CODEX Image of the Small Intestine**
 
 ![Neurovascular connections between nephrons of the human kidney](images/11.%20Neurovascular%20Connections%20Nephrons%20Kidney.png)
@@ -108,10 +108,10 @@ The 3D HRA Pop Helios animation was implemented using open access data from GTEx
 ![Cell DIVE image of organ mapping antibody panel-22 for skin](images/10.%20Antibody%20panel-22%20skin.png)
 **0:35 Cell DIVE Image of Organ Mapping Antibody Panel-22 for Skin**
 
-![Renal Corpuscle](images/5.%20Renal%20Corpuscle.png)
+![Renal corpuscle](images/5.%20Renal%20Corpuscle.png)
 **0:40 Renal Corpuscle**
 
-![Renal Corpuscle - 2D FTU](images/6.%20Renal%20Corpuscle%20(2D%20FTU).png)
+![Renal corpuscle - 2D FTU](images/6.%20Renal%20Corpuscle%20(2D%20FTU).png)
 **0:42 Renal Corpuscle (2D FTU)**
 
 ![Islet of Langerhans (2D FTU)](images/7.%20Islet%20of%20Langerhans%20(2D%20FTU).png)
