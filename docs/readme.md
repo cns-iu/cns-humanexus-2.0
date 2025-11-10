@@ -82,9 +82,9 @@ HuBMAP (The Human Biomolecular Atlas Program) features an image each week from o
 3. The CODEX [image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg) of the small intestine from Joanna Bi and Dr. Bei Wei.
 4. The Cell DIVE [image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg) of organ mapping antibody panel-22 for skin from Dr. Fiona Ginty, Liz McDonough, and Christine Surrette from GE Research.
 
-## HRA Pop Helios
+## HRApop Helios
 
-The 3D HRA Pop Helios animation was implemented using open access data from GTEx v9 release from the project named “Adult GTEx” -> “Single cell.” This data can be downloaded from the [GTEx Portal](https://gtexportal.org/home/downloads/adult-gtex/single_cell). Currently, we are using GTEx 8 tissues snRNA-Seq Data. The program basically creates a k-nearest neighbors network for biological data and prepares it to be exported to [Helios-Web](heliosweb.io). This program is accessible at [GitHub](https://github.com/cns-iu/hra-pop-helios). It comes along with a README file with detailed instructions on how to access the data and follow the steps to get the 3D model.
+The Cell Similarity Network was created using [Helios-Web](https://heliosweb.io/docs/api/), a web-based library for visualizing dynamic networks in real-time.  This data can be downloaded from the [GTEx Portal](https://gtexportal.org/home/downloads/adult-gtex/single_cell). Shown is open-access data for the adult human from the [GTEx V9 release](https://gtexportal.org/home/downloads/adult-gtex/single_cell).
 
 
 # Image Guide
