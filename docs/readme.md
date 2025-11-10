@@ -11,9 +11,9 @@
 - **Sound Artist (Music / Soundtrack)**: Norbert Herber, Department of Telecommunications, Indiana University
 - **Sphere Animation Programmer**: Peter Kienle, Luddy School of Informatics, Computing, and Engineering, Indiana University
 - **Helios-Web Programmer**: Filipi Nascimento Silva, Northwestern University–Kellogg
-- **Programmer**: Parth Godse, Luddy School of Informatics, Computing, and Engineering, Indiana University
-- **Programmer**: Kiki Kong, Luddy School of Informatics, Computing, and Engineering, Indiana University
-- **2D FTUs Programmer**: Supriya Bidanta, Luddy School of Informatics, Computing, and Engineering, Indiana University
+- **Mosaic and Grid Animation Programmer**: Parth Godse, Luddy School of Informatics, Computing, and Engineering, Indiana University
+- **FTU Images Extraction Programmer**: Kiki Kong, Luddy School of Informatics, Computing, and Engineering, Indiana University
+- **2D and 3D FTUs**: Rachel Bajema, Heidi Schlehlein, and Supriya Bidanta, Luddy School of Informatics, Computing, and Engineering, Indiana University
 
 ## Overview
 
@@ -59,7 +59,7 @@ The HRA 3D Reference Object Library provides anatomically correct reference orga
 
 ## FTU Images Extraction
 
-Parsed NLM publications and extracted 821,642 images related to [22 FTUs](https://humanatlas.io/2d-ftu-illustrations). Vision LLM was used to classify images into
+Parsed NLM publications and extracted 821,642 images related to [22 FTUs](https://humanatlas.io/2d-ftu-illustrations?releaseVersion=2.2). Vision LLM was used to classify images into
 - statistical images
 - microscopy images
 - schematics images
