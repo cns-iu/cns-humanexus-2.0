@@ -1,4 +1,4 @@
-# *10^10 — A Multiscale Voyage through the Human Body*
+# *10^10^ — A Multiscale Voyage through the Human Body*
 
 # Description
 
@@ -9,11 +9,12 @@
 - **Animator / Programmer**: Andreas Bueckle, Luddy School of Informatics, Computing, and Engineering, Indiana University
 - **Story Advisor**: Todd N. Theriault, Luddy School of Informatics, Computing, and Engineering, Indiana University
 - **Sound Artist (Music / Soundtrack)**: Norbert Herber, Department of Telecommunications, Indiana University
-- **Sphere Animation Programmer**: Peter Kienle, Luddy School of Informatics, Computing, and Engineering, Indiana University
+- **2D and 3D FTUs**: Rachel Bajema, Heidi Schlehlein, and Supriya Bidanta, Luddy School of Informatics, Computing, and Engineering, Indiana University
+- **FTU Images Extraction Programmer**: Kiki Kong, Luddy School of Informatics, Computing, and Engineering, Indiana University
 - **Helios-Web Programmer**: Filipi Nascimento Silva, Northwestern University–Kellogg
 - **Mosaic and Grid Animation Programmer**: Parth Godse, Luddy School of Informatics, Computing, and Engineering, Indiana University
-- **FTU Images Extraction Programmer**: Kiki Kong, Luddy School of Informatics, Computing, and Engineering, Indiana University
-- **2D and 3D FTUs**: Rachel Bajema, Heidi Schlehlein, and Supriya Bidanta, Luddy School of Informatics, Computing, and Engineering, Indiana University
+- **Sphere Animation Programmer**: Peter Kienle, Luddy School of Informatics, Computing, and Engineering, Indiana University
+
 
 ## Overview
 
