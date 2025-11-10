@@ -82,7 +82,7 @@ HuBMAP (The Human Biomolecular Atlas Program) features an image each week from o
 1. The [3D map](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg) of multiscalar neurovascular connections between nephrons of the human kidney across the lifespan from Dr. Sanjay Jain, Liam McLaughlin, and Dr. Gloria Pryhuber (see McLaughlin et al. 2025).
 2. The 3D, 50x light sheet fluorescence microscopy (LSFM) [image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg) of an adult human kidney cortex from Dr. Sanjay Jain and Liam McLaughlin (See McLaughlin et al. 2025).
 3. The CODEX [image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg) of the small intestine from Joanna Bi and Dr. Bei Wei.
-4. The Cell DIVE [image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg) of organ mapping antibody panel-22 for skin from Dr. Fiona Ginty, Liz McDonough, and Christine Surrette from GE Research.
+4. The Cell DIVE [image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg) of organ mapping antibody panel-22 for skin from Dr. Fiona Ginty, Liz McDonough, and Christine Surrette from GE Research (see Ghose et al. 2023).
 
 ## HRApop Helios
 
