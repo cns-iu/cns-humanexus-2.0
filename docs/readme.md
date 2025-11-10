@@ -28,6 +28,8 @@ Human Reference Atlas construction is funded by the NIH Common Fund through the 
 
 Bidanta, Supriya, Katy Börner, Bruce W. Herr II, Ellen M. Quardokus, Marcell Nagy, Katherine S. Gustilo, Rachel Bajema, Elizabeth Maier, Roland Molontay, and Griffin Weber. 2025. "Functional Tissue Units in the Human Reference Atlas." *Nature Communications* 16: 1526. [https://doi.org/10.1038/s41467-024-54591-6](https://doi.org/10.1038/s41467-024-54591-6). 
 
+Ghose, Soumya, Yingnan Ju, Elizabeth McDonough, Jonhan Ho, Arivarasan Karunamurthy, Chrystal Chadwick, Sanghee Cho, Rachel Rose, Alex Corwin, Christine Surrette, Jessica Martinez, Eric Williams, Anup Sood, Yousef Al-Kofahi, Louis D. Falo Jr, Katy Börner, and Fiona Ginty. 2023. "3D Reconstruction of Skin and Spatial Mapping of Immune Cell Density, Vascular Distance and Effects of Sun Exposure and Aging." *Communications Biology* 6: 718. [https://doi.org/10.1038/s42003-023-04991-z](https://doi.org/10.1038/s42003-023-04991-z). 
+
 McLaughlin, Liam, Bo Zhang, Siddharth Sharma, Amanda L. Knoten, Madhurima Kaushal, Jeffrey M. Purkerson, Heidie L. Huyck, Gloria S. Pryhuber, Joseph P. Gaut, and Sanjay Jain. 2025. "Three Dimensional Multiscalar Neurovascular Nephron Connectivity Map of the Human Kidney Across the Lifespan." *Nature Communications* 16: 5161. [https://doi.org/10.1038/s41467-025-60435-8](https://doi.org/10.1038/s41467-025-60435-8).
 
 Patel, Ushma, Griffin Weber, Katherine S. Gustilo, and Katy Börner. 2023. *Human Reference Atlas: Vasculature Common Coordinate Framework (VCCF)*. [https://www.youtube.com/watch?v=zQeMgxo8n_U](https://www.youtube.com/watch?v=zQeMgxo8n_U). 
