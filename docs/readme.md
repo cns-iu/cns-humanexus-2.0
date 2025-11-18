@@ -78,11 +78,13 @@ These multipanel images were then separated into around 400k single pane images 
 
 ## Images of the Week
 
-HuBMAP (The Human Biomolecular Atlas Program) features an image each week from one of their funded research groups. Four images, all from 2025, appear in the animation:
+HuBMAP (The Human Biomolecular Atlas Program) features an image each week from one of their funded research groups. Three images, all from 2025, appear in the animation:
 1. The [3D map](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg) of multiscalar neurovascular connections between nephrons of the human kidney across the lifespan from Dr. Sanjay Jain, Liam McLaughlin, and Dr. Gloria Pryhuber (see McLaughlin et al. 2025).
 2. The 3D, 50x light sheet fluorescence microscopy (LSFM) [image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg) of an adult human kidney cortex from Dr. Sanjay Jain and Liam McLaughlin (See McLaughlin et al. 2025).
-3. The CODEX [image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg) of the small intestine from Joanna Bi and Dr. Bei Wei.
-4. The Cell DIVE [image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg) of organ mapping antibody panel-22 for skin from Dr. Fiona Ginty, Liz McDonough, and Christine Surrette from GE Research (see Ghose et al. 2023).
+3. The Cell DIVE [image](https://drive.google.com/drive/u/0/folders/1h5KcDTwdarBs7bNgf_staNMSKB1N_8kg) of organ mapping antibody panel-22 for skin from Dr. Fiona Ginty, Liz McDonough, and Christine Surrette from GE Research (see Ghose et al. 2023).
+
+## Additional Image
+Codex [Cytokit + SPRM] data from the large intestine of a 37-year-old white male. 2022. Stanford TMC. HuBMAP ID HBM636.GTZK.259. [https://doi.org/10.35079/HBM429.LLRT.546](https://doi.org/10.35079/HBM429.LLRT.546).
 
 ## HRApop Helios
 
@@ -103,8 +105,8 @@ The Cell Similarity Network was created using [Helios-Web](https://heliosweb.io/
 ![Lymph node](images/3.%20Lymph%20Node.png)
 **0:24 Lymph Node**
 
-![Sigmoid Nodes](images/SigmoidNodes.png)
-**0:27 Sigmoid Nodes**
+![Codex [Cytokit + SPRM] data from the large intestine](images/SigmoidNodes.png)
+**0:27 Codex [Cytokit + SPRM] Data from the Large Intestine**
 
 ![Neurovascular connections between nephrons of the human kidney](images/11.%20Neurovascular%20Connections%20Nephrons%20Kidney.png)
 **0:31 Neurovascular Connections between Nephrons of the Human Kidney**
