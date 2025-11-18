@@ -105,8 +105,8 @@ The Cell Similarity Network was created using [Helios-Web](https://heliosweb.io/
 ![Lymph node](images/3.%20Lymph%20Node.png)
 **0:24 Lymph Node**
 
-![Codex [Cytokit + SPRM] data from the large intestine](images/SigmoidNodes.png)
-**0:27 Codex [Cytokit + SPRM] Data from the Large Intestine**
+![Codex [Cytokit + SPRM] data from the large intestine](images/Codex%20%5BCytokit%20%2B%20SPRM%5D%20data%20from%20the%20large%20intestine.png)
+**0:27 CODEX Image from the Large Intestine**
 
 ![Neurovascular connections between nephrons of the human kidney](images/11.%20Neurovascular%20Connections%20Nephrons%20Kidney.png)
 **0:31 Neurovascular Connections between Nephrons of the Human Kidney**
