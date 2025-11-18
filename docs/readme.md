@@ -126,10 +126,10 @@ The Cell Similarity Network was created using [Helios-Web](https://heliosweb.io/
 ![Prostate Glandular Acinus (2D FTU)](images/8.%20Prostate%20glandular%20acinus.png)
 **0:48 Prostate Glandular Acinus (2D FTU)**
 
-![TBD](images/12.%20TBD.png)
+![Cell Similarity Network (Adult GTEx Gene Expression)](images/12.%20TBD.png)
 **0:59 Cell Similarity Network (Adult GTEx Gene Expression)**
 
-![TBD](images/13.%20TBD.png)
+![Cell Similarity Network (Adult GTEx Gene Expression)](images/13.%20TBD.png)
 **1:03 Cell Similarity Network (Adult GTEx Gene Expression)**
 
 ![Podocyte](images/14.%20Podocyte.png)
