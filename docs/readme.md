@@ -103,8 +103,8 @@ The Cell Similarity Network was created using [Helios-Web](https://heliosweb.io/
 ![Lymph node](images/3.%20Lymph%20Node.png)
 **0:24 Lymph Node**
 
-![CODEX image of the small intestine](images/9.%20CODEX%20image%20small%20intestine.png)
-**0:27 CODEX Image of the Small Intestine**
+![Sigmoid Nodes](images/SigmoidNodes.png)
+**0:27 Sigmoid Nodes**
 
 ![Neurovascular connections between nephrons of the human kidney](images/11.%20Neurovascular%20Connections%20Nephrons%20Kidney.png)
 **0:31 Neurovascular Connections between Nephrons of the Human Kidney**
